@@ -1,0 +1,17 @@
+# Keep the public deploy to the landing page (index.html) + the app (momento/).
+# Everything below stays in the repo but is not uploaded to Vercel.
+
+.DS_Store
+.vscode/
+.mcp.json
+
+# Internal product docs (PRD, ui-spec, etc.)
+docs/
+*.md
+
+# Earlier design explorations / mockups (not part of the shipped site)
+brand-concepts.html
+brand-guidelines.html
+logo-mockups.html
+momento-app-v0.html
+webapp-mockup.html
