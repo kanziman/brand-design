@@ -1,0 +1,9 @@
+/* Wordmark font (spec-named) from Google Fonts, as in the source design system. */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+/* Pretendard — the UI/body font named by the brand spec.
+   The source design system ships 9 local Pretendard .otf weights under
+   assets/fonts/. Those binaries aren't included in this port, so we load the
+   identical open-source Pretendard family from its official CDN instead.
+   Swap this @import back to the local @font-face block if you vendor the OTFs. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');

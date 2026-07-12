@@ -1,0 +1,25 @@
+:root {
+  --font-body: 'Pretendard', -apple-system, 'Malgun Gothic', sans-serif;
+  --font-wordmark: 'Outfit', 'Pretendard', sans-serif;
+
+  --text-2xs: 12px;
+  --text-xs: 13px;
+  --text-sm: 14px;
+  --text-base: 15px;
+  --text-md: 17px;
+  --text-lg: 20px;
+  --text-xl: 26px;
+  --text-2xl: 34px;
+  --text-3xl: 44px;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  --tracking-wordmark: 0.01em;
+}

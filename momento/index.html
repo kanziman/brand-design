@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Momento — 조용한 작업 공간</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg-page); font-family: var(--font-body); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
+  #root { height: 100%; }
+  button { font-family: var(--font-body); }
+  a { color: var(--text-link); text-decoration: none; }
+  a:hover { color: var(--text-link-hover); }
+  ::selection { background: var(--accent-soft); }
+
+  .mo-scroll::-webkit-scrollbar { width: 9px; }
+  .mo-scroll::-webkit-scrollbar-thumb { background: var(--warm-gray); border-radius: 999px; border: 3px solid var(--bg-page); }
+
+  .mo-btn { transition: background-color var(--duration-fast) var(--ease-calm), transform var(--duration-fast) var(--ease-calm); }
+  .mo-btn:active { transform: scale(0.98); }
+  .mo-nav:hover, .mo-projrow:hover, .mo-menuitem:hover { background: var(--bg-hover); }
+  .mo-input:focus, .mo-textarea:focus { border-color: var(--accent); }
+  .mo-card-hover { transition: box-shadow var(--duration-normal) var(--ease-calm); }
+
+  .mo-topbar { display: none; }
+  .mo-scrim { display: none; }
+  @media (max-width: 760px) {
+    .mo-topbar {
+      display: flex; align-items: center; gap: 14px;
+      position: fixed; top: 0; left: 0; right: 0; height: 56px; padding: 0 16px;
+      background: var(--bg-page); border-bottom: 1px solid var(--border-subtle); z-index: 40;
+    }
+    .mo-sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0; z-index: 46;
+      transform: translateX(-100%); transition: transform var(--duration-normal) var(--ease-calm);
+    }
+    .mo-root.nav-open .mo-sidebar { transform: translateX(0); }
+    .mo-root.nav-open .mo-scrim { display: block; position: fixed; inset: 0; background: rgba(26,26,26,.15); z-index: 45; }
+    .mo-main { padding-top: 56px; }
+    .mo-content { padding-left: 22px !important; padding-right: 22px !important; padding-top: 32px !important; }
+    .mo-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+/* ============================================================================
+   Momento — hi-fi v2 implementation (faithful vanilla-JS port of Momento.dc.html).
+   Login gate · One Now · task-detail drawer · inbox triage · quick note ·
+   account row · responsive nav · localStorage persistence.
+   Tokens & component visuals come straight from the Momento Design System.
+   ========================================================================== */
+
+const PROJECT_COLORS = {
+  terracotta: 'var(--project-terracotta)', sage: 'var(--project-sage)',
+  blue: 'var(--project-blue)', plum: 'var(--project-plum)',
+};
+const esc = (s) => String(s == null ? '' : s)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+const AUTH_KEY = 'momento-auth-v2';
+const DATA_KEY = 'momento-hifi-v2';
+
+/* ------------------------------------------------------------------ seed --- */
+
+function seed() {
+  const t = (id, title, estimate, status, done, seq, rolled, extra) => ({
+    id, title, estimate, status, done: !!done, todaySeq: seq || 0, rolledOver: !!rolled,
+    note: (extra && extra.note) || '', links: (extra && extra.links) || [], due: (extra && extra.due) || '',
+  });
+  return {
+    weeklyDone: 11,
+    projects: [
+      { id: 'p1', name: '브랜드 리뉴얼', color: 'terracotta', tasks: [
+        t('t1', '로고 시안 3안 정리하기', '40분', 'today', false, 1, false, {
+          due: '7월 15일 (화)',
+          links: ['figma.com/file/brand-logo-v3', 'drive.google.com/…/레퍼런스'],
+          note: '· A안 세리프 방향으로 정리\n· 심볼은 원 + 시계바늘 모티프 유지\n· 클라이언트 피드백 반영해 3안까지' }),
+        t('t2', '컬러 팔레트 확정', '30분', 'todo'),
+        t('t3', '타이포 스케일 정리', '20분', 'todo'),
+        t('t4', '가이드 문서 초안', '1시간', 'todo'),
+        t('t5', '명함 목업', '25분', 'todo'),
+        t('t6', '무드보드 수집', '30분', 'done', true),
+      ]},
+      { id: 'p2', name: '포트폴리오 사이트', color: 'sage', tasks: [
+        t('t7', '소개글 다듬기', '15분', 'today', false, 3),
+        t('t8', '반응형 점검', '40분', 'todo'),
+        t('t9', '배포 세팅', '20분', 'done', true),
+      ]},
+      { id: 'p3', name: '뉴스레터', color: 'blue', tasks: [
+        t('t10', '7월호 초안 쓰기', '25분', 'today', false, 2),
+        t('t11', '제목 후보 정리', '15분', 'todo'),
+        t('t12', '본문 작성', '45분', 'todo'),
+        t('t13', '이미지 고르기', '20분', 'todo'),
+        t('t14', '발송 테스트', '10분', 'todo'),
+      ]},
+      { id: 'p4', name: '세금 정리', color: 'plum', tasks: [
+        t('t15', '영수증 폴더 정리', '10분', 'today', false, 9, true),
+      ]},
+    ],
+    notes: [
+      { id: 'n1', text: '폰트 라이선스 확인하기', ts: Date.now() - 3 * 3600e3 },
+      { id: 'n2', text: '경쟁 서비스 온보딩 다시 보기', ts: Date.now() - 26 * 3600e3 },
+      { id: 'n3', text: '뉴스레터 제목 후보 3개', ts: Date.now() - 30 * 3600e3 },
+    ],
+    view: 'today', selectedId: 'p1',
+  };
+}
+
+/* ----------------------------------------------------------------- state --- */
+
+function loadData() {
+  try { const r = localStorage.getItem(DATA_KEY); return r ? JSON.parse(r) : seed(); }
+  catch (e) { return seed(); }
+}
+function loadAuth() {
+  try { const m = localStorage.getItem(AUTH_KEY); return { authed: !!m, mode: m || 'local' }; }
+  catch (e) { return { authed: false, mode: 'local' }; }
+}
+
+const persisted = loadData();
+const auth = loadAuth();
+let state = {
+  ...persisted,
+  authed: auth.authed, authMode: auth.mode,
+  qnOpen: false, convertingId: null, detailId: null, navOpen: false,
+};
+let focusAfterRender = null;
+
+function persist() {
+  try {
+    const { weeklyDone, projects, notes, view, selectedId } = state;
+    localStorage.setItem(DATA_KEY, JSON.stringify({ weeklyDone, projects, notes, view, selectedId }));
+  } catch (e) {}
+}
+function save() { persist(); render(); }          // structural change → persist + re-render
+function saveSilently() { persist(); }            // text edit → persist, keep focus (no re-render)
+
+/* ----------------------------------------------------------- lookups/ops --- */
+
+const allTasks = () => { const o = []; state.projects.forEach(p => p.tasks.forEach(tk => o.push({ tk, p }))); return o; };
+const remaining = (p) => p.tasks.filter(x => !x.done).length;
+const maxSeq = () => { let m = 0; allTasks().forEach(({ tk }) => { if (tk.status === 'today' && tk.todaySeq > m) m = tk.todaySeq; }); return m; };
+const find = (id) => { for (const p of state.projects) { const tk = p.tasks.find(x => x.id === id); if (tk) return { tk, p }; } return null; };
+const nowItem = () => allTasks().filter(({ tk }) => tk.status === 'today' && !tk.done).sort((a, b) => a.tk.todaySeq - b.tk.todaySeq)[0] || null;
+
+function toggleTask(id) {
+  const f = find(id); if (!f) return;
+  const was = f.tk.done; f.tk.done = !f.tk.done;
+  if (f.tk.done && !was) state.weeklyDone++;
+  else if (!f.tk.done && was) state.weeklyDone = Math.max(0, state.weeklyDone - 1);
+  save();
+}
+function completeNow() { const n = nowItem(); if (n) { n.tk.done = true; state.weeklyDone++; save(); } }
+function deferNow() { const n = nowItem(); if (n) { n.tk.todaySeq = maxSeq() + 1; save(); } }
+function sendToday(id) { const f = find(id); if (!f) return; f.tk.status = 'today'; f.tk.todaySeq = maxSeq() + 1; save(); }
+function addTask(projectId, title) {
+  const p = state.projects.find(x => x.id === projectId); if (!p) return;
+  p.tasks.push({ id: 't' + Date.now(), title, estimate: '', status: 'todo', done: false, todaySeq: 0, rolledOver: false, note: '', links: [], due: '' });
+  focusAfterRender = '[data-draft]'; save();
+}
+function addProject() {
+  const n = state.projects.length + 1;
+  const colors = ['terracotta', 'sage', 'blue', 'plum'];
+  const id = 'p' + Date.now();
+  state.projects.push({ id, name: '새 프로젝트 ' + n, color: colors[(n - 1) % 4], tasks: [] });
+  state.view = 'project'; state.selectedId = id; state.navOpen = false; save();
+}
+function saveNote(text) { state.notes.unshift({ id: 'n' + Date.now(), text, ts: Date.now() }); state.qnOpen = false; save(); }
+function removeNote(id) { state.notes = state.notes.filter(n => n.id !== id); save(); }
+function convertNote(noteId, projId) {
+  const note = state.notes.find(n => n.id === noteId), p = state.projects.find(x => x.id === projId);
+  if (note && p) p.tasks.push({ id: 't' + Date.now(), title: note.text, estimate: '', status: 'todo', done: false, todaySeq: 0, rolledOver: false, note: '', links: [], due: '' });
+  state.notes = state.notes.filter(n => n.id !== noteId); state.convertingId = null; save();
+}
+function deleteTask(id) {
+  for (const p of state.projects) { const i = p.tasks.findIndex(x => x.id === id); if (i >= 0) { p.tasks.splice(i, 1); break; } }
+  state.detailId = null; save();
+}
+function addLink(id, url) { const f = find(id); if (f) { if (!f.tk.links) f.tk.links = []; f.tk.links.push(url); } focusAfterRender = '[data-linkdraft]'; save(); }
+function removeLink(id, i) { const f = find(id); if (f && f.tk.links) { f.tk.links.splice(i, 1); save(); } }
+
+/* -------------------------------------------------------------- helpers ---- */
+
+function dateLabel() {
+  const d = new Date(), days = ['일','월','화','수','목','금','토'];
+  return `${d.getMonth() + 1}월 ${d.getDate()}일 ${days[d.getDay()]}요일`;
+}
+function relDate(ts) {
+  const h = Math.floor((Date.now() - ts) / 3600e3);
+  if (h < 1) return '방금'; if (h < 24) return '오늘'; if (h < 48) return '어제'; return `${Math.floor(h / 24)}일 전`;
+}
+
+/* ----------------------------------------------------------- components --- */
+
+function ProjectTag(name, color) {
+  return `<span style="display:inline-flex;align-items:center;gap:8px;font-size:var(--text-sm);color:var(--text-secondary)">
+    <span style="width:8px;height:8px;border-radius:50%;background:${PROJECT_COLORS[color] || color};flex:none"></span>
+    <span>${esc(name)}</span></span>`;
+}
+function ProgressBar(total, done) {
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  return `<div style="display:flex;flex-direction:column;gap:6px">
+    <div style="height:5px;border-radius:var(--radius-pill);background:var(--bg-hover);overflow:hidden">
+      <div style="width:${pct}%;height:100%;background:var(--accent);border-radius:var(--radius-pill);transition:width var(--duration-normal) var(--ease-calm)"></div>
+    </div>
+    <span style="font-size:var(--text-2xs);color:var(--text-tertiary)">${total - done}개 남음</span></div>`;
+}
+function Checkbox(checked, label, action, id) {
+  const box = checked
+    ? `<span style="width:18px;height:18px;flex:none;border-radius:5px;background:var(--accent);display:inline-flex;align-items:center;justify-content:center">
+         <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>`
+    : `<span style="width:18px;height:18px;flex:none;border-radius:5px;border:1.5px solid var(--border-default);background:transparent;display:inline-flex"></span>`;
+  const text = label ? `<span style="font-size:var(--text-base);color:${checked ? 'var(--text-tertiary)' : 'var(--text-primary)'};text-decoration:${checked ? 'line-through' : 'none'}">${esc(label)}</span>` : '';
+  return `<span class="mo-btn" data-action="${action}" data-id="${id}" style="display:inline-flex;align-items:center;gap:10px;cursor:pointer">${box}${text}</span>`;
+}
+function Button(variant, label, action, dataAttrs = '', size = 'md', extra = '') {
+  const sizes = { sm: 'font-size:var(--text-sm);padding:6px 12px', md: 'font-size:var(--text-base);padding:9px 18px', lg: 'font-size:var(--text-md);padding:12px 22px' };
+  const variants = {
+    primary: 'background:var(--accent);color:var(--text-on-accent)',
+    secondary: 'background:var(--bg-hover);color:var(--text-primary)',
+    ghost: 'background:transparent;color:var(--text-secondary)',
+  };
+  return `<button class="mo-btn" data-action="${action}" ${dataAttrs} style="border:none;border-radius:var(--radius-md);cursor:pointer;font-weight:var(--weight-medium);display:inline-flex;align-items:center;justify-content:center;gap:6px;${sizes[size]};${variants[variant]};${extra}">${esc(label)}</button>`;
+}
+function EmptyState(message, actionHtml = '') {
+  return `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:var(--space-16) var(--space-8);text-align:center">
+    <p style="font-size:var(--text-md);color:var(--text-secondary);margin:0;line-height:var(--leading-relaxed)">${esc(message)}</p>${actionHtml}</div>`;
+}
+const inputStyle = (size = 'md') => {
+  const s = { md: 'font-size:var(--text-base);padding:10px 14px', lg: 'font-size:var(--text-md);padding:13px 16px' }[size];
+  return `font-family:var(--font-body);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--bg-surface-raised);color:var(--text-primary);outline:none;width:100%;box-sizing:border-box;transition:border-color var(--duration-fast) var(--ease-calm);${s}`;
+};
+
+/* ----------------------------------------------------------- login gate --- */
+
+function LoginGate() {
+  return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:var(--bg-page);padding:40px">
+    <div style="font-family:var(--font-wordmark);font-weight:600;font-size:34px;letter-spacing:var(--tracking-wordmark)">Momento</div>
+    <div style="font-size:var(--text-md);color:var(--text-secondary);max-width:300px;text-align:center;line-height:var(--leading-normal)">로그인하면 어느 기기에서든 이어서 정리할 수 있어요.</div>
+    <div style="width:100%;max-width:300px;display:flex;flex-direction:column;gap:12px">
+      <button class="mo-btn" data-action="login-google" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:13px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--bg-surface-raised);font-size:var(--text-md);color:var(--text-primary);cursor:pointer">
+        <span style="width:22px;height:22px;border-radius:50%;border:1px solid var(--border-subtle);display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-wordmark);font-size:14px;color:var(--text-secondary)">G</span>
+        Google로 계속하기</button>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text-tertiary);font-size:var(--text-xs)"><span style="flex:1;height:1px;background:var(--border-subtle)"></span>또는<span style="flex:1;height:1px;background:var(--border-subtle)"></span></div>
+      ${Button('ghost', '계정 없이 시작하기', 'login-local', '', 'lg', 'width:100%;height:50px')}
+    </div>
+    <div style="font-size:var(--text-xs);color:var(--text-tertiary);max-width:300px;text-align:center;line-height:var(--leading-normal)">계정 없이도 로컬에 저장돼요. 로그인은 기기 간 동기화를 위한 선택이에요.</div>
+  </div>`;
+}
+
+/* ------------------------------------------------------------- sidebar ---- */
+
+function navStyle(active) {
+  return `display:flex;align-items:center;justify-content:space-between;text-align:left;width:100%;padding:8px 10px;border:none;border-radius:var(--radius-sm);cursor:pointer;font-size:var(--text-md);background:${active ? 'var(--bg-surface-raised)' : 'transparent'};color:${active ? 'var(--accent)' : 'var(--text-secondary)'};font-weight:${active ? 'var(--weight-semibold)' : 'var(--weight-regular)'}`;
+}
+function projRowStyle(active) {
+  return `display:flex;align-items:center;justify-content:space-between;text-align:left;width:100%;padding:6px 10px;border:none;border-radius:var(--radius-sm);cursor:pointer;font-size:var(--text-base);background:${active ? 'var(--bg-surface-raised)' : 'transparent'};color:${active ? 'var(--text-primary)' : 'var(--text-secondary)'};font-weight:${active ? 'var(--weight-semibold)' : 'var(--weight-regular)'}`;
+}
+function Sidebar() {
+  const v = state.view;
+  const projects = state.projects.map(p => `
+    <button class="mo-projrow" data-action="view-project" data-id="${p.id}" style="${projRowStyle(v === 'project' && state.selectedId === p.id)}">
+      <span style="display:inline-flex;align-items:center;gap:9px;overflow:hidden">
+        <span style="width:8px;height:8px;border-radius:50%;flex:none;background:${PROJECT_COLORS[p.color] || p.color}"></span>
+        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(p.name)}</span></span>
+      <span style="color:var(--text-tertiary);font-size:var(--text-sm);flex:none">${remaining(p)}</span></button>`).join('');
+
+  const account = state.authMode === 'google'
+    ? `<div style="display:flex;align-items:center;gap:10px;margin-top:12px;padding:6px">
+        <span style="width:26px;height:26px;border-radius:50%;background:var(--warm-gray);display:inline-flex;align-items:center;justify-content:center;font-size:var(--text-sm);color:var(--text-secondary);flex:none">나</span>
+        <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:var(--text-xs);color:var(--text-secondary)">me@gmail.com</span>
+        <button class="mo-btn" data-action="logout" style="font-size:var(--text-2xs);color:var(--text-tertiary);background:none;border:none;cursor:pointer">로그아웃</button></div>`
+    : `<button class="mo-btn" data-action="logout" style="display:flex;align-items:center;gap:8px;margin-top:12px;padding:8px 6px;background:none;border:none;cursor:pointer;font-size:var(--text-xs);color:var(--text-tertiary)">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--project-sage);flex:none"></span>로컬에 저장 중 · 로그인</button>`;
+
+  return `<aside class="mo-sidebar" style="width:232px;flex:none;background:var(--bg-sidebar);border-right:1px solid var(--border-subtle);display:flex;flex-direction:column;padding:24px 16px 18px">
+    <div class="mo-btn" data-action="view" data-view="today" style="font-family:var(--font-wordmark);font-weight:600;font-size:22px;letter-spacing:var(--tracking-wordmark);padding:2px 10px 22px;cursor:pointer">Momento</div>
+    <nav style="display:flex;flex-direction:column;gap:2px">
+      <button class="mo-nav" data-action="view" data-view="today" style="${navStyle(v === 'today')}">오늘</button>
+      <button class="mo-nav" data-action="view" data-view="inbox" style="${navStyle(v === 'inbox')}"><span>메모함</span><span style="color:var(--text-tertiary);font-size:var(--text-sm)">${state.notes.length}</span></button>
+      <button class="mo-nav" data-action="view" data-view="overview" style="${navStyle(v === 'overview')}">전체 보기</button>
+    </nav>
+    <div style="font-size:var(--text-2xs);letter-spacing:.12em;color:var(--text-tertiary);padding:22px 10px 8px;text-transform:uppercase">프로젝트</div>
+    <div style="display:flex;flex-direction:column;gap:1px">${projects}</div>
+    <button class="mo-btn" data-action="add-project" style="text-align:left;margin-top:8px;padding:7px 10px;border:1px dashed var(--border-default);border-radius:var(--radius-sm);background:transparent;color:var(--text-tertiary);font-size:var(--text-sm);cursor:pointer">+ 새 프로젝트</button>
+    <div style="flex:1"></div>
+    <button class="mo-btn" data-action="open-qn" style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--bg-surface-raised);color:var(--text-secondary);font-size:var(--text-sm);cursor:pointer">
+      <span>+ 빠른 메모</span>
+      <span style="font-family:ui-monospace,Menlo,monospace;font-size:var(--text-2xs);color:var(--text-tertiary);border:1px solid var(--border-subtle);border-radius:6px;padding:1px 6px">⌘N</span></button>
+    ${account}
+  </aside>`;
+}
+
+/* -------------------------------------------------------------- screens --- */
+
+function taskRow(tk, p, { showToday } = {}) {
+  const rolled = tk.rolledOver ? `<span style="font-size:var(--text-2xs);color:var(--text-tertiary);border:1px solid var(--border-subtle);border-radius:var(--radius-pill);padding:2px 10px">내일로 미룸</span>` : '';
+  let todayCtl = '';
+  if (showToday) {
+    if (tk.status !== 'today' && !tk.done) todayCtl = `<button class="mo-btn" data-action="send-today" data-id="${tk.id}" style="font-size:var(--text-2xs);color:var(--accent-hover);border:1px solid var(--accent-soft);background:var(--accent-soft);border-radius:var(--radius-pill);padding:3px 11px;cursor:pointer">오늘로 ↑</button>`;
+    else if (tk.status === 'today') todayCtl = `<span style="font-size:var(--text-2xs);color:var(--text-tertiary)">오늘</span>`;
+  }
+  const titleStyle = `flex:1;cursor:pointer;font-size:var(--text-base);color:${tk.done ? 'var(--text-tertiary)' : 'var(--text-primary)'};text-decoration:${tk.done ? 'line-through' : 'none'}`;
+  return `<div style="display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--border-subtle)">
+    ${Checkbox(tk.done, '', 'toggle-task', tk.id)}
+    <span class="mo-btn" data-action="open-detail" data-id="${tk.id}" style="${titleStyle}">${esc(tk.title)}</span>
+    ${rolled}${todayCtl}
+    <span style="font-size:var(--text-sm);color:var(--text-tertiary)">${esc(tk.estimate)}</span></div>`;
+}
+
+function TodayScreen() {
+  const all = allTasks().filter(({ tk }) => tk.status === 'today');
+  const live = all.filter(({ tk }) => !tk.done).sort((a, b) => a.tk.todaySeq - b.tk.todaySeq);
+  const doneArr = all.filter(({ tk }) => tk.done);
+  const now = live[0], rest = live.slice(1);
+
+  const header = `<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:36px">
+    <div style="font-size:var(--text-base);color:var(--text-tertiary)">${dateLabel()}</div>
+    <div style="font-size:var(--text-2xl);font-weight:var(--weight-semibold);letter-spacing:-.01em">오늘도 한 걸음.</div>
+    <div style="font-size:var(--text-base);color:var(--text-secondary)">이번 주 ${state.weeklyDone}개 끝냈어요</div></div>`;
+
+  let hero = '';
+  if (now) {
+    hero = `<div style="border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:var(--radius-lg);padding:28px 30px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:var(--text-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-hover);font-weight:var(--weight-semibold)">지금 하나</div>
+      ${ProjectTag(now.p.name, now.p.color)}
+      <div style="font-size:var(--text-2xl);font-weight:var(--weight-semibold);line-height:var(--leading-tight);letter-spacing:-.01em">${esc(now.tk.title)}</div>
+      <div style="font-size:var(--text-sm);color:var(--text-secondary)">예상 ${esc(now.tk.estimate)}</div>
+      <div style="display:flex;gap:10px;margin-top:6px">
+        ${Button('primary', '✓ 끝냈어요', 'complete-now', '', 'lg')}
+        ${Button('ghost', '다음 하나 →', 'defer-now', '', 'lg')}</div></div>`;
+  } else if (all.length > 0) {
+    hero = `<div style="border:1px solid var(--border-subtle);background:var(--bg-surface);border-radius:var(--radius-lg);padding:34px 30px;text-align:center">
+      <div style="font-size:var(--text-lg);font-weight:var(--weight-semibold)">오늘 할 일을 다 끝냈어요.</div></div>`;
+  } else {
+    hero = `<div style="border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:8px 0">
+      ${EmptyState('오늘 할 일이 없어요. 프로젝트에서 오늘로 가져오거나, 메모함을 정리해 보세요.',
+        `<div style="display:flex;gap:10px">${Button('secondary', '전체 보기 →', 'view', 'data-view="overview"', 'md')}${Button('ghost', '메모함 →', 'view', 'data-view="inbox"', 'md')}</div>`)}</div>`;
+  }
+
+  const restBlock = rest.length ? `<div style="margin-top:38px">
+    <div style="font-size:var(--text-sm);color:var(--text-tertiary);margin-bottom:6px">이어서</div>
+    ${rest.map(({ tk, p }) => taskRow(tk, p, { showToday: false })).join('')}</div>` : '';
+
+  const doneBlock = doneArr.length ? `<div style="margin-top:34px">
+    <div style="font-size:var(--text-sm);color:var(--text-tertiary);margin-bottom:6px">오늘 완료 · ${doneArr.length}</div>
+    ${doneArr.map(({ tk }) => `<div style="display:flex;align-items:center;padding:11px 4px;border-bottom:1px solid var(--border-subtle)">${Checkbox(true, tk.title, 'toggle-task', tk.id)}</div>`).join('')}</div>` : '';
+
+  return header + hero + restBlock + doneBlock;
+}
+
+function OverviewScreen() {
+  const cards = state.projects.map(p => {
+    const liveTasks = p.tasks.filter(t => !t.done);
+    const next = liveTasks.slice().sort((a, b) => {
+      const ao = a.status === 'today' ? 0 : 1, bo = b.status === 'today' ? 0 : 1;
+      if (ao !== bo) return ao - bo; return (a.todaySeq || 99) - (b.todaySeq || 99);
+    })[0];
+    return `<div class="mo-btn mo-card-hover" data-action="view-project" data-id="${p.id}" style="background:var(--bg-surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:22px 22px 20px;cursor:pointer;display:flex;flex-direction:column;gap:14px">
+      ${ProjectTag(p.name, p.color)}
+      <div>
+        <div style="font-size:var(--text-2xs);letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:6px">다음 하나</div>
+        <div style="font-size:var(--text-md);color:${next ? 'var(--text-primary)' : 'var(--text-tertiary)'};min-height:24px">${next ? esc(next.title) : '예정된 일 없음'}</div>
+      </div>
+      ${ProgressBar(p.tasks.length, p.tasks.filter(t => t.done).length)}</div>`;
+  }).join('');
+  return `<div style="font-size:var(--text-xl);font-weight:var(--weight-semibold);margin-bottom:28px">${state.projects.length}개의 프로젝트</div>
+    <div class="mo-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">${cards}</div>`;
+}
+
+function ProjectScreen() {
+  const proj = state.projects.find(p => p.id === state.selectedId) || state.projects[0];
+  if (!proj) return '';
+  const live = proj.tasks.filter(t => !t.done);
+  const done = proj.tasks.filter(t => t.done);
+  const doneBlock = done.length ? `<div style="margin-top:28px">
+    <div style="font-size:var(--text-sm);color:var(--text-tertiary);margin-bottom:6px">완료 · ${done.length}</div>
+    ${done.map(tk => `<div style="padding:11px 4px;border-bottom:1px solid var(--border-subtle)">${Checkbox(true, tk.title, 'toggle-task', tk.id)}</div>`).join('')}</div>` : '';
+  return `<div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+      <span style="width:11px;height:11px;border-radius:50%;background:${PROJECT_COLORS[proj.color] || proj.color}"></span>
+      <div style="font-size:var(--text-xl);font-weight:var(--weight-semibold)">${esc(proj.name)}</div>
+      <span style="margin-left:auto;font-size:var(--text-sm);color:var(--text-tertiary);cursor:pointer">편집</span></div>
+    <div style="margin-bottom:20px"><input class="mo-input" data-draft data-project="${proj.id}" placeholder="+ 할 일 추가  ·  Enter" autocomplete="off" style="${inputStyle('lg')}"></div>
+    ${live.map(tk => taskRow(tk, proj, { showToday: true })).join('')}
+    ${doneBlock}`;
+}
+
+function InboxScreen() {
+  if (state.notes.length === 0)
+    return `<div style="font-size:var(--text-xl);font-weight:var(--weight-semibold);margin-bottom:24px">메모함 · 0개</div>
+      ${EmptyState('비어 있어요. 떠오른 생각은 ⌘N으로 담아두세요.')}`;
+  const cards = state.notes.map(n => {
+    const body = state.convertingId === n.id
+      ? `<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+          <span style="font-size:var(--text-sm);color:var(--text-tertiary)">어느 프로젝트로?</span>
+          ${state.projects.map(p => `<button class="mo-btn" data-action="convert-note" data-note="${n.id}" data-project="${p.id}" style="display:inline-flex;align-items:center;gap:7px;font-size:var(--text-sm);color:var(--text-secondary);border:1px solid var(--border-default);background:transparent;border-radius:var(--radius-pill);padding:5px 12px;cursor:pointer">
+            <span style="width:8px;height:8px;border-radius:50%;background:${PROJECT_COLORS[p.color] || p.color}"></span>${esc(p.name)}</button>`).join('')}
+          <button class="mo-btn" data-action="cancel-convert" style="font-size:var(--text-sm);color:var(--text-tertiary);background:none;border:none;cursor:pointer">취소</button></div>`
+      : `<div style="display:flex;align-items:center;gap:16px">
+          <span style="font-size:var(--text-xs);color:var(--text-tertiary)">${relDate(n.ts)}</span>
+          <span style="flex:1"></span>
+          <button class="mo-btn" data-action="start-convert" data-id="${n.id}" style="font-size:var(--text-sm);color:var(--accent-hover);background:none;border:none;cursor:pointer">프로젝트로 전환</button>
+          <button class="mo-btn" data-action="remove-note" data-id="${n.id}" style="font-size:var(--text-sm);color:var(--text-tertiary);background:none;border:none;cursor:pointer">삭제</button></div>`;
+    return `<div style="background:var(--bg-surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:16px 18px;display:flex;flex-direction:column;gap:12px">
+      <div style="font-size:var(--text-md)">${esc(n.text)}</div>${body}</div>`;
+  }).join('');
+  return `<div style="font-size:var(--text-xl);font-weight:var(--weight-semibold);margin-bottom:24px">메모함 · ${state.notes.length}개</div>
+    <div style="display:flex;flex-direction:column;gap:14px">${cards}</div>`;
+}
+
+/* --------------------------------------------------------- overlays ------- */
+
+function QuickNote() {
+  return `<div class="mo-scrim-qn" data-action="close-qn" style="position:fixed;inset:0;background:rgba(26,26,26,.15);display:flex;align-items:flex-start;justify-content:center;padding-top:16vh;z-index:50">
+    <div data-stop style="width:min(520px,90vw);background:var(--bg-surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-float);padding:22px 22px 18px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:var(--text-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--text-tertiary)">빠른 메모</div>
+      <input class="mo-input" data-qn-input placeholder="떠오른 생각을 한 줄로…" style="${inputStyle('lg')}">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:var(--text-xs);color:var(--text-tertiary)">메모함에 담고 하던 일로 돌아가요</span>
+        <span style="font-size:var(--text-xs);color:var(--text-tertiary)">
+          <span style="font-family:ui-monospace,Menlo,monospace;border:1px solid var(--border-subtle);border-radius:5px;padding:1px 6px">Enter</span> 저장 ·
+          <span style="font-family:ui-monospace,Menlo,monospace;border:1px solid var(--border-subtle);border-radius:5px;padding:1px 6px">Esc</span> 닫기</span></div>
+    </div></div>`;
+}
+
+function DetailDrawer() {
+  const f = find(state.detailId); if (!f) return '';
+  const { tk, p } = f;
+  const status = tk.status === 'today'
+    ? `<span style="font-size:var(--text-sm);color:var(--text-secondary)">오늘</span>`
+    : `<button class="mo-btn" data-action="detail-send-today" data-id="${tk.id}" style="font-size:var(--text-2xs);color:var(--accent-hover);border:1px solid var(--accent-soft);background:var(--accent-soft);border-radius:var(--radius-pill);padding:4px 12px;cursor:pointer">오늘로 ↑</button>`;
+  const field = (label, inner) => `<div style="display:flex;align-items:center;gap:12px"><span style="width:76px;font-size:var(--text-sm);color:var(--text-tertiary);flex:none">${label}</span>${inner}</div>`;
+  const links = (tk.links || []).map((u, i) => `<div style="display:flex;align-items:center;gap:10px">
+      <span style="color:var(--text-tertiary);flex:none">🔗</span>
+      <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:var(--text-sm);color:var(--text-link)">${esc(u)}</span>
+      <button class="mo-btn" data-action="remove-link" data-id="${tk.id}" data-i="${i}" style="font-size:var(--text-xs);color:var(--text-tertiary);background:none;border:none;cursor:pointer;flex:none">✕</button></div>`).join('');
+
+  return `<div data-action="close-detail" style="position:fixed;inset:0;background:rgba(26,26,26,.15);z-index:60">
+    <div data-stop class="mo-scroll" style="position:absolute;top:0;right:0;bottom:0;width:min(440px,94vw);background:var(--bg-page);border-left:1px solid var(--border-subtle);box-shadow:var(--shadow-float);padding:26px 28px 40px;overflow-y:auto;display:flex;flex-direction:column;gap:22px;animation:mo-drawer-in var(--duration-normal) var(--ease-calm)">
+      <style>@keyframes mo-drawer-in{from{transform:translateX(16px);opacity:.6}to{transform:translateX(0);opacity:1}}</style>
+      <div style="display:flex;align-items:center">
+        <span style="font-size:var(--text-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--text-tertiary)">할 일</span>
+        <span style="flex:1"></span>
+        <button class="mo-btn" data-action="close-detail" style="font-size:var(--text-sm);color:var(--text-tertiary);background:none;border:none;cursor:pointer">닫기 ✕</button></div>
+      <div style="display:flex;align-items:center;gap:12px">
+        ${Checkbox(tk.done, '', 'toggle-task', tk.id)}
+        <div style="flex:1"><input class="mo-input" data-field="title" data-id="${tk.id}" value="${esc(tk.title)}" style="${inputStyle('lg')}"></div></div>
+      <div style="display:flex;flex-direction:column;gap:13px">
+        ${field('프로젝트', ProjectTag(p.name, p.color))}
+        ${field('예상 소요', `<div style="flex:1"><input class="mo-input" data-field="estimate" data-id="${tk.id}" value="${esc(tk.estimate)}" placeholder="예: 30분" style="${inputStyle('md')}"></div>`)}
+        ${field('마감일', `<div style="flex:1"><input class="mo-input" data-field="due" data-id="${tk.id}" value="${esc(tk.due)}" placeholder="예: 7월 15일 (화)" style="${inputStyle('md')}"></div>`)}
+        ${field('상태', status)}</div>
+      <div>
+        <div style="font-size:var(--text-sm);color:var(--text-tertiary);margin-bottom:8px">링크</div>
+        <div style="display:flex;flex-direction:column;gap:8px">${links}
+          <input class="mo-input" data-linkdraft data-id="${tk.id}" placeholder="링크 붙여넣고 Enter" style="${inputStyle('md')}"></div></div>
+      <div>
+        <div style="font-size:var(--text-sm);color:var(--text-tertiary);margin-bottom:8px">작업 메모</div>
+        <textarea class="mo-textarea" data-field="note" data-id="${tk.id}" placeholder="작업 내용, 참고사항 등을 적어두세요" style="width:100%;min-height:120px;resize:vertical;box-sizing:border-box;font-family:var(--font-body);font-size:var(--text-base);line-height:var(--leading-normal);color:var(--text-primary);border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--bg-surface-raised);padding:12px 14px;outline:none">${esc(tk.note)}</textarea></div>
+      <div style="margin-top:auto;padding-top:8px">
+        <button class="mo-btn" data-action="detail-del" data-id="${tk.id}" style="font-size:var(--text-sm);color:var(--text-tertiary);background:none;border:none;cursor:pointer">이 할 일 삭제</button></div>
+    </div></div>`;
+}
+
+/* --------------------------------------------------------------- render --- */
+
+function render() {
+  const root = document.getElementById('root');
+  if (!state.authed) { root.innerHTML = `<div class="mo-root" style="display:flex;height:100vh;overflow:hidden">${LoginGate()}</div>`; return; }
+
+  let content = '';
+  if (state.view === 'today') content = TodayScreen();
+  else if (state.view === 'overview') content = OverviewScreen();
+  else if (state.view === 'project') content = ProjectScreen();
+  else if (state.view === 'inbox') content = InboxScreen();
+
+  root.innerHTML = `<div class="mo-root ${state.navOpen ? 'nav-open' : ''}" style="display:flex;height:100vh;overflow:hidden">
+    <div class="mo-topbar">
+      <button data-action="toggle-nav" aria-label="메뉴" style="background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:4px">
+        <span style="width:20px;height:2px;background:var(--text-primary);border-radius:2px;display:block"></span>
+        <span style="width:20px;height:2px;background:var(--text-primary);border-radius:2px;display:block"></span>
+        <span style="width:20px;height:2px;background:var(--text-primary);border-radius:2px;display:block"></span></button>
+      <span style="font-family:var(--font-wordmark);font-weight:600;font-size:20px;letter-spacing:var(--tracking-wordmark)">Momento</span></div>
+    <div class="mo-scrim" data-action="close-nav"></div>
+    ${Sidebar()}
+    <main class="mo-scroll mo-main" style="flex:1;overflow-y:auto">
+      <div class="mo-content" style="max-width:720px;margin:0 auto;padding:56px 40px 96px">${content}</div>
+    </main>
+    ${state.qnOpen ? QuickNote() : ''}
+    ${state.detailId ? DetailDrawer() : ''}
+  </div>`;
+
+  if (state.qnOpen) { const el = root.querySelector('[data-qn-input]'); if (el) el.focus(); }
+  if (focusAfterRender) { const el = root.querySelector(focusAfterRender); if (el) { el.focus(); const v = el.value; el.value = ''; el.value = v; } focusAfterRender = null; }
+}
+
+/* --------------------------------------------------------------- events --- */
+
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('[data-action]');
+  if (!target) return;
+  // don't let a click inside the popover/drawer panel bubble to the scrim
+  const a = target.dataset.action;
+  if ((a === 'close-qn' || a === 'close-detail' || a === 'close-nav') && e.target.closest('[data-stop]')) return;
+  const id = target.dataset.id;
+  switch (a) {
+    case 'login-google': localStorage.setItem(AUTH_KEY, 'google'); state.authed = true; state.authMode = 'google'; render(); break;
+    case 'login-local': localStorage.setItem(AUTH_KEY, 'local'); state.authed = true; state.authMode = 'local'; render(); break;
+    case 'logout': localStorage.removeItem(AUTH_KEY); state.authed = false; state.navOpen = false; render(); break;
+    case 'view': state.view = target.dataset.view; state.navOpen = false; state.convertingId = null; save(); break;
+    case 'view-project': state.view = 'project'; state.selectedId = id; state.navOpen = false; save(); break;
+    case 'add-project': addProject(); break;
+    case 'toggle-nav': state.navOpen = !state.navOpen; render(); break;
+    case 'close-nav': state.navOpen = false; render(); break;
+    case 'open-qn': state.qnOpen = true; render(); break;
+    case 'close-qn': state.qnOpen = false; render(); break;
+    case 'complete-now': completeNow(); break;
+    case 'defer-now': deferNow(); break;
+    case 'toggle-task': toggleTask(id); break;
+    case 'send-today': sendToday(id); break;
+    case 'open-detail': state.detailId = id; render(); break;
+    case 'close-detail': state.detailId = null; render(); break;
+    case 'detail-send-today': sendToday(id); break;
+    case 'detail-del': deleteTask(id); break;
+    case 'remove-link': removeLink(id, parseInt(target.dataset.i, 10)); break;
+    case 'start-convert': state.convertingId = id; render(); break;
+    case 'cancel-convert': state.convertingId = null; render(); break;
+    case 'convert-note': convertNote(target.dataset.note, target.dataset.project); break;
+    case 'remove-note': removeNote(id); break;
+  }
+});
+
+// Text edits: uncontrolled inputs mutate state silently so focus is never lost.
+document.addEventListener('input', (e) => {
+  const el = e.target.closest('[data-field]');
+  if (!el) return;
+  const f = find(el.dataset.id);
+  if (f) { f.tk[el.dataset.field] = el.value; saveSilently(); }
+});
+
+document.addEventListener('keydown', (e) => {
+  // Quick note
+  if (state.qnOpen) {
+    const el = document.querySelector('[data-qn-input]');
+    if (e.key === 'Enter' && el && el.value.trim()) { saveNote(el.value.trim()); }
+    else if (e.key === 'Escape') { state.qnOpen = false; render(); }
+    return;
+  }
+  if (state.detailId && e.key === 'Escape') { state.detailId = null; render(); return; }
+
+  // Add task (project draft)
+  const draft = e.target.closest('[data-draft]');
+  if (draft && e.key === 'Enter') { const v = draft.value.trim(); if (v) addTask(draft.dataset.project, v); return; }
+  // Add link (detail drawer)
+  const link = e.target.closest('[data-linkdraft]');
+  if (link && e.key === 'Enter') { const v = link.value.trim(); if (v) addLink(link.dataset.id, v); return; }
+
+  // ⌘N / Ctrl+N — open quick note (unless typing in a field)
+  const typing = /^(INPUT|TEXTAREA)$/.test((e.target && e.target.tagName) || '');
+  if (!typing && (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'n') {
+    e.preventDefault(); state.qnOpen = true; render();
+  }
+});
+
+render();
+</script>
+</body>
+</html>

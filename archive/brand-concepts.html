@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>브랜드 컨셉 4종 시안</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif; }
+  body { background: #0e0e11; color: #e8e8ea; padding: 48px 24px 80px; line-height: 1.5; }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  .page-head { text-align: center; margin-bottom: 56px; }
+  .page-head h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+  .page-head p { color: #8a8a92; margin-top: 10px; font-size: 15px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+
+  .card { background: #18181d; border: 1px solid #26262e; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; }
+  .logo-stage { height: 190px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .card-body { padding: 22px 24px 26px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; margin-bottom: 12px; }
+  .concept-name { font-size: 13px; color: #8a8a92; font-weight: 600; margin-bottom: 4px; }
+  .card h2 { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .positioning { font-size: 14px; color: #b7b7bf; margin-bottom: 18px; min-height: 60px; }
+  .meta { font-size: 12.5px; color: #8a8a92; display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .meta b { color: #cfcfd6; font-weight: 600; }
+  .swatches { display: flex; gap: 8px; }
+  .sw { flex: 1; height: 34px; border-radius: 8px; display: flex; align-items: flex-end; justify-content: center; font-size: 9px; padding-bottom: 3px; color: rgba(255,255,255,0.75); font-weight: 600; }
+
+  /* logo styles */
+  .lg-row { display: flex; align-items: center; gap: 12px; }
+  .lg-word { font-weight: 800; letter-spacing: -0.03em; }
+
+  /* 1 Flow */
+  .s1 { background: radial-gradient(120% 120% at 30% 20%, #2a2456 0%, #14121f 70%); }
+  .mark1 { width: 46px; height: 46px; border-radius: 14px; background: linear-gradient(135deg,#6c5ce7,#48b0ff); position: relative; }
+  .mark1::after { content:""; position:absolute; inset:13px; border:3px solid #fff; border-radius:50%; border-right-color:transparent; transform:rotate(-45deg); }
+  .s1 .lg-word { font-size: 34px; background: linear-gradient(135deg,#a99bff,#7fd0ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* 2 Axis */
+  .s2 { background: linear-gradient(160deg,#0f1b2d,#0a1420); }
+  .mark2 { width: 44px; height: 44px; position: relative; }
+  .mark2 span { position:absolute; background:#7fa8d9; }
+  .mark2 .v { left:19px; top:0; width:6px; height:44px; }
+  .mark2 .h { top:19px; left:0; width:44px; height:6px; background:#3f6ea5; }
+  .s2 .lg-word { font-size: 32px; color: #eaf1fb; letter-spacing: 0.02em; }
+
+  /* 3 Momento */
+  .s3 { background: #f4f0ea; }
+  .mark3 { width: 40px; height: 40px; border: 3px solid #1a1a1a; border-radius: 50%; position: relative; }
+  .mark3::after { content:""; position:absolute; width:3px; height:14px; background:#1a1a1a; left:17px; top:6px; transform-origin: bottom; transform: rotate(35deg); }
+  .s3 .lg-word { font-size: 30px; color: #1a1a1a; font-weight: 700; letter-spacing: -0.01em; }
+
+  /* 4 Prism */
+  .s4 { background: #111; }
+  .mark4 { width: 46px; height: 46px; clip-path: polygon(50% 0, 100% 100%, 0 100%); background: conic-gradient(from 210deg,#ff5f6d,#ffc371,#6a82fb,#ff5f6d); }
+  .s4 .lg-word { font-size: 33px; font-weight: 900; color:#fff; letter-spacing:-0.04em; }
+  .s4 .lg-word em { font-style: normal; background: linear-gradient(90deg,#ff5f6d,#ffc371,#6a82fb); -webkit-background-clip:text; background-clip:text; color:transparent; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <h1>브랜드 컨셉 4종 시안</h1>
+    <p>프로젝트 관리 웹앱 · 타깃별 포지셔닝 방향 비교 (제품명은 가안)</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- 1 -->
+    <div class="card">
+      <div class="logo-stage s1">
+        <div class="lg-row"><div class="mark1"></div><div class="lg-word">Flow</div></div>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:#241f4d;color:#a99bff;">A · 스타트업 / 소규모 팀</span>
+        <div class="concept-name">가안: Flow</div>
+        <h2>흐름을 멈추지 않는 팀 협업</h2>
+        <p class="positioning">"복잡한 세팅 없이, 팀의 일이 자연스럽게 흐르게." 빠르고 가벼운 협업 툴. 젊고 친근하며 에너지 있는 이미지 (Notion·Linear 계열).</p>
+        <div class="meta">
+          <span><b>성격</b> 모던 · 친근 · 경쾌</span>
+          <span><b>타이포</b> Pretendard Bold, 둥근 지오메트릭</span>
+        </div>
+        <div class="swatches">
+          <div class="sw" style="background:#6c5ce7;">#6C5CE7</div>
+          <div class="sw" style="background:#48b0ff;">#48B0FF</div>
+          <div class="sw" style="background:#14121f;">#14121F</div>
+          <div class="sw" style="background:#f4f4f6;color:#555;">#F4F4F6</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <div class="logo-stage s2">
+        <div class="lg-row"><div class="mark2"><span class="v"></span><span class="h"></span></div><div class="lg-word">AXIS</div></div>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:#122236;color:#7fa8d9;">B · 엔터프라이즈 / 전문가</span>
+        <div class="concept-name">가안: Axis</div>
+        <h2>대규모 프로젝트의 중심축</h2>
+        <p class="positioning">"복잡함을 통제하는 신뢰의 기준." 정돈되고 프로페셔널하며 신뢰감 있는 이미지. 대규모·복잡한 프로젝트 관리 (Jira·Asana 계열).</p>
+        <div class="meta">
+          <span><b>성격</b> 신뢰 · 정밀 · 권위</span>
+          <span><b>타이포</b> Pretendard SemiBold, 지오메트릭 그리드</span>
+        </div>
+        <div class="swatches">
+          <div class="sw" style="background:#0f1b2d;">#0F1B2D</div>
+          <div class="sw" style="background:#3f6ea5;">#3F6EA5</div>
+          <div class="sw" style="background:#7fa8d9;">#7FA8D9</div>
+          <div class="sw" style="background:#eef2f7;color:#555;">#EEF2F7</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <div class="logo-stage s3">
+        <div class="lg-row"><div class="mark3"></div><div class="lg-word">Momento</div></div>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:#efe7da;color:#8a6d3b;">C · 1인 / 프리랜서 생산성</span>
+        <div class="concept-name">가안: Momento</div>
+        <h2>나의 일을 정리하는 조용한 도구</h2>
+        <p class="positioning">"나에게 딱 맞는, 군더더기 없는 생산성." 미니멀하고 감각적이며 개인적인 이미지. 개인의 할 일·프로젝트 관리 (Things·Craft 계열).</p>
+        <div class="meta">
+          <span><b>성격</b> 미니멀 · 차분 · 감각적</span>
+          <span><b>타이포</b> Pretendard Regular/Medium, 여백 중심</span>
+        </div>
+        <div class="swatches">
+          <div class="sw" style="background:#1a1a1a;">#1A1A1A</div>
+          <div class="sw" style="background:#c8794b;">#C8794B</div>
+          <div class="sw" style="background:#f4f0ea;color:#777;">#F4F0EA</div>
+          <div class="sw" style="background:#d9d2c7;color:#777;">#D9D2C7</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <div class="logo-stage s4">
+        <div class="lg-row"><div class="mark4"></div><div class="lg-word"><em>Prism</em></div></div>
+      </div>
+      <div class="card-body">
+        <span class="tag" style="background:#2a1a20;color:#ff9a8b;">D · 크리에이티브 / 디자인 팀</span>
+        <div class="concept-name">가안: Prism</div>
+        <h2>아이디어를 프로젝트로 펼치다</h2>
+        <p class="positioning">"하나의 아이디어, 여러 갈래의 실행." 대담하고 예술적이며 개성 강한 이미지. 디자이너·크리에이터 팀 대상 (Figma·Milanote 계열).</p>
+        <div class="meta">
+          <span><b>성격</b> 대담 · 예술적 · 표현적</span>
+          <span><b>타이포</b> Pretendard Black, 강한 대비</span>
+        </div>
+        <div class="swatches">
+          <div class="sw" style="background:#ff5f6d;">#FF5F6D</div>
+          <div class="sw" style="background:#ffc371;color:#333;">#FFC371</div>
+          <div class="sw" style="background:#6a82fb;">#6A82FB</div>
+          <div class="sw" style="background:#111;">#111111</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Momento · 웹앱 목업</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --terra:#C8794B; --terra-700:#9a5733; --terra-100:#f0ddd0; --terra-50:#faf1ea;
+    --sage:#7C8B6B; --blue:#6E88A6; --plum:#8E6E86;
+    --cream:#F4F0EA; --warm:#D9D2C7; --ink:#1A1A1A; --body:#4a453e;
+    --muted:#8a8177; --line:#e9e4dc; --bg:#ffffff; --soft:#faf8f4;
+  }
+  body{font-family:"Pretendard Variable",Pretendard,-apple-system,sans-serif;color:var(--ink);
+    background:var(--soft);line-height:1.6;-webkit-font-smoothing:antialiased;padding:40px 20px 80px;}
+  .word{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:-.02em;}
+  .page{max-width:1080px;margin:0 auto;}
+  .page > .intro{margin-bottom:28px;}
+  .intro .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;}
+  .intro h1{font-size:26px;font-weight:800;letter-spacing:-.03em;margin:8px 0 6px;}
+  .intro p{font-size:15px;color:var(--body);max-width:620px;}
+  .screen-cap{font-size:13px;color:var(--muted);margin:34px 0 12px;font-weight:600;}
+  .screen-cap b{color:var(--terra);}
+
+  /* ---- app frame ---- */
+  .app{display:grid;grid-template-columns:236px 1fr;background:var(--bg);border:1px solid var(--line);
+    border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(26,26,26,.07);min-height:600px;}
+  @media(max-width:760px){.app{grid-template-columns:1fr;}.side{display:none;}}
+
+  /* sidebar */
+  .side{background:var(--soft);border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;}
+  .side .brand{display:flex;align-items:center;gap:10px;padding:0 6px 22px;}
+  .side .brand .w{font-size:19px;}
+  .nav{display:flex;flex-direction:column;gap:2px;margin-bottom:22px;}
+  .nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;font-size:14px;color:var(--body);font-weight:500;text-decoration:none;}
+  .nav a.active{background:var(--terra-50);color:var(--terra-700);font-weight:700;}
+  .nav a .ic{width:16px;height:16px;border-radius:5px;background:var(--warm);flex:none;}
+  .nav a.active .ic{background:var(--terra);}
+  .side .lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 12px;margin-bottom:8px;}
+  .projlist{display:flex;flex-direction:column;gap:1px;}
+  .projlist a{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;font-size:13.5px;color:var(--body);text-decoration:none;}
+  .projlist a:hover{background:var(--cream);}
+  .projlist .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .projlist .cnt{margin-left:auto;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .side .capture{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--ink);color:#fff;border:none;border-radius:10px;padding:11px;font-size:13.5px;font-weight:600;
+    font-family:inherit;cursor:pointer;}
+  .side .capture .plus{font-size:15px;}
+  .side .kbd{font-size:10px;color:#b3aca2;border:1px solid #3a3630;border-radius:4px;padding:1px 5px;margin-left:2px;}
+
+  /* main */
+  .main{padding:34px 40px 40px;overflow:hidden;}
+  .m-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;}
+  .m-head .day{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+  .m-head .greet{font-size:28px;font-weight:800;letter-spacing:-.03em;margin-top:4px;}
+  .m-head .mini-cal{font-size:12px;color:var(--muted);text-align:right;}
+
+  /* NOW card */
+  .now-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .now-label .pulse{width:8px;height:8px;border-radius:50%;background:var(--terra);}
+  .now{border:1.5px solid var(--terra-100);background:var(--terra-50);
+    border-radius:16px;padding:26px 28px;margin-bottom:34px;}
+  .now .ptag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--body);
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 11px;margin-bottom:14px;}
+  .now .ptag .dot{width:8px;height:8px;border-radius:50%;}
+  .now h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px;}
+  .now .sub{font-size:13.5px;color:var(--muted);}
+  .now .row{display:flex;align-items:center;justify-content:space-between;margin-top:22px;}
+  .now .est{font-size:13px;color:var(--body);}
+  .now .actions{display:flex;gap:10px;}
+  .btn{font-family:inherit;border-radius:9px;padding:10px 16px;font-size:13.5px;font-weight:600;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--body);}
+  .btn.primary{background:var(--terra);border-color:var(--terra);color:#fff;}
+
+  /* up next */
+  .sec-t{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;margin-bottom:12px;display:flex;justify-content:space-between;}
+  .list{display:flex;flex-direction:column;}
+  .item{display:flex;align-items:center;gap:14px;padding:14px 4px;border-top:1px solid var(--line);}
+  .item:first-child{border-top:none;}
+  .item .rd{width:18px;height:18px;border-radius:50%;border:2px solid var(--warm);flex:none;}
+  .item .txt{flex:1;}
+  .item .tt{font-size:14.5px;font-weight:600;}
+  .item .meta{font-size:12px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:8px;}
+  .item .pdot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .item.done .tt{color:var(--muted);text-decoration:line-through;}
+  .item.done .rd{background:var(--warm);border-color:var(--warm);}
+  .whisper{margin-top:26px;font-size:13.5px;color:var(--terra-700);text-align:center;font-weight:500;}
+
+  /* ---- projects overview screen ---- */
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:760px){.pgrid{grid-template-columns:1fr;}}
+  .pcard{border:1px solid var(--line);border-radius:14px;padding:20px;background:#fff;}
+  .pcard .top{display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+  .pcard .top .dot{width:11px;height:11px;border-radius:50%;}
+  .pcard .top .nm{font-weight:700;font-size:15px;}
+  .pcard .next{font-size:13px;color:var(--body);background:var(--soft);border-radius:9px;padding:11px 13px;margin-bottom:14px;}
+  .pcard .next .k{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:3px;}
+  .pcard .prog{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);}
+  .pbar{flex:1;height:6px;border-radius:999px;background:var(--line);overflow:hidden;}
+  .pbar i{display:block;height:100%;border-radius:999px;}
+  .pcard.calm .next{color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="intro">
+    <div class="eyebrow">Momento · Web App Mockup</div>
+    <h1>여러 프로젝트, 하지만 지금의 답은 하나</h1>
+    <p>프로젝트는 사이드바에서 자유롭게 관리하되, ‘오늘’ 화면은 모든 프로젝트를 가로질러 <b>지금 집중할 단 하나</b>를 조용히 건넵니다. 붉은 배지도, 밀림 카운트도 없습니다.</p>
+  </div>
+
+  <!-- SCREEN 1 : TODAY / ONE NOW -->
+  <div class="screen-cap">화면 1 — <b>오늘 · 지금 하나</b> (프로젝트를 가로지르는 몰입 뷰)</div>
+  <div class="app">
+    <!-- sidebar -->
+    <aside class="side">
+      <div class="brand">
+        <svg width="30" height="30" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/><line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/><circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/><circle cx="44.87" cy="19.13" r="5" fill="#C8794B"/></svg>
+        <div class="w word">Momento</div>
+      </div>
+      <nav class="nav">
+        <a href="#" class="active"><span class="ic"></span> 오늘</a>
+        <a href="#"><span class="ic"></span> 메모함 <span style="margin-left:auto;font-size:12px;color:var(--muted)">5</span></a>
+        <a href="#"><span class="ic"></span> 전체 보기</a>
+      </nav>
+      <div class="lbl">프로젝트</div>
+      <div class="projlist">
+        <a href="#"><span class="dot" style="background:var(--terra)"></span> 브랜드 리뉴얼 <span class="cnt">4</span></a>
+        <a href="#"><span class="dot" style="background:var(--sage)"></span> 고객 웹사이트 <span class="cnt">7</span></a>
+        <a href="#"><span class="dot" style="background:var(--blue)"></span> 뉴스레터 <span class="cnt">2</span></a>
+        <a href="#"><span class="dot" style="background:var(--plum)"></span> 개인 <span class="cnt">3</span></a>
+        <a href="#" style="color:var(--muted)"><span class="dot" style="background:var(--warm)"></span> + 새 프로젝트</a>
+      </div>
+      <button class="capture"><span class="plus">+</span> 빠른 메모 <span class="kbd">⌘ N</span></button>
+    </aside>
+
+    <!-- main -->
+    <main class="main">
+      <div class="m-head">
+        <div>
+          <div class="day">Friday · 7월 11일</div>
+          <div class="greet">오늘도 한 걸음.</div>
+        </div>
+        <div class="mini-cal">이번 주<br><b style="color:var(--ink);font-size:14px;">6</b>개 끝냈어요</div>
+      </div>
+
+      <div class="now-label"><span class="pulse"></span> 지금 하나</div>
+      <div class="now">
+        <span class="ptag"><span class="dot" style="background:var(--terra)"></span> 브랜드 리뉴얼</span>
+        <h2>브랜드 가이드라인 마무리</h2>
+        <div class="sub">오늘 우선</div>
+        <div class="row">
+          <div class="est">예상 40분</div>
+          <div class="actions">
+            <button class="btn">다음 하나 →</button>
+            <button class="btn primary">✓ 끝냈어요</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-t"><span>이어서</span></div>
+      <div class="list">
+        <div class="item"><span class="rd"></span><div class="txt"><div class="tt">로고 SVG 내보내기</div><div class="meta"><span class="pdot" style="background:var(--terra)"></span> 브랜드 리뉴얼 · 예정</div></div></div>
+        <div class="item"><span class="rd"></span><div class="txt"><div class="tt">메인 페이지 카피 검토</div><div class="meta"><span class="pdot" style="background:var(--sage)"></span> 고객 웹사이트 · 예정</div></div></div>
+        <div class="item"><span class="rd"></span><div class="txt"><div class="tt">7월 뉴스레터 초안</div><div class="meta"><span class="pdot" style="background:var(--blue)"></span> 뉴스레터 · 내일로 미룸</div></div></div>
+        <div class="item done"><span class="rd"></span><div class="txt"><div class="tt">컨셉 방향 확정</div><div class="meta"><span class="pdot" style="background:var(--terra)"></span> 브랜드 리뉴얼 · 완료</div></div></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- SCREEN 2 : PROJECTS OVERVIEW -->
+  <div class="screen-cap">화면 2 — <b>전체 보기</b> (여러 프로젝트를 한눈에, 각 프로젝트의 ‘다음 하나’만)</div>
+  <div class="app" style="min-height:auto;">
+    <aside class="side">
+      <div class="brand">
+        <svg width="30" height="30" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/><line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/><circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/><circle cx="44.87" cy="19.13" r="5" fill="#C8794B"/></svg>
+        <div class="w word">Momento</div>
+      </div>
+      <nav class="nav">
+        <a href="#"><span class="ic"></span> 오늘</a>
+        <a href="#"><span class="ic"></span> 메모함 <span style="margin-left:auto;font-size:12px;color:var(--muted)">5</span></a>
+        <a href="#" class="active"><span class="ic"></span> 전체 보기</a>
+      </nav>
+      <div class="lbl">프로젝트</div>
+      <div class="projlist">
+        <a href="#"><span class="dot" style="background:var(--terra)"></span> 브랜드 리뉴얼 <span class="cnt">4</span></a>
+        <a href="#"><span class="dot" style="background:var(--sage)"></span> 고객 웹사이트 <span class="cnt">7</span></a>
+        <a href="#"><span class="dot" style="background:var(--blue)"></span> 뉴스레터 <span class="cnt">2</span></a>
+        <a href="#"><span class="dot" style="background:var(--plum)"></span> 개인 <span class="cnt">3</span></a>
+        <a href="#" style="color:var(--muted)"><span class="dot" style="background:var(--warm)"></span> + 새 프로젝트</a>
+      </div>
+      <button class="capture"><span class="plus">+</span> 빠른 메모 <span class="kbd">⌘ N</span></button>
+    </aside>
+
+    <main class="main">
+      <div class="m-head">
+        <div><div class="day">Projects</div><div class="greet">4개의 프로젝트</div></div>
+      </div>
+      <div class="pgrid">
+        <div class="pcard">
+          <div class="top"><span class="dot" style="background:var(--terra)"></span><span class="nm">브랜드 리뉴얼</span></div>
+          <div class="next"><span class="k">다음 하나</span>브랜드 가이드라인 마무리</div>
+          <div class="prog"><div class="pbar"><i style="width:72%;background:var(--terra)"></i></div> 4개 남음</div>
+        </div>
+        <div class="pcard">
+          <div class="top"><span class="dot" style="background:var(--sage)"></span><span class="nm">고객 웹사이트</span></div>
+          <div class="next"><span class="k">다음 하나</span>메인 페이지 카피 검토</div>
+          <div class="prog"><div class="pbar"><i style="width:40%;background:var(--sage)"></i></div> 7개 남음</div>
+        </div>
+        <div class="pcard">
+          <div class="top"><span class="dot" style="background:var(--blue)"></span><span class="nm">뉴스레터</span></div>
+          <div class="next"><span class="k">다음 하나</span>7월 뉴스레터 초안</div>
+          <div class="prog"><div class="pbar"><i style="width:55%;background:var(--blue)"></i></div> 2개 남음</div>
+        </div>
+        <div class="pcard calm">
+          <div class="top"><span class="dot" style="background:var(--plum)"></span><span class="nm">개인</span></div>
+          <div class="next"><span class="k" style="color:var(--muted)">다음 하나</span>예정된 일 없음</div>
+          <div class="prog"><div class="pbar"><i style="width:20%;background:var(--plum)"></i></div> 3개 남음</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+</body>
+</html>

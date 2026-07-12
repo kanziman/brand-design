@@ -1,0 +1,51 @@
+:root {
+  /* ---- Base palette (from brand concept spec) ---- */
+  --ink-black: #1A1A1A;
+  --terracotta: #C8794B;
+  --terracotta-dim: #B56A3D;
+  --cream: #F4F0EA;
+  --warm-gray: #D9D2C7;
+  --white: #FFFFFF;
+
+  /* ---- Muted project-identity colors (S-01/G-01: "muted palette") ---- */
+  --project-terracotta: #C8794B;
+  --project-sage: #8A9A7E;
+  --project-blue: #6E8CA0;
+  --project-plum: #96738A;
+
+  /* ---- Neutral ramp derived from ink/warm-gray/cream (oklch-blended, calm & warm) ---- */
+  --neutral-50: #FBFAF8;
+  --neutral-100: var(--cream);
+  --neutral-200: var(--warm-gray);
+  --neutral-300: #C2B9AC;
+  --neutral-400: #A79D8F;
+  --neutral-500: #8C8377;
+  --neutral-600: #6B6459;
+  --neutral-700: #4C463D;
+  --neutral-800: #322E28;
+  --neutral-900: var(--ink-black);
+
+  /* ---- Semantic aliases ---- */
+  --bg-page: var(--white);
+  --bg-surface: var(--cream);
+  --bg-surface-raised: var(--white);
+  --bg-sidebar: var(--cream);
+  --bg-hover: #ECE6DC;
+  --bg-pressed: #E4DDD0;
+
+  --border-subtle: var(--warm-gray);
+  --border-default: #CFC5B6;
+
+  --text-primary: var(--ink-black);
+  --text-secondary: #6B6459;
+  --text-tertiary: #9A9184;
+  --text-on-accent: var(--white);
+  --text-link: var(--terracotta-dim);
+  --text-link-hover: var(--ink-black);
+
+  --accent: var(--terracotta);
+  --accent-hover: var(--terracotta-dim);
+  --accent-soft: #F0DECF;
+
+  /* Explicitly no error/warning/danger red per brand rule (no pressure signals). */
+}

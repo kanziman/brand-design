@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Momento — 로고 정밀 시안</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A1A1A; --terra:#C8794B; --cream:#F4F0EA; --warm:#D9D2C7;
+    font-family:"Pretendard Variable",Pretendard,-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--ink);padding:56px 24px 96px;line-height:1.5;}
+  .wrap{max-width:1080px;margin:0 auto;}
+  header{margin-bottom:48px;}
+  header .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);}
+  header h1{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-top:8px;}
+  header p{color:#6a6258;margin-top:8px;font-size:15px;}
+
+  section{margin-top:52px;}
+  .sec-title{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a8177;
+    border-bottom:1px solid var(--warm);padding-bottom:10px;margin-bottom:24px;}
+
+  /* primary lockup */
+  .hero{background:#fff;border:1px solid var(--warm);border-radius:20px;padding:64px;display:flex;
+    align-items:center;justify-content:center;gap:26px;}
+  .word{font-family:'Outfit', sans-serif;}
+  .hero .word{font-size:56px;font-weight:600;letter-spacing:-.025em;}
+  .hero .word b{color:var(--terra);font-weight:800;}
+
+  .row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:760px){.row{grid-template-columns:1fr;}}
+  .tile{border-radius:16px;padding:34px;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:16px;min-height:200px;border:1px solid var(--warm);background:#fff;}
+  .tile.cream{background:var(--cream);}
+  .tile.ink{background:var(--ink);border-color:#2a2a2a;}
+  .tile.terra{background:var(--terra);border-color:#b56a3e;}
+  .tile .cap{font-size:12px;color:#8a8177;font-weight:600;}
+  .tile.ink .cap{color:#9a938a;}
+  .tile.terra .cap{color:#f3e2d5;}
+  .lockup-v{display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .lockup-v .word{font-size:26px;font-weight:600;letter-spacing:-.015em;}
+  .lockup-h{display:flex;align-items:center;gap:14px;}
+  .lockup-h .word{font-size:30px;font-weight:600;letter-spacing:-.02em;}
+
+  .fav-row{display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap;}
+  .fav{display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .fav .cap{font-size:11px;color:#8a8177;}
+  .chip{border-radius:12px;background:#fff;border:1px solid var(--warm);display:flex;align-items:center;justify-content:center;}
+
+  .concept-note{background:#fff;border:1px solid var(--warm);border-radius:14px;padding:20px 24px;font-size:14px;color:#4a453e;}
+  .concept-note b{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Momento · Logo System</div>
+    <h1>로고 정밀 시안</h1>
+    <p>모티프: 원(순환) + 시계바늘(순간·시간) + 포착점(테라코타 도트). 미니멀 라인 심볼 + Pretendard 워드마크.</p>
+  </header>
+
+  <div class="concept-note">
+    <b>디자인 의미</b> — 가느다란 원은 하루의 순환을, 바늘은 지금 이 순간을 가리킵니다.
+    바늘 끝의 테라코타 점은 <b>"포착한 순간(the moment captured)"</b> — 브랜드 철학 "순간을 남긴다"의 상징입니다.
+  </div>
+
+  <!-- PRIMARY -->
+  <section>
+    <div class="sec-title">Primary Lockup — 기본 가로 조합</div>
+    <div class="hero">
+      <!-- symbol -->
+      <svg width="88" height="88" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/>
+        <line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/>
+        <circle cx="44.87" cy="19.13" r="5" fill="#C8794B"/>
+      </svg>
+      <div class="word">Momento</div>
+    </div>
+  </section>
+
+  <!-- PRIMARY COLOR EXPLORATION -->
+  <section>
+    <div class="sec-title">Primary Color — 포인트 컬러 탐색</div>
+    <p style="font-size:14px;color:#6a6258;margin:-8px 0 22px;">잉크·크림은 유지하고, 브랜드 포인트(바늘 끝 점) 컬러 후보를 비교합니다. 모두 차분·따뜻함 톤에 맞춘 뮤트 계열.</p>
+    <div class="row color-row">
+      <div class="tile cream"><div class="lockup-h">
+        <svg width="46" height="46" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/><line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/><circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/><circle cx="44.87" cy="19.13" r="5" fill="#C8794B"/></svg>
+        <div class="word">Momento</div></div>
+        <div class="cap">테라코타 · #C8794B (현재)</div></div>
+      <div class="tile cream"><div class="lockup-h">
+        <svg width="46" height="46" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/><line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/><circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/><circle cx="44.87" cy="19.13" r="5" fill="#B2503A"/></svg>
+        <div class="word">Momento</div></div>
+        <div class="cap">클레이 러스트 · #B2503A</div></div>
+      <div class="tile cream"><div class="lockup-h">
+        <svg width="46" height="46" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/><line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/><circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/><circle cx="44.87" cy="19.13" r="5" fill="#CBA24A"/></svg>
+        <div class="word">Momento</div></div>
+        <div class="cap">골든 오커 · #CBA24A</div></div>
+      <div class="tile cream"><div class="lockup-h">
+        <svg width="46" height="46" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/><line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/><circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/><circle cx="44.87" cy="19.13" r="5" fill="#7C8B6B"/></svg>
+        <div class="word">Momento</div></div>
+        <div class="cap">세이지 그린 · #7C8B6B</div></div>
+      <div class="tile cream"><div class="lockup-h">
+        <svg width="46" height="46" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/><line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/><circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/><circle cx="44.87" cy="19.13" r="5" fill="#6E88A6"/></svg>
+        <div class="word">Momento</div></div>
+        <div class="cap">더스티 블루 · #6E88A6</div></div>
+      <div class="tile cream"><div class="lockup-h">
+        <svg width="46" height="46" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/><line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/><circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/><circle cx="44.87" cy="19.13" r="5" fill="#8E6E86"/></svg>
+        <div class="word">Momento</div></div>
+        <div class="cap">뮤트 플럼 · #8E6E86</div></div>
+    </div>
+  </section>
+
+  <!-- LOCKUP VARIANTS -->
+  <section>
+    <div class="sec-title">Lockup Variants — 세로 / 가로 / 심볼 단독</div>
+    <div class="row">
+      <div class="tile cream">
+        <div class="lockup-v">
+          <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/>
+            <line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/>
+            <circle cx="44.87" cy="19.13" r="5" fill="#C8794B"/>
+          </svg>
+          <div class="word">Momento</div>
+        </div>
+        <div class="cap">세로 조합 (Stacked)</div>
+      </div>
+      <div class="tile">
+        <div class="lockup-h">
+          <svg width="46" height="46" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/>
+            <line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/>
+            <circle cx="44.87" cy="19.13" r="5" fill="#C8794B"/>
+          </svg>
+          <div class="word">Momento</div>
+        </div>
+        <div class="cap">가로 조합 (Horizontal)</div>
+      </div>
+      <div class="tile">
+        <svg width="72" height="72" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/>
+          <line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/>
+          <circle cx="44.87" cy="19.13" r="5" fill="#C8794B"/>
+        </svg>
+        <div class="cap">심볼 단독 (App icon)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR / REVERSAL -->
+  <section>
+    <div class="sec-title">Color & Reversal — 배경별 운용</div>
+    <div class="row">
+      <div class="tile ink">
+        <div class="lockup-h">
+          <svg width="46" height="46" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="25" stroke="#F4F0EA" stroke-width="3.6"/>
+            <line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#F4F0EA" stroke-width="3.8" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="3.2" fill="#F4F0EA"/>
+            <circle cx="44.87" cy="19.13" r="5" fill="#C8794B"/>
+          </svg>
+          <div class="word" style="color:#F4F0EA">Momento</div>
+        </div>
+        <div class="cap">다크 배경 (반전)</div>
+      </div>
+      <div class="tile terra">
+        <div class="lockup-h">
+          <svg width="46" height="46" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="25" stroke="#fff" stroke-width="3.6"/>
+            <line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#fff" stroke-width="3.8" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="3.2" fill="#fff"/>
+            <circle cx="44.87" cy="19.13" r="5" fill="#1A1A1A"/>
+          </svg>
+          <div class="word" style="color:#fff">Momento</div>
+        </div>
+        <div class="cap">포인트 배경</div>
+      </div>
+      <div class="tile cream">
+        <div class="lockup-h">
+          <svg width="46" height="46" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.6"/>
+            <line x1="32" y1="32" x2="44.87" y2="19.13" stroke="#1A1A1A" stroke-width="3.8" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/>
+            <circle cx="44.87" cy="19.13" r="5" fill="#1A1A1A"/>
+          </svg>
+          <div class="word">Momento</div>
+        </div>
+        <div class="cap">단색 (Monochrome)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAVICON / SCALE -->
+  <section>
+    <div class="sec-title">Scale & Favicon — 축소 가독성</div>
+    <div class="fav-row" style="background:#fff;border:1px solid var(--warm);border-radius:16px;padding:34px;">
+      <div class="fav">
+        <div class="chip" style="width:64px;height:64px;">
+          <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="25" stroke="#1A1A1A" stroke-width="3.8"/>
+            <line x1="32" y1="32" x2="44.52" y2="19.48" stroke="#1A1A1A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="3.2" fill="#1A1A1A"/>
+            <circle cx="44.52" cy="19.48" r="5.4" fill="#C8794B"/>
+          </svg>
+        </div>
+        <div class="cap">64px</div>
+      </div>
+      <div class="fav">
+        <div class="chip" style="width:40px;height:40px;">
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="24" stroke="#1A1A1A" stroke-width="4.5"/>
+            <line x1="32" y1="32" x2="43" y2="21" stroke="#1A1A1A" stroke-width="4.8" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="3.6" fill="#1A1A1A"/>
+            <circle cx="43" cy="21" r="6.2" fill="#C8794B"/>
+          </svg>
+        </div>
+        <div class="cap">40px</div>
+      </div>
+      <div class="fav">
+        <div class="chip" style="width:24px;height:24px;">
+          <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="24" stroke="#1A1A1A" stroke-width="5.5"/>
+            <line x1="32" y1="32" x2="41.72" y2="22.28" stroke="#1A1A1A" stroke-width="5.8" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="4" fill="#1A1A1A"/>
+            <circle cx="41.72" cy="22.28" r="5.8" fill="#C8794B"/>
+          </svg>
+        </div>
+        <div class="cap">24px (favicon)</div>
+      </div>
+      <div class="fav">
+        <div class="chip" style="width:64px;height:64px;background:var(--ink);border:none;">
+          <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" rx="16" fill="#1A1A1A"/>
+            <circle cx="32" cy="32" r="20" stroke="#F4F0EA" stroke-width="3.6"/>
+            <line x1="32" y1="32" x2="41.48" y2="22.52" stroke="#F4F0EA" stroke-width="3.8" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="3.2" fill="#F4F0EA"/>
+            <circle cx="41.48" cy="22.52" r="4.8" fill="#C8794B"/>
+          </svg>
+        </div>
+        <div class="cap">앱 아이콘</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
