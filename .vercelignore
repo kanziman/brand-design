@@ -9,9 +9,11 @@
 docs/
 *.md
 
+# SNS release carousel (image-generation source, not a hosted page)
+carousel/
+
+# README preview screenshots (used only by README.md on GitHub)
+previews/
+
 # Earlier design explorations / mockups (not part of the shipped site)
-brand-concepts.html
-brand-guidelines.html
-logo-mockups.html
-momento-app-v0.html
-webapp-mockup.html
+archive/
