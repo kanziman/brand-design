@@ -12,7 +12,15 @@
 
 ## 미리보기
 
-> 라이브 데모(배포 후): 랜딩 `/` · 앱 `/momento/` · 피칭덱 `/pitch/` — Vercel URL을 여기에 기입하세요.
+> **라이브 데모** · [랜딩](https://brand-design-one.vercel.app/) · [웹앱](https://brand-design-one.vercel.app/momento/) · [피칭덱](https://brand-design-one.vercel.app/pitch/)
+
+### 디자인 시스템
+
+랜딩·앱·덱·캐러셀이 공유하는 단일 토큰 소스 — 색, 타이포, 그리고 브랜드 금지 규칙.
+
+![Momento 디자인 시스템](previews/design-system.png)
+
+> 본문·링크 텍스트는 **WCAG AA**(대비 4.5:1 이상)를 만족하도록 다듬었습니다 — 아래 [접근성](#접근성) 참고. 이 패널은 실제 토큰([`momento/tokens/`](./momento/tokens/))을 직접 불러와 그려, 앱과 절대 어긋나지 않습니다 ([`previews/design-system.html`](./previews/design-system.html)).
 
 ### 랜딩페이지 & 웹앱
 
@@ -22,19 +30,23 @@
 
 ### 투자자 피칭덱 · 12장
 
-| 표지 | 시장 (TAM/SAM/SOM) |
-|---|---|
-| ![피칭덱 표지](previews/pitch-01.png) | ![피칭덱 시장](previews/pitch-06.png) |
-
-전체 12장은 [`pitch/index.html`](./pitch/index.html) — 브라우저에서 **←/→**로 넘기거나 배포 후 `/pitch/`.
-
-### SNS 출시 캐러셀 · 7장
+16:9 덱에서 뽑은 6장 — 표지 · 해결책 · 제품 · 차별화 · 트랙션 · 투자 요청.
 
 | | | |
 |---|---|---|
-| ![캐러셀 1](carousel/out/01.png) | ![캐러셀 3](carousel/out/03.png) | ![캐러셀 7](carousel/out/07.png) |
+| ![01 표지](previews/deck/01.png) | ![03 해결책](previews/deck/03.png) | ![04 제품](previews/deck/04.png) |
+| ![07 차별화](previews/deck/07.png) | ![10 트랙션](previews/deck/10.png) | ![12 투자 요청](previews/deck/12.png) |
 
-업로드용 PNG 7장: [`carousel/out/`](./carousel/out/).
+전체 12장은 [라이브 덱](https://brand-design-one.vercel.app/pitch/) 또는 [`pitch/index.html`](./pitch/index.html) — 브라우저에서 **←/→·Space**로 넘깁니다.
+
+### SNS 출시 캐러셀 · 7장
+
+| | | | |
+|---|---|---|---|
+| ![캐러셀 1](carousel/out/01.png) | ![캐러셀 2](carousel/out/02.png) | ![캐러셀 3](carousel/out/03.png) | ![캐러셀 4](carousel/out/04.png) |
+| ![캐러셀 5](carousel/out/05.png) | ![캐러셀 6](carousel/out/06.png) | ![캐러셀 7](carousel/out/07.png) | |
+
+업로드용 PNG 7장(2700×2160 @2x): [`carousel/out/`](./carousel/out/).
 
 ---
 
@@ -129,3 +141,34 @@ vercel --prod   # 프로덕션
 - 토큰은 [`momento/tokens/`](./momento/tokens/)에 정의되어 랜딩·앱·덱·캐러셀이 모두 재사용합니다.
 
 원 디자인 시스템·프로토타입은 Claude Design 프로젝트 *Momento Design System*에서 가져왔습니다.
+
+---
+
+## 접근성
+
+'조용한' 팔레트는 대비가 낮아지기 쉽습니다. 텍스트·링크 토큰을 **WCAG AA**(본문 4.5:1) 기준으로
+검증하고 다듬었습니다.
+
+| 토큰 | 이전 | 현재 | 대비 (흰 배경) |
+|------|------|------|------|
+| `--text-tertiary` | `#9A9184` | `#70685D` | 2.5:1 → **5.1:1** |
+| `--text-link` / `--text-accent` | `#B56A3D` | `#985128` | 3.2:1 → **5.1:1** |
+
+- 링크·보조 텍스트는 흰 배경과 크림(`#F4F0EA`) 서피스 **양쪽에서** AA를 만족합니다.
+- 색만으로 상태를 전달하지 않습니다 — 마감·연체는 색 대신 평문 라벨("내일로 미룸")로 표시합니다.
+- FAQ·상세 드로어는 네이티브 `<details>`·포커스 유지 입력 등 시맨틱/키보드 접근을 지킵니다.
+
+---
+
+## 디자인 과정
+
+최종 시스템에 이르기까지의 탐색 과정 — 컨셉에서 가이드라인까지 ([`archive/`](./archive/), 배포 제외).
+
+| 문서 | 내용 |
+|------|------|
+| [brand-guidelines.html](./archive/brand-guidelines.html) | **브랜드 가이드라인** — 미션·철학·로고 시스템·컬러·타이포·보이스&톤 |
+| [brand-concepts.html](./archive/brand-concepts.html) | 초기 브랜드 컨셉 탐색 |
+| [logo-mockups.html](./archive/logo-mockups.html) | 로고·워드마크 목업 |
+| [webapp-mockup.html](./archive/webapp-mockup.html) | 초기 웹앱 목업 (현재 [`momento/`](./momento/) 이전) |
+
+> 이 탐색안들은 리포에는 남지만 배포에서는 제외됩니다([`.vercelignore`](./.vercelignore)) — 방향성 기록용입니다.
