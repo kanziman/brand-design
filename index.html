@@ -12,7 +12,7 @@
 <style>
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: var(--font-body); color: var(--text-primary); background: var(--bg-page); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { margin: 0; font-family: var(--font-body); color: var(--text-primary); background: var(--bg-page); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; word-break: keep-all; }
   a { color: var(--text-link); text-decoration: none; transition: color var(--duration-fast) var(--ease-calm); }
   a:hover { color: var(--text-link-hover); }
 
@@ -23,8 +23,8 @@
   .bg-surface { background: var(--bg-surface); }
 
   /* Common Typography */
-  .section-title { font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 12px; }
-  .section-subtitle { font-size: clamp(19px, 2vw, 24px); line-height: 1.5; color: var(--text-secondary); margin: 0 0 clamp(40px, 5vw, 56px); max-width: 44ch; }
+  .section-title { font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 12px; text-wrap: balance; }
+  .section-subtitle { font-size: clamp(19px, 2vw, 24px); line-height: 1.5; color: var(--text-secondary); margin: 0 0 clamp(40px, 5vw, 56px); max-width: 44ch; text-wrap: pretty; }
 
   /* Grids */
   .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
@@ -54,8 +54,8 @@
   .hero-section { padding: clamp(56px, 8vw, 100px) 24px; }
   .hero-container { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: clamp(36px, 5vw, 64px); align-items: center; }
   .hero-content { flex: 1 1 380px; min-width: 0; }
-  .hero-title { font-size: clamp(34px, 5.2vw, 52px); font-weight: 600; line-height: 1.14; letter-spacing: -0.015em; margin: 0 0 20px; }
-  .hero-desc { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.6; color: var(--text-secondary); margin: 0 0 34px; max-width: 40ch; }
+  .hero-title { font-size: clamp(34px, 5.2vw, 52px); font-weight: 600; line-height: 1.14; letter-spacing: -0.015em; margin: 0 0 20px; text-wrap: balance; }
+  .hero-desc { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.6; color: var(--text-secondary); margin: 0 0 34px; max-width: 40ch; text-wrap: pretty; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
   .hero-mockup { flex: 1 1 380px; min-width: 0; display: flex; justify-content: center; }
 
