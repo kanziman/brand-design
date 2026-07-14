@@ -38,9 +38,12 @@
 
   --text-primary: var(--ink-black);
   --text-secondary: #6B6459;
-  --text-tertiary: #9A9184;
+  /* Darkened for WCAG AA: was #9A9184 (2.5:1 on white). Now 5.1:1 on white, 4.5:1 on cream. */
+  --text-tertiary: #70685D;
   --text-on-accent: var(--white);
-  --text-link: var(--terracotta-dim);
+  /* Accessible terracotta for text/links & highlighted labels: 5.1:1 on white, 4.5:1 on cream. */
+  --text-accent: #985128;
+  --text-link: var(--text-accent);
   --text-link-hover: var(--ink-black);
 
   --accent: var(--terracotta);
