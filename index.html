@@ -47,7 +47,8 @@
   /* Header */
   .site-header { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, 0.85); backdrop-filter: saturate(1.2) blur(10px); -webkit-backdrop-filter: saturate(1.2) blur(10px); border-bottom: 1px solid var(--border-subtle); }
   .site-header__container { max-width: 1080px; margin: 0 auto; padding: 13px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .site-header__logo { font-family: var(--font-wordmark); font-weight: 600; font-size: 20px; letter-spacing: 0.01em; color: var(--text-primary); }
+  .site-header__logo { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-wordmark); font-weight: 600; font-size: 20px; letter-spacing: 0.01em; color: var(--text-primary); transition: opacity var(--duration-fast) var(--ease-calm); }
+  .site-header__logo:hover { opacity: 0.8; }
   .site-header__nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
 
   /* Hero Section */
@@ -125,7 +126,15 @@
   <!-- ============ 0. 상단 바 ============ -->
   <header class="site-header">
     <div class="site-header__container">
-      <span class="site-header__logo">Momento</span>
+      <a class="site-header__logo" href="index.html">
+        <svg width="24" height="24" viewBox="0 0 64 64" fill="none" style="flex-shrink: 0;">
+          <circle cx="32" cy="32" r="25" stroke="currentColor" stroke-width="3.6"/>
+          <line x1="32" y1="32" x2="44.87" y2="19.13" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="3.2" fill="currentColor"/>
+          <circle cx="44.87" cy="19.13" r="5" fill="#C8794B"/>
+        </svg>
+        <span>Momento</span>
+      </a>
       <nav class="site-header__nav">
         <a class="btn btn-ghost btn-sm" href="pitch/index.html" target="_blank" rel="noopener">피칭덱</a>
         <a class="btn btn-ghost btn-sm" href="carousel/index.html" target="_blank" rel="noopener">카드뉴스</a>
