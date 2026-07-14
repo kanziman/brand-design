@@ -16,290 +16,295 @@
   a { color: var(--text-link); text-decoration: none; transition: color var(--duration-fast) var(--ease-calm); }
   a:hover { color: var(--text-link-hover); }
 
+  /* Utility Layout Classes */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  .section-padding { padding: clamp(64px, 9vw, 112px) 24px; }
+  .bg-surface { background: var(--bg-surface); }
+
+  /* Common Typography */
+  .section-title { font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 12px; }
+  .section-subtitle { font-size: clamp(19px, 2vw, 24px); line-height: 1.5; color: var(--text-secondary); margin: 0 0 clamp(40px, 5vw, 56px); max-width: 44ch; }
+
+  /* Grids */
+  .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .grid-3col-large { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .grid-4col { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+
   /* Buttons — reproduced from the Momento Design System Button component. */
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: none; border-radius: var(--radius-md); cursor: pointer; font-family: var(--font-body); font-weight: var(--weight-medium); transition: background-color var(--duration-fast) var(--ease-calm), transform var(--duration-fast) var(--ease-calm); }
   .btn:active { transform: scale(0.98); }
   .btn-sm { font-size: var(--text-sm); padding: 6px 12px; }
   .btn-md { font-size: var(--text-base); padding: 9px 18px; }
   .btn-lg { font-size: var(--text-md); padding: 12px 22px; }
-  .btn-primary { background: var(--accent); color: var(--text-on-accent); }
+  .btn-primary { background: #A95C33; color: var(--text-on-accent); }
   .btn-primary:hover { color: var(--text-on-accent); }
   .btn-ghost { background: transparent; color: var(--text-secondary); }
   .btn-ghost:hover { color: var(--text-primary); }
 
   #features { scroll-margin-top: 72px; }
 
+  /* Header */
+  .site-header { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, 0.85); backdrop-filter: saturate(1.2) blur(10px); -webkit-backdrop-filter: saturate(1.2) blur(10px); border-bottom: 1px solid var(--border-subtle); }
+  .site-header__container { max-width: 1080px; margin: 0 auto; padding: 13px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .site-header__logo { font-family: var(--font-wordmark); font-weight: 600; font-size: 20px; letter-spacing: 0.01em; color: var(--text-primary); }
+  .site-header__nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+
+  /* Hero Section */
+  .hero-section { padding: clamp(56px, 8vw, 100px) 24px; }
+  .hero-container { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: clamp(36px, 5vw, 64px); align-items: center; }
+  .hero-content { flex: 1 1 380px; min-width: 0; }
+  .hero-title { font-size: clamp(34px, 5.2vw, 52px); font-weight: 600; line-height: 1.14; letter-spacing: -0.015em; margin: 0 0 20px; }
+  .hero-desc { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.6; color: var(--text-secondary); margin: 0 0 34px; max-width: 40ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .hero-mockup { flex: 1 1 380px; min-width: 0; display: flex; justify-content: center; }
+
+  /* App Preview Mockup Card */
+  .mockup-card { width: 100%; max-width: 420px; background: var(--bg-surface-raised); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-float); text-align: left; }
+  .mockup-header { font-size: 13px; color: var(--text-tertiary); margin-bottom: 16px; }
+  .mockup-today-card { background: var(--accent-soft); border-radius: 12px; padding: 20px; margin-bottom: 18px; }
+  .mockup-today-label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-accent); margin-bottom: 12px; }
+  .mockup-today-body { display: flex; align-items: flex-start; gap: 12px; }
+  .mockup-today-checkbox { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--accent); margin-top: 1px; }
+  .mockup-today-content { min-width: 0; }
+  .mockup-today-title { font-size: 17px; font-weight: 500; line-height: 1.35; color: var(--text-primary); }
+  .mockup-today-meta { font-size: 13px; color: var(--text-primary); margin-top: 4px; }
+  .mockup-section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 12px; }
+  .mockup-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; }
+  .mockup-item.next { opacity: 0.72; }
+  .mockup-item.later { opacity: 0.6; }
+  .mockup-item-checkbox { flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-default); }
+  .mockup-item-text { font-size: 15px; color: var(--text-secondary); }
+
+  /* Philosophy & Features Cards */
+  .philosophy-card { background: var(--bg-surface-raised); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 28px; text-align: left; }
+  .card-title { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+  .card-desc { font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+  .card-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 14px; }
+  .card-eyebrow.active { color: var(--text-accent); }
+  .features-card-active { background: var(--accent-soft); border: 1px solid var(--accent-soft); border-radius: 12px; padding: 28px; text-align: left; }
+  .features-card-active .card-desc { color: var(--text-primary); }
+  .features-footer { font-size: 14px; line-height: 1.6; color: var(--text-tertiary); margin: 24px 0 0; }
+
+  /* How it works */
+  .how-item { text-align: left; }
+  .how-num { font-family: var(--font-wordmark); font-size: 32px; font-weight: 600; color: var(--text-tertiary); margin-bottom: 12px; }
+  .how-num.active { color: var(--text-accent); }
+  .how-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .how-desc { font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+
   /* FAQ — native <details>, zero JS, accessible. */
   .faq { border-bottom: 1px solid var(--border-subtle); }
   .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 4px; font-size: clamp(16px, 1.6vw, 18px); font-weight: 500; line-height: 1.4; color: var(--text-primary); }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary:hover { color: var(--terracotta-dim); }
+  .faq summary:hover { color: var(--text-accent); }
   .faq .icon { flex: 0 0 auto; font-size: 22px; font-weight: 400; color: var(--text-tertiary); line-height: 1; }
   .faq .icon::after { content: "+"; }
   .faq[open] .icon::after { content: "−"; }
-  .faq p { margin: 0; padding: 0 4px 22px; font-size: 15px; line-height: 1.65; color: var(--text-secondary); max-width: 56ch; }
+  .faq p { margin: 0; padding: 0 4px 22px; font-size: 15px; line-height: 1.65; color: var(--text-secondary); max-width: 56ch; text-align: left; }
 
-  /* Pitch-deck carousel */
-  .pd-wrap { position: relative; }
-  .pd-track { position: relative; display: flex; align-items: flex-start; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 2px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .pd-track::-webkit-scrollbar { display: none; }
-  .pd-track img { flex: 0 0 100%; scroll-snap-align: center; display: block; width: 100%; height: auto; border: 1px solid var(--border-subtle); border-radius: 16px; background: var(--bg-page); box-shadow: var(--shadow-card-hover); }
-  .pd-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--border-subtle); background: rgba(255,255,255,0.9); color: var(--text-primary); font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background var(--duration-fast) var(--ease-calm); }
-  .pd-nav:hover { background: #fff; }
-  .pd-prev { left: -10px; } .pd-next { right: -10px; }
-  .pd-dots { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 22px; }
-  .pd-dots button { width: 8px; height: 8px; border-radius: 999px; border: none; background: var(--border-default); cursor: pointer; padding: 0; transition: background var(--duration-fast) var(--ease-calm), width var(--duration-fast) var(--ease-calm); }
-  .pd-dots button.active { background: var(--accent); width: 20px; }
-  @media (max-width: 760px) { .pd-nav { display: none; } }
+
+
+  /* CTA */
+  .cta-section { background: var(--bg-surface); padding: clamp(72px, 10vw, 128px) 24px; text-align: center; }
+  .cta-container { max-width: 620px; margin: 0 auto; }
+  .cta-btn-wrap { display: flex; justify-content: center; margin-bottom: 16px; }
+  .cta-subtext { font-size: 15px; color: var(--text-tertiary); margin: 0; }
+
+  /* Footer */
+  .site-footer { border-top: 1px solid var(--border-subtle); padding: 32px 24px; }
+  .site-footer__container { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .site-footer__logo { font-family: var(--font-wordmark); font-weight: 600; font-size: 17px; letter-spacing: 0.01em; }
+  .site-footer__copyright { font-size: 13px; color: var(--text-tertiary); }
+  .site-footer__link { font-size: 14px; }
 </style>
 </head>
 <body>
 <div style="overflow-x: hidden;">
 
   <!-- ============ 0. 상단 바 ============ -->
-  <header style="position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.82); backdrop-filter: saturate(1.2) blur(10px); -webkit-backdrop-filter: saturate(1.2) blur(10px); border-bottom: 1px solid var(--border-subtle);">
-    <div style="max-width: 1080px; margin: 0 auto; padding: 13px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
-      <span style="font-family: var(--font-wordmark); font-weight: 600; font-size: 20px; letter-spacing: 0.01em;">Momento</span>
-      <nav style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end;">
-        <a class="btn btn-ghost btn-sm" href="pitch/index.html" target="_blank" rel="noopener">피칭덱</a>
+  <header class="site-header">
+    <div class="site-header__container">
+      <span class="site-header__logo">Momento</span>
+      <nav class="site-header__nav">
         <a class="btn btn-ghost btn-sm" href="carousel/index.html" target="_blank" rel="noopener">카드뉴스</a>
         <a class="btn btn-ghost btn-sm" href="momento/index.html">앱 열기</a>
       </nav>
     </div>
   </header>
 
-  <!-- ============ 1. 히어로 ============ -->
-  <section style="padding: clamp(56px, 8vw, 100px) 24px;">
-    <div style="max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: clamp(36px, 5vw, 64px); align-items: center;">
-      <div style="flex: 1 1 380px; min-width: 0;">
-        <h1 style="font-size: clamp(34px, 5.2vw, 52px); font-weight: 600; line-height: 1.14; letter-spacing: -0.015em; margin: 0 0 20px;">여러 프로젝트,<br>집중이 필요한 한 가지.</h1>
-        <p style="font-size: clamp(17px, 1.7vw, 20px); line-height: 1.6; color: var(--text-secondary); margin: 0 0 34px; max-width: 40ch;">혼자 일하는 사람을 위한 조용한 작업 공간.<br>재촉하지 않고, 지금 할 하나만 건넵니다.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
-          <a class="btn btn-primary btn-lg" href="momento/index.html">Momento 열기</a>
-          <a class="btn btn-ghost btn-md" href="#features">핵심 기능 보기 ↓</a>
+  <main>
+    <!-- ============ 1. 히어로 ============ -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">여러 프로젝트,<br>집중이 필요한 한 가지.</h1>
+          <p class="hero-desc">혼자 일하는 사람을 위한 조용한 작업 공간.<br>재촉하지 않고, 지금 할 하나만 건넵니다.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="momento/index.html">Momento 열기</a>
+            <a class="btn btn-ghost btn-md" href="#features">핵심 기능 보기 ↓</a>
+          </div>
         </div>
-      </div>
 
-      <!-- 앱 '오늘' 미리보기 목업 -->
-      <div style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center;">
-        <div style="width: 100%; max-width: 420px; background: var(--bg-surface-raised); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-float);">
-          <div style="font-size: 13px; color: var(--text-tertiary); margin-bottom: 16px;">오늘 · 7월 12일 일요일</div>
-          <div style="background: var(--accent-soft); border-radius: 12px; padding: 20px; margin-bottom: 18px;">
-            <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--terracotta-dim); margin-bottom: 12px;">지금 하나</div>
-            <div style="display: flex; align-items: flex-start; gap: 12px;">
-              <span style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--terracotta); margin-top: 1px;"></span>
-              <div>
-                <div style="font-size: 17px; font-weight: 500; line-height: 1.35; color: var(--text-primary);">목업 초안 검토</div>
-                <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">웹사이트 리뉴얼 · 30분</div>
+        <!-- 앱 '오늘' 미리보기 목업 -->
+        <div class="hero-mockup">
+          <div class="mockup-card">
+            <div class="mockup-header">오늘 · 7월 12일 일요일</div>
+            <div class="mockup-today-card">
+              <div class="mockup-today-label">지금 하나</div>
+              <div class="mockup-today-body">
+                <span class="mockup-today-checkbox"></span>
+                <div class="mockup-today-content">
+                  <div class="mockup-today-title">목업 초안 검토</div>
+                  <div class="mockup-today-meta">웹사이트 리뉴얼 · 30분</div>
+                </div>
               </div>
             </div>
+            <div class="mockup-section-label">다음</div>
+            <div class="mockup-item next">
+              <span class="mockup-item-checkbox"></span>
+              <span class="mockup-item-text">컬러 팔레트 다듬기</span>
+            </div>
+            <div class="mockup-item later">
+              <span class="mockup-item-checkbox"></span>
+              <span class="mockup-item-text">카피 다듬기</span>
+            </div>
           </div>
-          <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 12px;">다음</div>
-          <div style="display: flex; align-items: center; gap: 12px; padding: 10px 0; opacity: 0.55;">
-            <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-default);"></span>
-            <span style="font-size: 15px; color: var(--text-secondary);">컬러 팔레트 다듬기</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. 철학 ============ -->
+    <section class="section-padding bg-surface">
+      <div class="container">
+        <h2 class="section-title">재촉하지 않는 도구.</h2>
+        <p class="section-subtitle">"내 일의 순간들을, 조용히 정리하다."</p>
+        <div class="grid-3col">
+          <div class="philosophy-card">
+            <div class="card-title">압박 없음</div>
+            <p class="card-desc">붉은 배지도, "N일 지연"도, 달성률 %도 없습니다.</p>
           </div>
-          <div style="display: flex; align-items: center; gap: 12px; padding: 10px 0; opacity: 0.4;">
-            <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-default);"></span>
-            <span style="font-size: 15px; color: var(--text-secondary);">카피 다듬기</span>
+          <div class="philosophy-card">
+            <div class="card-title">지금 하나</div>
+            <p class="card-desc">넘치는 목록 대신, 시간순으로 지금 할 하나만.</p>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-title">다정한 이월</div>
+            <p class="card-desc">못 끝낸 일은 조용히 내일로. 죄책감 없이.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ 2. 철학 ============ -->
-  <section style="background: var(--bg-surface); padding: clamp(64px, 9vw, 112px) 24px;">
-    <div style="max-width: 1080px; margin: 0 auto;">
-      <h2 style="font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 12px;">재촉하지 않는 도구.</h2>
-      <p style="font-size: clamp(19px, 2vw, 24px); line-height: 1.5; color: var(--text-secondary); margin: 0 0 clamp(40px, 5vw, 56px); max-width: 44ch;">"내 일의 순간들을, 조용히 정리하다."</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
-        <div style="background: var(--bg-surface-raised); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 28px;">
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">압박 없음</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">붉은 배지도, "N일 지연"도, 달성률 %도 없습니다.</p>
+    <!-- ============ 3. 핵심 기능 ============ -->
+    <section id="features" class="section-padding">
+      <div class="container">
+        <h2 class="section-title">무엇을 하나요.</h2>
+        <div class="grid-4col">
+          <div class="features-card-active">
+            <div class="card-eyebrow active">One Now</div>
+            <div class="card-title">지금 하나</div>
+            <p class="card-desc">모든 프로젝트를 가로질러, 지금 할 단 하나를 건넵니다.</p>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-eyebrow">Quick Note</div>
+            <div class="card-title">빠른 메모</div>
+            <p class="card-desc">떠오른 생각은 ⌘N으로 한 줄. 흐름을 끊지 않아요.</p>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-eyebrow">Gentle Rollover</div>
+            <div class="card-title">다정한 이월</div>
+            <p class="card-desc">못 끝낸 일은 조용히 내일로. 붉은 표시는 없습니다.</p>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-eyebrow">Overview</div>
+            <div class="card-title">전체 보기</div>
+            <p class="card-desc">프로젝트마다 '다음 하나'와 남은 개수만. 압도되지 않게.</p>
+          </div>
         </div>
-        <div style="background: var(--bg-surface-raised); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 28px;">
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">지금 하나</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">넘치는 목록 대신, 시간순으로 지금 할 하나만.</p>
-        </div>
-        <div style="background: var(--bg-surface-raised); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 28px;">
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">다정한 이월</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">못 끝낸 일은 조용히 내일로. 죄책감 없이.</p>
+        <p class="features-footer">할 일 상세(메모·링크·마감일), 선택적 로그인(기기 간 동기화)도 함께.</p>
+      </div>
+    </section>
+
+    <!-- ============ 4. 작동 방식 ============ -->
+    <section class="section-padding bg-surface">
+      <div class="container">
+        <h2 class="section-title">어떻게 쓰나요.</h2>
+        <div class="grid-3col-large">
+          <div class="how-item">
+            <div class="how-num">1</div>
+            <div class="how-title">오늘을 연다</div>
+            <p class="how-desc">앱을 열면 곧장 '오늘' 화면. 준비도, 설정도 필요 없어요.</p>
+          </div>
+          <div class="how-item">
+            <div class="how-num active">2</div>
+            <div class="how-title">지금 하나를 한다</div>
+            <p class="how-desc">지금 할 단 하나에만 집중. 나머지는 조용히 기다립니다.</p>
+          </div>
+          <div class="how-item">
+            <div class="how-num">3</div>
+            <div class="how-title">✓ 끝냈어요</div>
+            <p class="how-desc">체크하면 다음 하나로. 못 끝낸 일은 내일 다시 건넵니다.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ 3. 핵심 기능 ============ -->
-  <section id="features" style="padding: clamp(64px, 9vw, 112px) 24px;">
-    <div style="max-width: 1080px; margin: 0 auto;">
-      <h2 style="font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 clamp(36px, 5vw, 52px);">무엇을 하나요.</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
-        <div style="background: var(--accent-soft); border: 1px solid var(--accent-soft); border-radius: 12px; padding: 28px;">
-          <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--terracotta-dim); margin-bottom: 14px;">One Now</div>
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">지금 하나</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">모든 프로젝트를 가로질러, 지금 할 단 하나를 건넵니다.</p>
-        </div>
-        <div style="background: var(--bg-surface-raised); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 28px;">
-          <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 14px;">Quick Note</div>
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">빠른 메모</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">떠오른 생각은 ⌘N으로 한 줄. 흐름을 끊지 않아요.</p>
-        </div>
-        <div style="background: var(--bg-surface-raised); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 28px;">
-          <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 14px;">Gentle Rollover</div>
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">다정한 이월</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">못 끝낸 일은 조용히 내일로. 붉은 표시는 없습니다.</p>
-        </div>
-        <div style="background: var(--bg-surface-raised); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 28px;">
-          <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 14px;">Overview</div>
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">전체 보기</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">프로젝트마다 '다음 하나'와 남은 개수만. 압도되지 않게.</p>
+    <!-- ============ 6. FAQ ============ -->
+    <section class="section-padding">
+      <div class="container-narrow">
+        <h2 class="section-title">자주 묻는 질문.</h2>
+        <div class="faq-list">
+          <details class="faq">
+            <summary>회원가입이 필요한가요?<span class="icon"></span></summary>
+            <p>아니요. 계정 없이 바로 시작할 수 있어요. 로그인은 기기 간 동기화를 위한 선택이에요.</p>
+          </details>
+          <details class="faq">
+            <summary>내 데이터는 어디에 저장되나요?<span class="icon"></span></summary>
+            <p>기본은 브라우저 로컬(local-first)에 저장돼요. 로그인하면 기기 간에 이어서 정리할 수 있어요.</p>
+          </details>
+          <details class="faq">
+            <summary>왜 마감일에 빨간 표시나 지연 알림이 없나요?<span class="icon"></span></summary>
+            <p>재촉은 몰입을 깨기 때문이에요. 마감일은 보여주되 압박 신호로 쓰지 않아요.</p>
+          </details>
+          <details class="faq">
+            <summary>팀이나 협업 기능이 있나요?<span class="icon"></span></summary>
+            <p>Momento는 '혼자 일하는 사람'을 위한 도구예요. 초대·댓글·할당 같은 협업 기능은 없어요.</p>
+          </details>
+          <details class="faq">
+            <summary>얼마인가요?<span class="icon"></span></summary>
+            <p>MVP는 무료예요. (유료 정책은 추후 안내)</p>
+          </details>
+          <details class="faq">
+            <summary>모바일에서도 되나요?<span class="icon"></span></summary>
+            <p>반응형 웹으로 좁은 화면까지 대응해요. 별도 네이티브 앱은 아직 없어요.</p>
+          </details>
         </div>
       </div>
-      <p style="font-size: 14px; line-height: 1.6; color: var(--text-tertiary); margin: 24px 0 0;">할 일 상세(메모·링크·마감일), 선택적 로그인(기기 간 동기화)도 함께.</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ 4. 작동 방식 ============ -->
-  <section style="background: var(--bg-surface); padding: clamp(64px, 9vw, 112px) 24px;">
-    <div style="max-width: 1080px; margin: 0 auto;">
-      <h2 style="font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 clamp(36px, 5vw, 52px);">어떻게 쓰나요.</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
-        <div>
-          <div style="font-family: var(--font-wordmark); font-size: 32px; font-weight: 600; color: var(--text-tertiary); margin-bottom: 12px;">01</div>
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">오늘을 연다</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">앱을 열면 곧장 '오늘' 화면. 준비도, 설정도 필요 없어요.</p>
+    <!-- ============ 6. 마무리 CTA ============ -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <h2 class="hero-title">오늘도 한 걸음.</h2>
+        <div class="cta-btn-wrap">
+          <a class="btn btn-primary btn-lg" href="momento/index.html">Momento 열기</a>
         </div>
-        <div>
-          <div style="font-family: var(--font-wordmark); font-size: 32px; font-weight: 600; color: var(--terracotta-dim); margin-bottom: 12px;">02</div>
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">지금 하나를 한다</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">지금 할 단 하나에만 집중. 나머지는 조용히 기다립니다.</p>
-        </div>
-        <div>
-          <div style="font-family: var(--font-wordmark); font-size: 32px; font-weight: 600; color: var(--text-tertiary); margin-bottom: 12px;">03</div>
-          <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">✓ 끝냈어요</div>
-          <p style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">체크하면 다음 하나로. 못 끝낸 일은 내일 다시 건넵니다.</p>
-        </div>
+        <p class="cta-subtext">계정 없이도 바로 시작할 수 있어요.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ 5. 피칭덱 캐러셀 ============ -->
-  <section style="background: var(--bg-surface); padding: clamp(64px, 9vw, 112px) 24px;">
-    <div style="max-width: 1080px; margin: 0 auto;">
-      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 0 clamp(28px, 4vw, 44px);">
-        <div>
-          <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta-dim); margin-bottom: 12px;">Pitch</div>
-          <h2 style="font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0;">덱으로 보는 Momento.</h2>
-        </div>
-        <a class="btn btn-ghost btn-md" href="pitch/index.html">전체 화면으로 보기 →</a>
-      </div>
-
-      <div class="pd-wrap">
-        <button class="pd-nav pd-prev" id="pdPrev" aria-label="이전 슬라이드">‹</button>
-        <div class="pd-track" id="pdTrack">
-          <img src="pitch/slides/01.png" alt="Momento 피칭덱 1 — 표지" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/02.png" alt="Momento 피칭덱 2 — 문제" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/03.png" alt="Momento 피칭덱 3 — 해결책" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/04.png" alt="Momento 피칭덱 4 — 제품" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/05.png" alt="Momento 피칭덱 5 — 사용법" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/06.png" alt="Momento 피칭덱 6 — 시장" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/07.png" alt="Momento 피칭덱 7 — 차별화" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/08.png" alt="Momento 피칭덱 8 — 비즈니스 모델" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/09.png" alt="Momento 피칭덱 9 — 시장 진입" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/10.png" alt="Momento 피칭덱 10 — 트랙션" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/11.png" alt="Momento 피칭덱 11 — 팀" loading="lazy" width="1920" height="1080">
-          <img src="pitch/slides/12.png" alt="Momento 피칭덱 12 — 투자 요청" loading="lazy" width="1920" height="1080">
-        </div>
-        <button class="pd-nav pd-next" id="pdNext" aria-label="다음 슬라이드">›</button>
-      </div>
-      <div class="pd-dots" id="pdDots"></div>
-    </div>
-  </section>
-
-  <!-- ============ 6. FAQ ============ -->
-  <section style="padding: clamp(64px, 9vw, 112px) 24px;">
-    <div style="max-width: 760px; margin: 0 auto;">
-      <h2 style="font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 clamp(28px, 4vw, 40px);">자주 묻는 질문.</h2>
-      <div style="border-top: 1px solid var(--border-subtle);">
-        <details class="faq">
-          <summary>회원가입이 필요한가요?<span class="icon"></span></summary>
-          <p>아니요. 계정 없이 바로 시작할 수 있어요. 로그인은 기기 간 동기화를 위한 선택이에요.</p>
-        </details>
-        <details class="faq">
-          <summary>내 데이터는 어디에 저장되나요?<span class="icon"></span></summary>
-          <p>기본은 브라우저 로컬(local-first)에 저장돼요. 로그인하면 기기 간에 이어서 정리할 수 있어요.</p>
-        </details>
-        <details class="faq">
-          <summary>왜 마감일에 빨간 표시나 지연 알림이 없나요?<span class="icon"></span></summary>
-          <p>재촉은 몰입을 깨기 때문이에요. 마감일은 보여주되 압박 신호로 쓰지 않아요.</p>
-        </details>
-        <details class="faq">
-          <summary>팀이나 협업 기능이 있나요?<span class="icon"></span></summary>
-          <p>Momento는 '혼자 일하는 사람'을 위한 도구예요. 초대·댓글·할당 같은 협업 기능은 없어요.</p>
-        </details>
-        <details class="faq">
-          <summary>얼마인가요?<span class="icon"></span></summary>
-          <p>MVP는 무료예요. (유료 정책은 추후 안내)</p>
-        </details>
-        <details class="faq">
-          <summary>모바일에서도 되나요?<span class="icon"></span></summary>
-          <p>반응형 웹으로 좁은 화면까지 대응해요. 별도 네이티브 앱은 아직 없어요.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 6. 마무리 CTA ============ -->
-  <section style="background: var(--bg-surface); padding: clamp(72px, 10vw, 128px) 24px; text-align: center;">
-    <div style="max-width: 620px; margin: 0 auto;">
-      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 28px;">오늘도 한 걸음.</h2>
-      <div style="display: flex; justify-content: center; margin-bottom: 16px;">
-        <a class="btn btn-primary btn-lg" href="momento/index.html">Momento 열기</a>
-      </div>
-      <p style="font-size: 15px; color: var(--text-tertiary); margin: 0;">계정 없이도 바로 시작할 수 있어요.</p>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- ============ 7. 푸터 ============ -->
-  <footer style="border-top: 1px solid var(--border-subtle); padding: 32px 24px;">
-    <div style="max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
-      <span style="font-family: var(--font-wordmark); font-weight: 600; font-size: 17px; letter-spacing: 0.01em;">Momento</span>
-      <span style="font-size: 13px; color: var(--text-tertiary);">© 2026 Momento. 조용히 정리하다.</span>
-      <a href="momento/index.html" style="font-size: 14px;">앱 열기 →</a>
+  <footer class="site-footer">
+    <div class="site-footer__container">
+      <span class="site-footer__logo">Momento</span>
+      <span class="site-footer__copyright">© 2026 Momento. 조용히 정리하다.</span>
+      <a href="momento/index.html" class="site-footer__link">앱 열기 →</a>
     </div>
   </footer>
 
 </div>
 
-<script>
-  (function () {
-    const track = document.getElementById('pdTrack');
-    if (!track) return;
-    const imgs = Array.from(track.querySelectorAll('img'));
-    const dotsWrap = document.getElementById('pdDots');
-
-    imgs.forEach((_, k) => {
-      const b = document.createElement('button');
-      b.setAttribute('aria-label', (k + 1) + ' / ' + imgs.length + ' 슬라이드');
-      if (k === 0) b.classList.add('active');
-      b.addEventListener('click', () => track.scrollTo({ left: imgs[k].offsetLeft, behavior: 'smooth' }));
-      dotsWrap.appendChild(b);
-    });
-    const dots = Array.from(dotsWrap.children);
-
-    function current() {
-      let best = 0, min = Infinity;
-      imgs.forEach((im, k) => { const d = Math.abs(im.offsetLeft - track.scrollLeft); if (d < min) { min = d; best = k; } });
-      return best;
-    }
-    let raf = 0;
-    function sync() { const i = current(); dots.forEach((d, k) => d.classList.toggle('active', k === i)); }
-    track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(sync); });
-
-    document.getElementById('pdPrev').addEventListener('click', () => track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }));
-    document.getElementById('pdNext').addEventListener('click', () => track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }));
-  })();
-</script>
 </body>
 </html>
