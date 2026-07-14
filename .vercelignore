@@ -9,11 +9,11 @@
 docs/
 *.md
 
-# SNS release carousel (image-generation source, not a hosted page)
-carousel/
-
 # README preview screenshots (used only by README.md on GitHub)
 previews/
+
+# Carousel export PNGs (SNS upload assets, not needed by the hosted page)
+carousel/out/
 
 # Earlier design explorations / mockups (not part of the shipped site)
 archive/

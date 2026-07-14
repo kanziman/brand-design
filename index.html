@@ -38,6 +38,19 @@
   .faq .icon::after { content: "+"; }
   .faq[open] .icon::after { content: "−"; }
   .faq p { margin: 0; padding: 0 4px 22px; font-size: 15px; line-height: 1.65; color: var(--text-secondary); max-width: 56ch; }
+
+  /* Pitch-deck carousel */
+  .pd-wrap { position: relative; }
+  .pd-track { position: relative; display: flex; align-items: flex-start; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 2px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .pd-track::-webkit-scrollbar { display: none; }
+  .pd-track img { flex: 0 0 100%; scroll-snap-align: center; display: block; width: 100%; height: auto; border: 1px solid var(--border-subtle); border-radius: 16px; background: var(--bg-page); box-shadow: var(--shadow-card-hover); }
+  .pd-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--border-subtle); background: rgba(255,255,255,0.9); color: var(--text-primary); font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background var(--duration-fast) var(--ease-calm); }
+  .pd-nav:hover { background: #fff; }
+  .pd-prev { left: -10px; } .pd-next { right: -10px; }
+  .pd-dots { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 22px; }
+  .pd-dots button { width: 8px; height: 8px; border-radius: 999px; border: none; background: var(--border-default); cursor: pointer; padding: 0; transition: background var(--duration-fast) var(--ease-calm), width var(--duration-fast) var(--ease-calm); }
+  .pd-dots button.active { background: var(--accent); width: 20px; }
+  @media (max-width: 760px) { .pd-nav { display: none; } }
 </style>
 </head>
 <body>
@@ -47,7 +60,11 @@
   <header style="position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.82); backdrop-filter: saturate(1.2) blur(10px); -webkit-backdrop-filter: saturate(1.2) blur(10px); border-bottom: 1px solid var(--border-subtle);">
     <div style="max-width: 1080px; margin: 0 auto; padding: 13px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
       <span style="font-family: var(--font-wordmark); font-weight: 600; font-size: 20px; letter-spacing: 0.01em;">Momento</span>
-      <a class="btn btn-ghost btn-sm" href="momento/index.html">앱 열기</a>
+      <nav style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end;">
+        <a class="btn btn-ghost btn-sm" href="pitch/index.html" target="_blank" rel="noopener">피칭덱</a>
+        <a class="btn btn-ghost btn-sm" href="carousel/index.html" target="_blank" rel="noopener">카드뉴스</a>
+        <a class="btn btn-ghost btn-sm" href="momento/index.html">앱 열기</a>
+      </nav>
     </div>
   </header>
 
@@ -167,7 +184,40 @@
     </div>
   </section>
 
-  <!-- ============ 5. FAQ ============ -->
+  <!-- ============ 5. 피칭덱 캐러셀 ============ -->
+  <section style="background: var(--bg-surface); padding: clamp(64px, 9vw, 112px) 24px;">
+    <div style="max-width: 1080px; margin: 0 auto;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 0 clamp(28px, 4vw, 44px);">
+        <div>
+          <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta-dim); margin-bottom: 12px;">Pitch</div>
+          <h2 style="font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0;">덱으로 보는 Momento.</h2>
+        </div>
+        <a class="btn btn-ghost btn-md" href="pitch/index.html">전체 화면으로 보기 →</a>
+      </div>
+
+      <div class="pd-wrap">
+        <button class="pd-nav pd-prev" id="pdPrev" aria-label="이전 슬라이드">‹</button>
+        <div class="pd-track" id="pdTrack">
+          <img src="pitch/slides/01.png" alt="Momento 피칭덱 1 — 표지" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/02.png" alt="Momento 피칭덱 2 — 문제" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/03.png" alt="Momento 피칭덱 3 — 해결책" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/04.png" alt="Momento 피칭덱 4 — 제품" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/05.png" alt="Momento 피칭덱 5 — 사용법" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/06.png" alt="Momento 피칭덱 6 — 시장" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/07.png" alt="Momento 피칭덱 7 — 차별화" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/08.png" alt="Momento 피칭덱 8 — 비즈니스 모델" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/09.png" alt="Momento 피칭덱 9 — 시장 진입" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/10.png" alt="Momento 피칭덱 10 — 트랙션" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/11.png" alt="Momento 피칭덱 11 — 팀" loading="lazy" width="1920" height="1080">
+          <img src="pitch/slides/12.png" alt="Momento 피칭덱 12 — 투자 요청" loading="lazy" width="1920" height="1080">
+        </div>
+        <button class="pd-nav pd-next" id="pdNext" aria-label="다음 슬라이드">›</button>
+      </div>
+      <div class="pd-dots" id="pdDots"></div>
+    </div>
+  </section>
+
+  <!-- ============ 6. FAQ ============ -->
   <section style="padding: clamp(64px, 9vw, 112px) 24px;">
     <div style="max-width: 760px; margin: 0 auto;">
       <h2 style="font-size: clamp(26px, 3.4vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 clamp(28px, 4vw, 40px);">자주 묻는 질문.</h2>
@@ -221,5 +271,35 @@
   </footer>
 
 </div>
+
+<script>
+  (function () {
+    const track = document.getElementById('pdTrack');
+    if (!track) return;
+    const imgs = Array.from(track.querySelectorAll('img'));
+    const dotsWrap = document.getElementById('pdDots');
+
+    imgs.forEach((_, k) => {
+      const b = document.createElement('button');
+      b.setAttribute('aria-label', (k + 1) + ' / ' + imgs.length + ' 슬라이드');
+      if (k === 0) b.classList.add('active');
+      b.addEventListener('click', () => track.scrollTo({ left: imgs[k].offsetLeft, behavior: 'smooth' }));
+      dotsWrap.appendChild(b);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function current() {
+      let best = 0, min = Infinity;
+      imgs.forEach((im, k) => { const d = Math.abs(im.offsetLeft - track.scrollLeft); if (d < min) { min = d; best = k; } });
+      return best;
+    }
+    let raf = 0;
+    function sync() { const i = current(); dots.forEach((d, k) => d.classList.toggle('active', k === i)); }
+    track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(sync); });
+
+    document.getElementById('pdPrev').addEventListener('click', () => track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }));
+    document.getElementById('pdNext').addEventListener('click', () => track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }));
+  })();
+</script>
 </body>
 </html>
