@@ -1,0 +1,284 @@
+@import 'momento/styles.css';
+
+/* ============================================================================
+   Portfolio Style Setup (Derived from Momento Design System)
+   ============================================================================ */
+
+/* Global Reset overrides */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-calm);
+}
+
+a:hover {
+  color: var(--text-link-hover);
+}
+
+/* Base Layout */
+.portfolio-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+}
+
+/* Sidebar & Profile Info */
+.profile-sidebar {
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background-color: var(--accent-soft);
+  color: var(--text-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-subtle);
+}
+
+.profile-name {
+  font-family: 'Outfit', var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.profile-role {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.profile-desc {
+  font-size: 14px;
+  color: var(--text-tertiary);
+  max-width: 250px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  text-wrap: pretty;
+}
+
+/* Contact Links */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-item {
+  margin-bottom: 12px;
+}
+
+.contact-link {
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-link:hover {
+  color: var(--text-primary);
+}
+
+/* Portfolio Projects */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.section-title {
+  font-family: 'Outfit', var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 8px;
+  margin: 0 0 24px 0;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+/* Project Card */
+.project-card {
+  background-color: var(--bg-surface-raised);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 220px;
+  transition: border-color var(--duration-normal) var(--ease-calm),
+              box-shadow var(--duration-normal) var(--ease-calm);
+  cursor: pointer;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.project-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-accent);
+  background-color: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.project-date {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.project-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.project-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 24px 0;
+  text-wrap: pretty;
+  flex-grow: 1;
+}
+
+.project-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-accent);
+}
+
+.project-footer svg {
+  transition: transform var(--duration-fast) var(--ease-calm);
+}
+
+.project-card:hover .project-footer svg {
+  transform: translateX(4px);
+}
+
+/* About / Credentials Section */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 650px; /* 65-75ch limit for comfortable reading */
+}
+
+.about-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .portfolio-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 48px 20px;
+  }
+
+  .profile-sidebar {
+    position: relative;
+    top: 0;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-desc {
+    max-width: 100%;
+  }
+}
+
+/* Animation triggers */
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fIn 0.6s var(--ease-calm) forwards;
+}
+
+@keyframes fIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger delays */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* Reduced Motion config */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .project-footer svg, .project-card {
+    transition: none !important;
+  }
+  .project-card:hover .project-footer svg {
+    transform: none;
+  }
+}
