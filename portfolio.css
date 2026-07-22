@@ -194,27 +194,36 @@ a:hover {
 .project-links {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 16px;
-  row-gap: 8px;
-  font-size: 13px;
+  gap: 8px; /* 다중 링크 칩 간 간격을 콤팩트하게 조율 */
+  font-size: 12px;
   font-weight: 600;
   margin-top: auto; /* 푸터만 맨 아래로 배치하여 각 요소의 상단 시작점을 칼정렬 */
 }
 
 .project-link {
-  color: var(--text-accent);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  background-color: var(--bg-surface-raised);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
-  gap: 3px;
-  transition: color var(--duration-fast) var(--ease-calm);
+  gap: 4px;
+  transition: all var(--duration-fast) var(--ease-calm);
 }
 
 .project-link:hover {
-  color: var(--text-link-hover);
+  color: var(--text-accent);
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
 }
 
 .project-link svg {
   transition: transform var(--duration-fast) var(--ease-calm);
+}
+
+.project-link:hover svg {
+  transform: translate(1px, -1px);
 }
 
 /* Design Specification Accordion */
@@ -429,10 +438,97 @@ a:hover {
     opacity: 1;
     transform: none;
   }
-  .project-footer svg, .project-card {
+  .project-card, .project-link {
     transition: none !important;
   }
-  .project-card:hover .project-footer svg {
-    transform: none;
+}
+
+/* Hero Section */
+.hero-section {
+  margin-bottom: 56px;
+}
+
+.hero-title {
+  font-family: 'Outfit', var(--font-body);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.hero-title .highlight {
+  color: var(--text-accent);
+}
+
+.hero-lead {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Color Chip Copy Interaction */
+.color-chip-item {
+  cursor: pointer;
+  position: relative;
+}
+
+.color-chip {
+  transition: transform var(--duration-fast) var(--ease-calm), border-color var(--duration-fast) var(--ease-calm);
+}
+
+.color-chip-item:hover .color-chip {
+  transform: scale(1.08);
+  border-color: var(--accent);
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: var(--text-primary);
+  color: var(--bg-page);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: var(--shadow-float);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease-calm), transform 0.25s var(--ease-calm);
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Native Dark Mode Override */
+@media (prefers-color-mode: dark) {
+  :root {
+    --bg-page: #121212;
+    --bg-surface: #1C1C1E;
+    --bg-surface-raised: #1A1A1A;
+    --bg-sidebar: #1C1C1E;
+    --bg-hover: #2C2C2E;
+    --bg-pressed: #3A3A3C;
+    --border-subtle: #2C2C2E;
+    --border-default: #3E3E42;
+    --text-primary: #F4F0EA;
+    --text-secondary: #9C958A;
+    --text-tertiary: #756D62;
+    --text-accent: #E29B69;
+    --text-link: var(--text-accent);
+    --text-link-hover: var(--white);
+    --accent: #E29B69;
+    --accent-soft: #2C2016;
   }
 }
