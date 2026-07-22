@@ -111,7 +111,7 @@ export default function ProjectGrid() {
   return (
     <section aria-labelledby="section-projects" className="fade-in delay-1">
       <h2 id="section-projects" className="font-wordmark text-[13px] font-semibold tracking-[0.08em] uppercase text-text-secondary border-b border-border-subtle pb-2 m-0 mb-6">
-        Selected Projects
+        Side Projects
       </h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[28px] items-stretch">
