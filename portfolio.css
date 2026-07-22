@@ -116,6 +116,10 @@ a:hover {
   gap: 56px;
 }
 
+.hero-section {
+  margin-bottom: 24px; /* 히어로 인트로와 하단 리스트 사이의 시각적 여백(총 80px)을 넓혀 가독성 확보 */
+}
+
 .section-title {
   font-family: 'Outfit', var(--font-body);
   font-size: 13px;
