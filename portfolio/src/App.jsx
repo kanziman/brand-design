@@ -29,9 +29,9 @@ export default function App() {
                 rel="noopener noreferrer"
               >
                 <img 
-                  src="https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/linkedin_thumb_image.png" 
+                  src="https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" 
                   alt="AWS Certified Solutions Architect – Associate" 
-                  className="w-[100px] h-[100px] md:w-[100px] md:h-[100px] w-20 h-20 hover:scale-105 transition-transform duration-fast ease-calm"
+                  className="w-[100px] h-[100px] hover:scale-105 transition-transform duration-fast ease-calm"
                 />
               </a>
             </div>
