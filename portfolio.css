@@ -402,6 +402,21 @@ a:hover {
   word-break: keep-all;
 }
 
+.about-link {
+  text-decoration: none;
+}
+
+.about-link code {
+  transition: all var(--duration-fast) var(--ease-calm);
+}
+
+.about-link:hover code {
+  background-color: var(--accent-soft);
+  color: var(--text-accent);
+  border-color: var(--accent);
+}
+
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .portfolio-container {
