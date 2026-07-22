@@ -395,6 +395,7 @@ a:hover {
   line-height: 1.7;
   margin: 0;
   text-wrap: pretty;
+  word-break: keep-all;
 }
 
 /* Responsive Styles */
