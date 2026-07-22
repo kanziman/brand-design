@@ -191,6 +191,11 @@ a:hover {
   text-wrap: pretty;
 }
 
+.project-description strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
 .project-links {
   display: flex;
   flex-wrap: wrap;
