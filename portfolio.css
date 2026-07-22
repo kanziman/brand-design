@@ -217,8 +217,151 @@ a:hover {
   transition: transform var(--duration-fast) var(--ease-calm);
 }
 
-.project-link:hover svg {
-  transform: translate(1px, -1px);
+/* Design Specification Accordion */
+.design-spec {
+  margin-top: 20px;
+  border-top: 1px dashed var(--border-subtle);
+  padding-top: 16px;
+}
+
+.design-spec-summary {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--duration-fast) var(--ease-calm);
+}
+
+.design-spec-summary:hover {
+  color: var(--text-primary);
+}
+
+.design-spec-summary::-webkit-details-marker {
+  display: none;
+}
+
+.design-spec-summary::before {
+  content: "＋";
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.design-spec[open] .design-spec-summary::before {
+  content: "－";
+}
+
+.design-spec-content {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: slideDown var(--duration-normal) var(--ease-calm);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Color Chips */
+.color-chips-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.color-chips-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+.color-chips-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.color-chip-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.color-chip {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.color-chip-hex {
+  font-family: 'Outfit', monospace;
+  font-size: 8px;
+  color: var(--text-tertiary);
+  letter-spacing: -0.02em;
+}
+
+.color-chip-name {
+  font-size: 8px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Philosophy Callout */
+.design-philosophy-callout {
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  border: 1px solid var(--border-subtle);
+}
+
+.philosophy-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-accent);
+  background-color: var(--accent-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.philosophy-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Spec List Table */
+.spec-list {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  row-gap: 6px;
+  column-gap: 12px;
+  font-size: 12px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 12px;
+}
+
+.spec-label {
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.spec-value {
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
 /* About / Credentials Section */
