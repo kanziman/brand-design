@@ -476,43 +476,6 @@ a:hover {
   margin-bottom: 56px;
 }
 
-.hero-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 32px;
-}
-
-.hero-content {
-  flex: 1;
-}
-
-.hero-badge {
-  flex-shrink: 0;
-  margin-top: 8px;
-}
-
-.aws-badge-img {
-  width: 100px;
-  height: 100px;
-  transition: transform var(--duration-fast) var(--ease-calm);
-}
-
-.aws-badge-img:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 600px) {
-  .hero-container {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .aws-badge-img {
-    width: 80px;
-    height: 80px;
-  }
-}
-
 .hero-title {
   font-family: 'Outfit', var(--font-body);
   font-size: clamp(26px, 4vw, 40px);
