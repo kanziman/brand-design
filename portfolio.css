@@ -137,7 +137,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-  align-items: stretch; /* 동일 행에 위치한 카드들이 늘 같은 세로 높이를 갖도록 강제 */
+  align-items: start; /* 아코디언이 열린 카드만 늘어나도록 정렬 방식을 변경 */
 }
 
 /* Project Card */

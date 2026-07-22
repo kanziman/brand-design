@@ -114,7 +114,7 @@ export default function ProjectGrid() {
         Side Projects
       </h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[28px] items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[28px] items-start">
         {projects.map((project) => (
           <article
             key={project.id}
