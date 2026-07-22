@@ -1,0 +1,103 @@
+@import "../../momento/styles.css";
+@import "tailwindcss";
+
+/* Extend Tailwind theme in Tailwind v4 style */
+@theme {
+  --color-bg-page: var(--bg-page);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-accent: var(--text-accent);
+  --color-text-link: var(--text-link);
+  --color-text-link-hover: var(--text-link-hover);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+
+  --color-bg-surface-raised: var(--bg-surface-raised);
+
+  --font-body: 'Pretendard', -apple-system, 'Malgun Gothic', sans-serif;
+  --font-wordmark: 'Outfit', 'Pretendard', sans-serif;
+  
+  --ease-calm: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  
+  --shadow-card-hover: 0 2px 8px rgba(26, 26, 26, 0.05);
+}
+
+/* Custom Base Layer / Core Reset */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--text-link);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-calm);
+  }
+
+  a:hover {
+    color: var(--text-link-hover);
+  }
+}
+
+/* Custom Animation Classes and Keyframes */
+@utility fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fIn 0.6s var(--ease-calm) forwards;
+}
+
+@utility delay-1 {
+  animation-delay: 0.1s;
+}
+
+@utility delay-2 {
+  animation-delay: 0.2s;
+}
+
+@utility delay-3 {
+  animation-delay: 0.3s;
+}
+
+@utility delay-4 {
+  animation-delay: 0.4s;
+}
+
+@keyframes fIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .project-footer svg, .project-card {
+    transition: none !important;
+  }
+  
+  .project-card:hover .project-footer svg {
+    transform: none !important;
+  }
+}
