@@ -143,8 +143,7 @@ a:hover {
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 220px;
+  min-height: 250px; /* 고정 최소 높이를 다소 확장하여 넉넉한 공간 확보 */
   transition: border-color var(--duration-normal) var(--ease-calm),
               box-shadow var(--duration-normal) var(--ease-calm);
   cursor: pointer;
@@ -190,24 +189,36 @@ a:hover {
   color: var(--text-secondary);
   margin: 0 0 24px 0;
   text-wrap: pretty;
-  flex-grow: 1;
 }
 
-.project-footer {
+.project-links {
   display: flex;
-  align-items: center;
-  gap: 4px;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 8px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-accent);
+  margin-top: auto; /* 푸터만 맨 아래로 배치하여 각 요소의 상단 시작점을 칼정렬 */
 }
 
-.project-footer svg {
+.project-link {
+  color: var(--text-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: color var(--duration-fast) var(--ease-calm);
+}
+
+.project-link:hover {
+  color: var(--text-link-hover);
+}
+
+.project-link svg {
   transition: transform var(--duration-fast) var(--ease-calm);
 }
 
-.project-card:hover .project-footer svg {
-  transform: translateX(4px);
+.project-link:hover svg {
+  transform: translate(1px, -1px);
 }
 
 /* About / Credentials Section */
