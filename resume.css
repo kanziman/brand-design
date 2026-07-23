@@ -533,12 +533,12 @@ a:hover {
 }
 
 /* ============================================================================
-   Print Overrides (A4 optimization)
+   Print Overrides (A4 2-Page Optimization & No Orphan Headings)
    ============================================================================ */
 @media print {
   @page {
     size: A4 portrait;
-    margin: 12mm 15mm;
+    margin: 10mm 12mm;
   }
 
   :root {
@@ -558,8 +558,8 @@ a:hover {
   body {
     background-color: #ffffff !important;
     color: #111111 !important;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 12px;
+    line-height: 1.45;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -573,8 +573,8 @@ a:hover {
   /* Maintain 2-Column Grid Optimized for A4 */
   .resume-container {
     display: grid !important;
-    grid-template-columns: 210px 1fr !important;
-    gap: 28px !important;
+    grid-template-columns: 190px 1fr !important;
+    gap: 24px !important;
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100% !important;
@@ -583,110 +583,136 @@ a:hover {
     border: none !important;
   }
 
+  /* Prevent Orphan Headings - Title MUST stay with content */
+  h1, h2, h3, h4,
+  .section-title,
+  .exp-header,
+  .exp-subsection-title {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
   /* Left Sidebar Adjustments for Print */
   .resume-sidebar {
     position: static !important;
-    padding-right: 12px !important;
+    padding-right: 10px !important;
     border-right: 1px solid var(--border-subtle) !important;
   }
 
   .profile-avatar {
-    width: 42px !important;
-    height: 42px !important;
-    font-size: 18px !important;
-    margin-bottom: 8px !important;
-  }
-
-  .profile-name {
-    font-size: 19px !important;
-  }
-
-  .profile-role {
-    font-size: 12px !important;
-  }
-
-  .sidebar-section {
-    margin-top: 14px !important;
-  }
-
-  .sidebar-title {
-    font-size: 11px !important;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 16px !important;
     margin-bottom: 6px !important;
   }
 
+  .profile-name {
+    font-size: 18px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .profile-role {
+    font-size: 11px !important;
+  }
+
+  .sidebar-section {
+    margin-top: 12px !important;
+  }
+
+  .sidebar-title {
+    font-size: 10.5px !important;
+    margin-bottom: 4px !important;
+  }
+
   .skill-group {
-    margin-bottom: 10px !important;
+    margin-bottom: 8px !important;
   }
 
   .skill-group-title {
-    font-size: 11px !important;
+    font-size: 10.5px !important;
   }
 
   .skill-list li {
-    font-size: 11px !important;
-    line-height: 1.4 !important;
+    font-size: 10.5px !important;
+    line-height: 1.35 !important;
   }
 
   .contact-list {
-    gap: 6px !important;
+    gap: 4px !important;
   }
 
   .contact-link {
-    font-size: 11.5px !important;
+    font-size: 11px !important;
     color: var(--text-primary) !important;
   }
 
   /* Right Content Column Adjustments for Print */
   .resume-main {
-    gap: 18px !important;
+    gap: 16px !important;
   }
 
   .main-section {
-    gap: 8px !important;
+    gap: 6px !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
   }
 
   .section-title {
-    font-size: 12px !important;
-    padding-bottom: 4px !important;
+    font-size: 11.5px !important;
+    padding-bottom: 3px !important;
     margin-bottom: 6px !important;
   }
 
   .summary-lead {
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-    margin-bottom: 6px !important;
+    font-size: 13.5px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 4px !important;
   }
 
   .summary-text {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
   }
 
-  .exp-company,
-  .proj-title {
-    font-size: 14px !important;
+  /* Allow Company Blocks to Break Naturally, Avoid Inner Subsections Splitting */
+  .experience-item {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    margin-bottom: 10px !important;
   }
 
-  .exp-role {
-    font-size: 12px !important;
-  }
-
-  .exp-subsection-title {
-    font-size: 11px !important;
+  .exp-subsection {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-top: 6px !important;
   }
 
   .exp-details li,
   .proj-details li {
-    font-size: 11.5px !important;
-    line-height: 1.45 !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
     margin-bottom: 4px !important;
   }
 
-  .experience-item,
-  .exp-subsection,
+  .exp-company,
+  .proj-title {
+    font-size: 13.5px !important;
+  }
+
+  .exp-role {
+    font-size: 11.5px !important;
+  }
+
+  .exp-subsection-title {
+    font-size: 10.5px !important;
+    padding: 2px 6px !important;
+    margin-bottom: 6px !important;
+  }
+
   .project-item,
   .cert-section {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
+    margin-bottom: 10px !important;
   }
 }
