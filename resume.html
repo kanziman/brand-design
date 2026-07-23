@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>황경태 — Resume</title>
+  <meta name="description" content="황경태의 상세 이력서 페이지입니다.">
+  <link rel="stylesheet" href="resume.css">
+</head>
+<body>
+
+  <!-- Floating Nav Bar for Interactive Web Experience (Hidden in Print) -->
+  <nav class="resume-nav">
+    <div class="nav-container">
+      <a href="portfolio.html" class="nav-back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span class="txt-ko">← 포트폴리오 아카이브 보기</span>
+        <span class="txt-en" style="display: none;">← Back to Portfolio</span>
+      </a>
+
+      <div class="nav-right-actions">
+        <button onclick="window.print()" class="nav-print-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          <span class="txt-ko">PDF 저장 / 인쇄</span>
+          <span class="txt-en" style="display: none;">Save PDF / Print</span>
+        </button>
+
+        <div class="lang-toggle-container" role="radiogroup" aria-label="Language selection">
+          <button id="btn-lang-ko" onclick="setLanguage('ko')" class="lang-btn active" aria-checked="true">KO</button>
+          <span class="lang-divider">|</span>
+          <button id="btn-lang-en" onclick="setLanguage('en')" class="lang-btn" aria-checked="false">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="resume-container">
+    
+    <!-- Left Column: Profile, Info, Skills -->
+    <aside class="resume-sidebar">
+      <div class="profile-header">
+        <div class="profile-avatar">H</div>
+        <h1 class="profile-name">
+          <span class="txt-ko">황경태</span>
+          <span class="txt-en" style="display: none;">Kyungtae Hwang</span>
+        </h1>
+        <p class="profile-role">
+          <span class="txt-ko">5년차 개발자 입니다.</span>
+          <span class="txt-en" style="display: none;">Software Engineer (5 YOE)</span>
+        </p>
+      </div>
+
+      <section class="sidebar-section">
+        <h3 class="sidebar-title">Contact</h3>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <a href="mailto:hwanghkt@naver.com" class="contact-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              hwanghkt@naver.com
+            </a>
+          </li>
+          <li class="contact-item">
+            <a href="https://github.com/kanziman" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              github.com/kanziman
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="sidebar-section">
+        <h3 class="sidebar-title">Skills</h3>
+        <div class="skill-group">
+          <h4 class="skill-group-title">AI & Tools</h4>
+          <ul class="skill-list">
+            <li>AI Agent Workflows</li>
+            <li>Model Context Protocol (MCP)</li>
+            <li>Prompt Engineering & Tooling</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-group-title">Backend</h4>
+          <ul class="skill-list">
+            <li>Kotlin / Java / Spring Boot</li>
+            <li>System Architecture & Redis</li>
+            <li>Data Pipelines & Scraping</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-group-title">Frontend & Design</h4>
+          <ul class="skill-list">
+            <li>HTML5 / CSS3 / JavaScript</li>
+            <li>Design Tokens & Systems</li>
+            <li>Responsive Web Design</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-group-title">DevOps & Infra</h4>
+          <ul class="skill-list">
+            <li>Docker & Kubernetes</li>
+            <li>ArgoCD (GitOps)</li>
+          </ul>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Right Column: Content -->
+    <main class="resume-main">
+      
+      <!-- Summary -->
+      <section class="main-section">
+        <h2 class="section-title">Summary</h2>
+        <p class="summary-lead">
+          <span class="txt-ko">호기심 많고, 빠르게 배우며, 실패를 두려워하지 않는 사람입니다.</span>
+          <span class="txt-en" style="display: none;">Curious, fast-learning, and unafraid of failure.</span>
+        </p>
+        <p class="summary-text">
+          <span class="txt-ko">백엔드 파이프라인부터 디자인 시스템까지 일관되게 관통시키며, 사용자의 온전한 AI 경험(AX)을 설계하고 구현하는 메이커입니다. 복잡해지는 AI 협업 환경의 비효율을 제어할 모니터링 시스템과 백엔드 지식 파이프라인을 구축했으며, 프론트엔드와 디자인 시스템 영역까지 직접 완성해 왔습니다.</span>
+          <span class="txt-en" style="display: none;">Driven by persistence, I am a product maker who bridges backend pipelines to design systems, designing and implementing seamless AI User Experiences (AX). I built monitoring systems and knowledge pipelines to curb inefficiency in complex AI collaboration environments, completing end-to-end solutions down to frontend and design tokens.</span>
+        </p>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="main-section">
+        <h2 class="section-title">Experience</h2>
+        
+        <!-- Acrofuture -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-company">
+                <span class="txt-ko">(주)아크로퓨처</span>
+                <span class="txt-en" style="display: none;">Acrofuture Co., Ltd.</span>
+              </h3>
+              <p class="exp-role">AI Product Engineer & Full-Stack Developer (Kotlin / Spring Boot)</p>
+            </div>
+            <span class="exp-duration">
+              <span class="txt-ko">2025.06 — 재직 중 (1년 2개월)</span>
+              <span class="txt-en" style="display: none;">Jun 2025 — Present (1y 2m)</span>
+            </span>
+          </div>
+
+          <!-- Section 1: Core Systems -->
+          <div class="exp-subsection">
+            <span class="exp-subsection-title">
+              <span class="txt-ko">주요 시스템 및 엔터프라이즈 프로젝트</span>
+              <span class="txt-en" style="display: none;">Core Systems & Enterprise Projects</span>
+            </span>
+            <ul class="exp-details">
+              <li>
+                <strong>
+                  <span class="txt-ko">국내 반도체 대기업 칩 테스트 어드민 웹앱 개발 (메인 백엔드)</span>
+                  <span class="txt-en" style="display: none;">Semiconductor Chip Test Admin Web App (Lead Backend)</span>
+                </strong>
+                <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">물리적 테스트 장비의 하드웨어 신호 수신 및 지속적 통합(CI)을 위해 Jenkins 파이프라인 엔진을 도입하여 이종 기기 간 테스트 흐름 자동화.</span>
+                  <span class="txt-en" style="display: none;">Automated cross-device test flows by integrating Jenkins pipeline engines to handle hardware signals and Continuous Integration (CI) across physical test equipment.</span>
+                </p>
+                <p style="margin: 2px 0 8px 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">동시다발적으로 인입되는 칩 테스트 결과에 대해 Lot 및 Chip 단위 분류·매핑 과정에서의 동시성(Concurrency) 제어 구현. 매핑된 실시간 완료 상태를 SSE (Server-Sent Events) 기반으로 화면에 전송하며, 일시적 네트워크 단절 시에도 진행 상태가 유실되지 않도록 Reconnection ID 기반 자동 재연결 및 세션 복구 메커니즘 구축.</span>
+                  <span class="txt-en" style="display: none;">Implemented concurrency control for classifying and mapping concurrent chip test results by Lot and Chip units. Streamed real-time completion states via SSE, building a Reconnection ID-based session recovery mechanism to guarantee zero data loss during network hiccups.</span>
+                </p>
+              </li>
+              <li>
+                <strong>
+                  <span class="txt-ko">국내 자동차 대기업 대외사업 어드민 대시보드 개발 (PM & 메인 백엔드)</span>
+                  <span class="txt-en" style="display: none;">Automotive External Enterprise Admin Dashboard (PM & Lead Backend)</span>
+                </strong>
+                <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">대외 연동 파트너사가 API 호출 규격을 웹 화면에서 직접 변수를 변경하며 직접 호출하고 테스트할 수 있는 인터랙티브 샌드박스 웹 어플리케이션 구축.</span>
+                  <span class="txt-en" style="display: none;">Built an interactive sandbox web application allowing external partner developers to test and invoke API specifications directly on screen with dynamic parameters.</span>
+                </p>
+                <p style="margin: 2px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">다양한 내부 API 스펙을 OpenAPI Specification (OAS) 규격으로 표준화하여 개발 문서 유지보수 효율을 높이고, 보안 및 유량 제어를 위한 API Key 발급 및 인증/인가 아키텍처 설계.</span>
+                  <span class="txt-en" style="display: none;">Standardized internal API specs into OpenAPI Specification (OAS) to streamline documentation maintenance, designing API Key issuance and AuthN/AuthZ architecture for rate limiting and security.</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Section 2: AI & Automation -->
+          <div class="exp-subsection">
+            <span class="exp-subsection-title">
+              <span class="txt-ko">AI 도입 및 워크플로우 자동화</span>
+              <span class="txt-en" style="display: none;">AI Integration & Workflow Automation</span>
+            </span>
+            <ul class="exp-details">
+              <li>
+                <strong>
+                  <span class="txt-ko">EV 충전 데이터 차분(Diff) 검증 파이프라인의 AI 에이전트 스킬화</span>
+                  <span class="txt-en" style="display: none;">AI Agent Skill Pipeline for EV Charging Diff Data Validation</span>
+                </strong>
+                <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">매월 발생하는 EV 충전소/충전기 데이터 차분 검증 시, 레거시 DB 수동 조회 및 정제 과정에서 발생하는 인수인계 병목과 휴먼 에러를 극복하기 위해 AI 에이전트 커스텀 스킬 구축.</span>
+                  <span class="txt-en" style="display: none;">Built custom AI Agent skills to resolve onboarding bottlenecks and human errors stemming from manual legacy DB queries during monthly EV charging station diff data validations.</span>
+                </p>
+                <p style="margin: 2px 0 8px 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">전체 절차 가이드 및 DB 조회를 자동화하고, 중요 판단 단계에는 AskUser(Human-in-the-Loop) 승인 게이트를 결합하여 프로세스 안전성과 작업 생산성을 동시에 확보.</span>
+                  <span class="txt-en" style="display: none;">Automated step-by-step guidance and DB queries while integrating AskUser (Human-in-the-Loop) approval gates at critical checkpoints to ensure both process safety and productivity.</span>
+                </p>
+              </li>
+              <li>
+                <strong>
+                  <span class="txt-ko">팀 일일 점검 업무 자동화 및 워크플로우/코드 품질 체계 구축</span>
+                  <span class="txt-en" style="display: none;">Daily Inspection Automation & Workflow Code Quality Infrastructure</span>
+                </strong>
+                <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">매일 수동 수행되던 팀 내 일일 점검 및 메트릭 모니터링 업무를 자동화 파이프라인으로 전환하여 운용 공수 단축.</span>
+                  <span class="txt-en" style="display: none;">Transitioned manual daily system health inspections and metric monitoring into automated pipelines, significantly reducing operational overhead.</span>
+                </p>
+                <p style="margin: 2px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">아이디어 단계의 모호한 요구사항을 AI 에이전트 인터뷰(Spec-fixed)로 정밀하게 다듬고, PRD 작성부터 수직 슬라이싱(Vertical Slicing) 기반의 작업 단위(GitHub Issues)로 자동 분해하는 파이프라인을 구축하여 기획과 개발 간의 미스매치 차단.</span>
+                  <span class="txt-en" style="display: none;">Established a feature planning pipeline using AI Agent Spec-fixed interviews to refine vague requirements into PRDs and vertically sliced GitHub Issues, preventing plan-to-code mismatches.</span>
+                </p>
+                <p style="margin: 2px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">테스트 시나리오 도출부터 Red/Green/Refactor TDD 사이클을 AI 스킬로 모듈화하고, Husky 및 Git Hooks 기반의 자동 검증 가드레일을 결합하여 100% 테스트를 통과한 유효 코드만 본선에 반영되는 신뢰성 높은 딜리버리 체계 완성.</span>
+                  <span class="txt-en" style="display: none;">Modularized full-cycle TDD (Red-Green-Refactor) into AI Agent skills coupled with Husky and Git Hooks guardrails, ensuring only 100% test-verified code reaches production.</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Infotech Corporation -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-company">
+                <span class="txt-ko">인포텍코퍼레이션(주)</span>
+                <span class="txt-en" style="display: none;">Infotech Corporation Co., Ltd.</span>
+              </h3>
+              <p class="exp-role">Backend Developer (Java / Spring)</p>
+            </div>
+            <span class="exp-duration">
+              <span class="txt-ko">2020.08 — 2023.05 (2년 10개월)</span>
+              <span class="txt-en" style="display: none;">Aug 2020 — May 2023 (2y 10m)</span>
+            </span>
+          </div>
+          <ul class="exp-details">
+            <li>
+              <strong>
+                <span class="txt-ko">금융 수집 데이터 1일 1,000,000건 이상의 수집 서버 구축 및 인프라 최적화</span>
+                <span class="txt-en" style="display: none;">High-Throughput Scraping Server Infrastructure for 1M+ Daily Financial Data</span>
+              </strong>
+              <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                <span class="txt-ko">자사 스크래핑 솔루션을 활용하여 1일 100~200개 금융사/기업으로부터 대용량 정보를 스크래핑하는 분산 아키텍처 설계.</span>
+                <span class="txt-en" style="display: none;">Designed a distributed scraping architecture using proprietary solutions to fetch high-volume financial data from 100–200 institutions daily.</span>
+              </p>
+              <p style="margin: 2px 0 8px 0; color: var(--text-tertiary);">
+                <span class="txt-ko">동시에 인입되는 쓰기(Write) 트랜잭션 폭증 현상을 극복하기 위해 RDB 인덱스 튜닝 및 배치 쿼리 최적화, Connection Pool (HikariCP) 설정을 조율하여 시스템 병목과 쿼리 지연 속도 대폭 개선.</span>
+                <span class="txt-en" style="display: none;">Overcame write transaction spikes by tuning RDB indexes, optimizing batch queries, and adjusting HikariCP connection pools, dramatically improving query latency and throughput.</span>
+              </p>
+            </li>
+            <li>
+              <strong>
+                <span class="txt-ko">10대 이상의 수집 서버 제어용 분배 서버 개발</span>
+                <span class="txt-en" style="display: none;">Distributed Queue & Load Balancing Server for 10+ Scraping Nodes</span>
+              </strong>
+              <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                <span class="txt-ko">분산 노드 간의 수집 작업 순서 및 리소스 경합을 원활하게 제어하기 위해 Redis Queue 기반의 태스크 분산 스케줄러 설계 및 수집 태스크 균등 로드밸런싱 알고리즘 구현.</span>
+                <span class="txt-en" style="display: none;">Designed a Redis Queue task distribution scheduler and implemented load balancing algorithms across 10+ scraping nodes to prevent resource contention.</span>
+              </p>
+            </li>
+            <li>
+              <strong>
+                <span class="txt-ko">스크래핑 솔루션 RESTful API 설계 및 개발</span>
+                <span class="txt-en" style="display: none;">RESTful API Architecture for Data Scraping Engine</span>
+              </strong>
+              <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                <span class="txt-ko">다양한 웹 타겟 데이터 파싱 로직에 유연하게 대응하고 안정성을 확보할 수 있도록 설계된 신규 API 엔드포인트 구축.</span>
+                <span class="txt-en" style="display: none;">Engineered new RESTful API endpoints flexible enough to handle diverse web parsing logic while maintaining system stability.</span>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="main-section">
+        <h2 class="section-title">Projects</h2>
+        
+        <div class="project-item">
+          <div class="proj-header">
+            <h3 class="proj-title">skillx-map</h3>
+            <span class="proj-duration">2026</span>
+          </div>
+          <p class="proj-desc">
+            <span class="txt-ko">프로젝트 디렉토리마다 무분별하게 쌓이는 AI 스킬들의 오작동과 충돌을 제어하기 위해 개발한 시스템 유틸리티입니다.</span>
+            <span class="txt-en" style="display: none;">A system utility CLI developed to prevent conflicts and misfires among unmanaged AI Agent skills across project directories.</span>
+          </p>
+          <ul class="proj-details">
+            <li>
+              <span class="txt-ko">로컬 파일 시스템 자산 충돌 모니터링 및 복구 모듈 설계.</span>
+              <span class="txt-en" style="display: none;">Designed local filesystem asset conflict monitoring and recovery modules.</span>
+            </li>
+            <li>
+              <span class="txt-ko">Zero-dependency CLI 구조로 배포 및 동작 경량화 실현.</span>
+              <span class="txt-en" style="display: none;">Achieved lightweight execution via a zero-dependency CLI structure.</span>
+            </li>
+          </ul>
+          <div class="proj-links">
+            <a href="portfolio.html#project-skillx-map" class="proj-link">
+              <span class="txt-ko">포트폴리오 스펙 상세 보기 ↗</span>
+              <span class="txt-en" style="display: none;">View Portfolio Spec ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="proj-header">
+            <h3 class="proj-title">zettlink</h3>
+            <span class="proj-duration">2026</span>
+          </div>
+          <p class="proj-desc">
+            <span class="txt-ko">텔레그램 봇 API를 활용한 URL 자동 추출, 가공 및 개인 지식 관리 연동 파이프라인 시스템입니다.</span>
+            <span class="txt-en" style="display: none;">An automated pipeline system using Telegram Bot API for URL extraction, LLM processing, and PKM integration.</span>
+          </p>
+          <ul class="proj-details">
+            <li>
+              <span class="txt-ko">Telegram Bot API를 수신하는 비동기 대기 큐 백엔드 아키텍처 설계.</span>
+              <span class="txt-en" style="display: none;">Architected an asynchronous message queue backend for Telegram Bot API reception.</span>
+            </li>
+            <li>
+              <span class="txt-ko">LLM 연동 정보 구조화 및 Next.js SSG 기반 정적 사이트 자동 퍼블리싱.</span>
+              <span class="txt-en" style="display: none;">Automated LLM-driven info structuring and static publishing via Next.js SSG.</span>
+            </li>
+          </ul>
+          <div class="proj-links">
+            <a href="portfolio.html#project-zettlink" class="proj-link">
+              <span class="txt-ko">포트폴리오 스펙 상세 보기 ↗</span>
+              <span class="txt-en" style="display: none;">View Portfolio Spec ↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section class="main-section cert-section">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-item">
+          <div class="cert-header">
+            <h3 class="cert-title">AWS Certified Solutions Architect – Associate (SAA)</h3>
+            <span class="cert-issuer">Amazon Web Services</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    function setLanguage(lang) {
+      const isKo = lang === 'ko';
+      
+      // Update toggle buttons active state
+      document.getElementById('btn-lang-ko').classList.toggle('active', isKo);
+      document.getElementById('btn-lang-en').classList.toggle('active', !isKo);
+      document.getElementById('btn-lang-ko').setAttribute('aria-checked', isKo);
+      document.getElementById('btn-lang-en').setAttribute('aria-checked', !isKo);
+
+      // Toggle text elements
+      document.querySelectorAll('.txt-ko').forEach(el => el.style.display = isKo ? '' : 'none');
+      document.querySelectorAll('.txt-en').forEach(el => el.style.display = isKo ? 'none' : '');
+    }
+  </script>
+</body>
+</html>
