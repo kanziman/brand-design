@@ -322,6 +322,67 @@
             </details>
           </article>
 
+          <!-- Project 5: general-work -->
+          <article class="project-card" id="project-general-work">
+            <div class="project-meta">
+              <span class="project-tag">Knowledge Base</span>
+              <span class="project-date">2026</span>
+            </div>
+            <div>
+              <h3 class="project-title">General Work (업무 지식창고)</h3>
+              <p class="project-description">
+                옵시디언(Obsidian) 볼트 형식을 활용하여 <strong>개인 및 팀의 업무 지식을 그물망 구조로 관리</strong>합니다. Jira, Google Calendar/Drive 등 외부 실무 도구를 AI 에이전트와 MCP(Model Context Protocol) 자동화 스킬셋으로 통합해 유기적인 워크플로우를 구현합니다.
+              </p>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/kanziman/general-work" class="project-link" target="_blank" rel="noopener noreferrer">
+                GitHub
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </a>
+            </div>
+
+            <!-- Design Spec details -->
+            <details class="design-spec">
+              <summary class="design-spec-summary">디자인 스펙 & 토큰</summary>
+              <div class="design-spec-content">
+                <div class="color-chips-container">
+                  <span class="color-chips-label">Color Palette</span>
+                  <div class="color-chips-row">
+                    <div class="color-chip-item" onclick="copyToClipboard('#8A2BE2')">
+                      <div class="color-chip" style="background-color: #8a2be2;"></div>
+                      <span class="color-chip-hex">#8A2BE2</span>
+                      <span class="color-chip-name">Obsidian Purple</span>
+                    </div>
+                    <div class="color-chip-item" onclick="copyToClipboard('#F05032')">
+                      <div class="color-chip" style="background-color: #f05032;"></div>
+                      <span class="color-chip-hex">#F05032</span>
+                      <span class="color-chip-name">Git Orange</span>
+                    </div>
+                    <div class="color-chip-item" onclick="copyToClipboard('#111827')">
+                      <div class="color-chip" style="background-color: #111827;"></div>
+                      <span class="color-chip-hex">#111827</span>
+                      <span class="color-chip-name">Obsidian Coal</span>
+                    </div>
+                    <div class="color-chip-item" onclick="copyToClipboard('#E0E7FF')">
+                      <div class="color-chip" style="background-color: #e0e7ff;"></div>
+                      <span class="color-chip-hex">#E0E7FF</span>
+                      <span class="color-chip-name">Indigo Mist</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="spec-list">
+                  <span class="spec-label">패턴</span>
+                  <span class="spec-value">Obsidian Vault MOC Linkage, Custom Agent Skill Suite, Multi-MCP Server Connection</span>
+                  <span class="spec-label">스타일</span>
+                  <span class="spec-value">그물망 형태의 지식 연결 시각화, 바이올렛 & 오렌지 시맨틱 배지</span>
+                  <span class="spec-label">타이포</span>
+                  <span class="spec-value">Pretendard (Body) + System Monospace</span>
+                </div>
+              </div>
+            </details>
+          </article>
+
         </div>
       </section>
 
@@ -334,7 +395,7 @@
             코드는 AI를 통해 그 어느 때보다 빠르게 찍어낼 수 있지만, 속도가 빨라질수록 관리해야 하는 지식과 도구의 복잡도는 기하급수적으로 늘어납니다.
           </p>
           <p class="about-text">
-            저는 AI 에이전트들을 적극적으로 활용하면서 오히려 시스템 곳곳에 난잡하게 불어나는 스킬들을 정돈할 관리 도구(<a href="#project-skillx-map" class="about-link"><code>skillx-map</code></a>)와, 쏟아지는 고급 링크 속에서 정수만을 골라 아카이빙할 수 있는 파이프라인 도구(<a href="#project-zettlink" class="about-link"><code>zettlink</code></a>)의 필요성을 먼저 느꼈습니다.
+            저는 AI 에이전트들을 적극적으로 활용하면서 오히려 시스템 곳곳에 난잡하게 불어나는 스킬들을 정돈할 관리 도구(<a href="#project-skillx-map" class="about-link"><code>skillx-map</code></a>)와, 쏟아지는 고급 링크 속에서 정수만을 골라 아카이빙할 수 있는 파이프라인 도구(<a href="#project-zettlink" class="about-link"><code>zettlink</code></a>)의 필요성을 먼저 느꼈습니다. 나아가, 이렇게 수집하고 정제한 개인 및 팀의 업무 지식을 그물망 구조로 체계화하고 외부 협업 도구와 연동하기 위해 종합 지식창고이자 에이전트 자동화 허브인 (<a href="#project-general-work" class="about-link"><code>general-work</code></a>)를 구축했습니다.
           </p>
           <p class="about-text">
             다국어 쉐도잉 서비스(<a href="#project-nsq" class="about-link"><code>nsq</code></a>)를 구현하며 전체 코드의 절반을 테스트 코드로 채우는 엄격한 TDD 워크플로우와 체계적인 PRD/이슈 분할 관리를 적용했습니다. 이 신뢰성을 바탕으로 일관되며 높은 완성도를 구현했습니다.
