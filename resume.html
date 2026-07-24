@@ -143,8 +143,8 @@
           <span class="txt-en" style="display: none;">Curious, fast-learning, and unafraid of failure.</span>
         </p>
         <p class="summary-text">
-          <span class="txt-ko">안정적인 백엔드 파이프라인 구축을 바탕으로 디자인 시스템과 프론트엔드 영역까지 유기적으로 확장해 온 5년차 개발자입니다. AI 도입 시 발생하는 수동 검증과 지식 공유의 병목을 자동화 파이프라인으로 전환하고, TDD 사이클을 통해 100% 검증된 유효 코드만 반영되는 신뢰성 높은 개발 환경을 구축하고 있습니다.</span>
-          <span class="txt-en" style="display: none;">A software engineer with 5 years of experience, seamlessly expanding from resilient backend pipelines to design systems and frontend architecture. I transition manual verification and knowledge bottlenecks into automated pipelines during AI adoption, building reliable engineering environments where only 100% test-verified code reaches production.</span>
+          <span class="txt-ko">안정적인 백엔드 파이프라인 구축을 바탕으로 디자인 시스템과 프론트엔드 영역까지 유기적으로 확장해 온 5년차 개발자입니다. 1일 1,000,000건 이상의 고성능 수집 파이프라인과 실시간 동시성/SSE 스트리밍 시스템을 설계하며, 성능과 안정성 간의 기술적 트레이드오프를 최우선으로 고려합니다. API Key 인증/암호화 및 트래픽 유량 제어부터 AI 에이전트를 활용한 제품·업무 자동화 도구 구축, TDD 사이클 자동 검증까지 100% 검증된 코드 중심의 신뢰성 높은 엔지니어링 환경을 구축하고 있습니다.</span>
+          <span class="txt-en" style="display: none;">A software engineer with 5 years of experience, seamlessly expanding from resilient backend pipelines to design systems and frontend architecture. I design high-throughput scraping architectures (1M+ daily transactions) and real-time SSE/concurrency control systems while evaluating technical trade-offs between performance and reliability. From API Key authentication/encryption and rate limiting to AI-driven product automation tools and TDD guardrails, I build engineering environments where only 100% test-verified code reaches production.</span>
         </p>
       </section>
 
@@ -181,12 +181,12 @@
                   <span class="txt-en" style="display: none;">Semiconductor Chip Test Admin Web App (Lead Backend)</span>
                 </strong>
                 <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
-                  <span class="txt-ko">물리적 테스트 장비의 하드웨어 신호 수신 및 지속적 통합(CI)을 위해 Jenkins 파이프라인 엔진을 도입하여 이종 기기 간 테스트 흐름 자동화.</span>
-                  <span class="txt-en" style="display: none;">Automated cross-device test flows by integrating Jenkins pipeline engines to handle hardware signals and Continuous Integration (CI) across physical test equipment.</span>
+                  <span class="txt-ko">물리적 테스트 장비의 하드웨어 신호 수신 및 지속적 통합(CI)을 위해 자체 엔진 개발 대신 검증된 Jenkins 파이프라인 엔진을 커스텀 연동하는 트레이드오프 선택으로 시스템 안정성과 초기 개발 속도 확보.</span>
+                  <span class="txt-en" style="display: none;">Automated cross-device test flows by integrating Jenkins pipeline engines to handle hardware signals and Continuous Integration (CI) across physical test equipment, trading off custom engine development for proven system stability.</span>
                 </p>
                 <p style="margin: 2px 0 8px 0; color: var(--text-tertiary);">
-                  <span class="txt-ko">동시다발적으로 인입되는 칩 테스트 결과에 대해 Lot 및 Chip 단위 분류·매핑 과정에서의 동시성(Concurrency) 제어를 구현하여 기존 수동 분류 대비 테스트 매핑 사이클 시간을 50% 단축. 매핑된 실시간 완료 상태를 SSE (Server-Sent Events) 기반으로 화면에 전송하며, 일시적 네트워크 단절 시에도 진행 상태가 유실되지 않도록 Reconnection ID 기반 자동 재연결 및 세션 복구 메커니즘 구축.</span>
-                  <span class="txt-en" style="display: none;">Implemented concurrency control for classifying and mapping concurrent chip test results by Lot and Chip units, reducing test mapping cycle time by 50% compared to legacy manual classification. Streamed real-time completion states via SSE, building a Reconnection ID-based session recovery mechanism to guarantee zero data loss during network hiccups.</span>
+                  <span class="txt-ko">동시다발적으로 인입되는 칩 테스트 결과에 대해 Lot 및 Chip 단위 분류·매핑 과정에서의 동시성(Concurrency) 제어를 구현하여 기존 수동 분류 대비 테스트 매핑 사이클 시간을 50% 단축. 웹소켓 대비 서버 커넥션 리소스 효율이 높은 SSE(Server-Sent Events) 단방향 스트리밍을 채택하고, 네트워크 단절 시 데이터 유실을 방지하기 위해 Reconnection ID 기반 자동 재연결 및 세션 복구 메커니즘을 구축하여 데이터 유실 0% 달성.</span>
+                  <span class="txt-en" style="display: none;">Implemented concurrency control for classifying and mapping concurrent chip test results by Lot and Chip units, reducing test mapping cycle time by 50% compared to legacy manual classification. Selected SSE (Server-Sent Events) over WebSockets to optimize server connection resources, while building a Reconnection ID-based session recovery mechanism to guarantee zero data loss during network hiccups.</span>
                 </p>
               </li>
               <li>
@@ -199,8 +199,8 @@
                   <span class="txt-en" style="display: none;">Built an interactive sandbox web application allowing external partner developers to test and invoke API specifications directly on screen with dynamic parameters.</span>
                 </p>
                 <p style="margin: 2px 0 0 0; color: var(--text-tertiary);">
-                  <span class="txt-ko">다양한 내부 API 스펙을 OpenAPI Specification (OAS) 규격으로 표준화하여 개발 문서 유지보수 효율을 높이고, 보안 및 유량 제어를 위한 API Key 발급 및 인증/인가 아키텍처 설계.</span>
-                  <span class="txt-en" style="display: none;">Standardized internal API specs into OpenAPI Specification (OAS) to streamline documentation maintenance, designing API Key issuance and AuthN/AuthZ architecture for rate limiting and security.</span>
+                  <span class="txt-ko">내부 API 스펙을 OpenAPI Specification (OAS) 규격으로 표준화하여 문서-코드 불일치 문제를 해결하고, 대외 파트너 연동 시 보안 강화 및 무분별한 트래픽 유입 방지를 위해 API Key 암호화 발급, 인증/인가(AuthN/AuthZ) 및 유량 제어(Rate Limiting) 아키텍처 설계.</span>
+                  <span class="txt-en" style="display: none;">Standardized internal API specs into OpenAPI Specification (OAS) to eliminate documentation-code drift, designing encrypted API Key issuance, AuthN/AuthZ, and Rate Limiting architecture to prevent traffic spikes and secure external partner integrations.</span>
                 </p>
               </li>
             </ul>
@@ -219,12 +219,12 @@
                   <span class="txt-en" style="display: none;">AI Agent Skill Pipeline for EV Charging Diff Data Validation</span>
                 </strong>
                 <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
-                  <span class="txt-ko">매월 발생하는 EV 충전소/충전기 데이터 차분 검증 시, 레거시 DB 수동 조회 및 정제 과정에서 발생하는 인수인계 병목과 휴먼 에러를 극복하기 위해 AI 에이전트 커스텀 스킬 구축.</span>
-                  <span class="txt-en" style="display: none;">Built custom AI Agent skills to resolve onboarding bottlenecks and human errors stemming from manual legacy DB queries during monthly EV charging station diff data validations.</span>
+                  <span class="txt-ko">매월 발생하는 EV 충전소/충전기 데이터 차분 검증 시, 레거시 DB 수동 조회 과정의 인수인계 병목과 휴먼 에러 원인을 분석하여 AI 에이전트 커스텀 스킬 파이프라인 구축.</span>
+                  <span class="txt-en" style="display: none;">Analyzed root causes of onboarding bottlenecks and human errors stemming from manual legacy DB queries, building custom AI Agent skill pipelines for monthly EV charging station diff data validations.</span>
                 </p>
                 <p style="margin: 2px 0 8px 0; color: var(--text-tertiary);">
-                  <span class="txt-ko">전체 절차 가이드 및 DB 조회를 자동화하고, 매월 2~3시간 소요되던 차분 생성 및 검증 프로세스를 30분으로 단축. 중요 판단 단계에는 AskUser(Human-in-the-Loop) 승인 게이트를 결합하여 프로세스 안전성과 작업 생산성을 동시에 확보.</span>
-                  <span class="txt-en" style="display: none;">Automated step-by-step guidance and DB queries, reducing monthly diff creation and verification time from 2–3 hours to 30 minutes. Integrated AskUser (Human-in-the-Loop) approval gates at critical checkpoints to ensure both process safety and productivity.</span>
+                  <span class="txt-ko">전체 절차 가이드 및 DB 조회를 자동화하여 매월 2~3시간 소요되던 프로세스를 30분으로 단축. 중요 판단 단계에는 AskUser(Human-in-the-Loop) 승인 게이트를 결합하여 AI의 비결정적 오판 위험을 차단하고 프로세스 안전성 확보.</span>
+                  <span class="txt-en" style="display: none;">Automated step-by-step guidance and DB queries, reducing monthly diff creation and verification time from 2–3 hours to 30 minutes. Integrated AskUser (Human-in-the-Loop) approval gates at critical checkpoints to counteract LLM non-determinism and ensure process safety.</span>
                 </p>
               </li>
               <li>
@@ -275,8 +275,8 @@
                 <span class="txt-en" style="display: none;">Designed a distributed scraping architecture using proprietary solutions to fetch high-volume financial data from 100–200 institutions daily.</span>
               </p>
               <p style="margin: 2px 0 8px 0; color: var(--text-tertiary);">
-                <span class="txt-ko">동시에 인입되는 쓰기(Write) 트랜잭션 폭증 현상을 극복하기 위해 RDB 인덱스 튜닝 및 배치 쿼리 최적화, Connection Pool (HikariCP) 설정을 조율하여 시스템 병목과 쿼리 지연 속도 대폭 개선.</span>
-                <span class="txt-en" style="display: none;">Overcame write transaction spikes by tuning RDB indexes, optimizing batch queries, and adjusting HikariCP connection pools, dramatically improving query latency and throughput.</span>
+                <span class="txt-ko">동시에 인입되는 쓰기(Write) 트랜잭션 폭증 현상의 원인을 원인 분석(Root Cause Analysis)하여 Connection Exhaustion과 DB Lock 경합을 규명. HikariCP 커넥션 풀 파라미터 최적화, RDB 인덱스 재설계 및 배치 쿼리(Bulk Insert/Batch Update) 전환으로 쿼리 지연시간 대폭 개선 및 수집 성공률 99.9% 달성.</span>
+                <span class="txt-en" style="display: none;">Conducted root cause analysis on write transaction spikes to resolve connection exhaustion and DB lock contention. Optimized HikariCP connection pools, redesigned RDB indexes, and transitioned to batch queries (Bulk Insert/Batch Update), dramatically reducing query latency and achieving 99.9% scraping success rate.</span>
               </p>
             </li>
             <li>
