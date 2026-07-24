@@ -52,3 +52,55 @@
 
   /* Explicitly no error/warning/danger red per brand rule (no pressure signals). */
 }
+
+/* ---- Dark Mode Tokens ---- */
+[data-theme="dark"] {
+  --bg-page: #121212;
+  --bg-surface: #1C1C1E;
+  --bg-surface-raised: #252528;
+  --bg-sidebar: #1C1C1E;
+  --bg-hover: #2C2C2E;
+  --bg-pressed: #3A3A3C;
+
+  --border-subtle: #2C2C2E;
+  --border-default: #3E3E42;
+
+  --text-primary: #F4F0EA;
+  --text-secondary: #9C958A;
+  --text-tertiary: #756D62;
+  --text-on-accent: #FFFFFF;
+  --text-accent: #E29B69;
+  --text-link: var(--text-accent);
+  --text-link-hover: #FFFFFF;
+
+  --accent: #E29B69;
+  --accent-hover: #D48B57;
+  --accent-soft: #2C2016;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-page: #121212;
+    --bg-surface: #1C1C1E;
+    --bg-surface-raised: #252528;
+    --bg-sidebar: #1C1C1E;
+    --bg-hover: #2C2C2E;
+    --bg-pressed: #3A3A3C;
+
+    --border-subtle: #2C2C2E;
+    --border-default: #3E3E42;
+
+    --text-primary: #F4F0EA;
+    --text-secondary: #9C958A;
+    --text-tertiary: #756D62;
+    --text-on-accent: #FFFFFF;
+    --text-accent: #E29B69;
+    --text-link: var(--text-accent);
+    --text-link-hover: #FFFFFF;
+
+    --accent: #E29B69;
+    --accent-hover: #D48B57;
+    --accent-soft: #2C2016;
+  }
+}
+

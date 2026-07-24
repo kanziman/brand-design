@@ -45,9 +45,13 @@ a:hover {
 }
 
 /* 다크 모드에서의 플로팅 네비 바 배경 조율 */
+[data-theme="dark"] .resume-nav {
+  background-color: rgba(18, 18, 18, 0.85);
+}
+
 @media (prefers-color-scheme: dark) {
-  .resume-nav {
-    background-color: rgba(18, 18, 18, 0.85) !important;
+  :root:not([data-theme="light"]) .resume-nav {
+    background-color: rgba(18, 18, 18, 0.85);
   }
 }
 
@@ -153,6 +157,67 @@ a:hover {
 }
 
 .lang-divider {
+  font-size: 10px;
+  color: var(--border-default);
+  user-select: none;
+}
+
+/* Theme Toggle UI Component */
+.theme-toggle-container {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  gap: 2px;
+  transition: background-color var(--duration-fast) var(--ease-calm), border-color var(--duration-fast) var(--ease-calm);
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  font-family: 'Outfit', var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all var(--duration-fast) var(--ease-calm);
+  line-height: 1;
+}
+
+.theme-btn svg {
+  stroke: currentColor;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-calm);
+}
+
+.theme-btn:hover:not(.active) {
+  color: var(--text-primary);
+  background-color: var(--bg-hover);
+}
+
+.theme-btn:hover:not(.active) svg {
+  transform: rotate(12deg) scale(1.1);
+}
+
+.theme-btn.active {
+  color: var(--text-accent);
+  background-color: var(--accent-soft);
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.theme-btn.active svg {
+  stroke: var(--text-accent);
+}
+
+.theme-divider {
   font-size: 10px;
   color: var(--border-default);
   user-select: none;
@@ -514,8 +579,24 @@ a:hover {
 }
 
 /* Native Dark Mode Override */
+[data-theme="dark"] {
+  --bg-page: #121212;
+  --bg-surface: #1C1C1E;
+  --bg-surface-raised: #1A1A1A;
+  --border-subtle: #2C2C2E;
+  --border-default: #3E3E42;
+  --text-primary: #F4F0EA;
+  --text-secondary: #9C958A;
+  --text-tertiary: #756D62;
+  --text-accent: #E29B69;
+  --text-link: var(--text-accent);
+  --text-link-hover: #ffffff;
+  --accent: #E29B69;
+  --accent-soft: #2C2016;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg-page: #121212;
     --bg-surface: #1C1C1E;
     --bg-surface-raised: #1A1A1A;
