@@ -137,7 +137,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-  align-items: start; /* 아코디언이 열린 카드만 늘어나도록 정렬 방식을 변경 */
+  align-items: stretch; /* 카드 높이 균일 정렬 */
 }
 
 /* Project Card */
@@ -148,10 +148,14 @@ a:hover {
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  min-height: 250px; /* 고정 최소 높이를 다소 확장하여 넉넉한 공간 확보 */
+  height: 100%; /* 동일 행 카드 높이 맞춤 */
   transition: border-color var(--duration-normal) var(--ease-calm),
               box-shadow var(--duration-normal) var(--ease-calm);
   cursor: pointer;
+}
+
+.project-card > div:nth-of-type(1) {
+  flex: 1 1 auto; /* 본문 영역이 남은 고도 공간을 흡수하여 하단 버튼 수평선 맞춤 */
 }
 
 .project-card:hover {
