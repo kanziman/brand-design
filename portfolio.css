@@ -137,7 +137,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-  align-items: start; /* 각 카드가 고유 콘텐츠 높이에 맞춰 정렬되도록 하여 아코디언 펼침 시 UI 망가짐 방지 */
+  align-items: start; /* 각 카드가 독립적 자연 고도 유지 (아코디언 펼침 시 옆 박스 동시 확장 방지) */
 }
 
 /* Project Card */
@@ -154,7 +154,7 @@ a:hover {
 }
 
 .project-body {
-  flex: 1 1 auto;
+  margin-bottom: 16px;
 }
 
 .project-card:hover {
@@ -195,7 +195,7 @@ a:hover {
 .project-description {
   font-size: 14px;
   color: var(--text-secondary);
-  margin: 0 0 24px 0;
+  margin: 0;
   text-wrap: pretty;
 }
 
@@ -212,7 +212,7 @@ a:hover {
   font-weight: 600;
   border-bottom: 1px dashed var(--border-subtle); /* 구분선 Y축을 링크 영역 하단에 고정시켜 완벽한 수평선 유지 */
   padding-bottom: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   width: 100%;
 }
 
