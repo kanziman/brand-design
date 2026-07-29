@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>황경태 — Resume (Blue Garage AI사업실)</title>
+  <meta name="description" content="Blue Garage AI사업실 Full Stack Engineer 지원을 위한 황경태의 맞춤형 이력서입니다.">
+  <link rel="stylesheet" href="resume.css">
+  <script>
+    (function() {
+      var savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Floating Nav Bar for Interactive Web Experience (Hidden in Print) -->
+  <nav class="resume-nav">
+    <div class="nav-container">
+      <a href="portfolio.html" class="nav-back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span class="txt-ko">← 포트폴리오 아카이브 보기</span>
+        <span class="txt-en" style="display: none;">← Back to Portfolio</span>
+      </a>
+
+      <div class="nav-right-actions">
+        <button onclick="window.print()" class="nav-print-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          <span class="txt-ko">PDF 저장 / 인쇄</span>
+          <span class="txt-en" style="display: none;">Save PDF / Print</span>
+        </button>
+
+        <div class="theme-toggle-container" role="radiogroup" aria-label="Theme mode selection">
+          <button id="btn-theme-light" onclick="setTheme('light')" class="theme-btn" aria-label="Light Mode" title="라이트 모드">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.93 19.07 1.41-1.41"/><path d="m17.66 6.34 1.41-1.41"/></svg>
+            <span>Light</span>
+          </button>
+          <span class="theme-divider">|</span>
+          <button id="btn-theme-dark" onclick="setTheme('dark')" class="theme-btn" aria-label="Dark Mode" title="다크 모드">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"/></svg>
+            <span>Dark</span>
+          </button>
+        </div>
+
+        <div class="lang-toggle-container" role="radiogroup" aria-label="Language selection">
+          <button id="btn-lang-ko" onclick="setLanguage('ko')" class="lang-btn active" aria-checked="true">KO</button>
+          <span class="lang-divider">|</span>
+          <button id="btn-lang-en" onclick="setLanguage('en')" class="lang-btn" aria-checked="false">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="resume-container">
+    
+    <!-- Left Column: Profile, Info, Skills -->
+    <aside class="resume-sidebar">
+      <div class="profile-header">
+        <div class="profile-avatar">H</div>
+        <h1 class="profile-name">
+          <span class="txt-ko">황경태</span>
+          <span class="txt-en" style="display: none;">Kyungtae Hwang</span>
+        </h1>
+        <p class="profile-role">
+          <span class="txt-ko">AI Full-Stack Engineer (5년차)</span>
+          <span class="txt-en" style="display: none;">AI Full-Stack Engineer (5 YOE)</span>
+        </p>
+      </div>
+
+      <section class="sidebar-section">
+        <h3 class="sidebar-title">Contact</h3>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <a href="tel:+821089798506" class="contact-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              (+82) 010-8979-8506
+            </a>
+          </li>
+          <li class="contact-item">
+            <a href="mailto:hwanghkt@naver.com" class="contact-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              hwanghkt@naver.com
+            </a>
+          </li>
+          <li class="contact-item">
+            <a href="https://github.com/kanziman" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              github.com/kanziman
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="sidebar-section">
+        <h3 class="sidebar-title">Skills</h3>
+        <div class="skill-group">
+          <h4 class="skill-group-title">Mobile & Frontend</h4>
+          <ul class="skill-list">
+            <li>React Native / Flutter (Dart)</li>
+            <li>TypeScript / JavaScript (ES6+)</li>
+            <li>React / HTML5 / CSS3</li>
+            <li>iOS App Store Deployment</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-group-title">Backend & Real-Time</h4>
+          <ul class="skill-list">
+            <li>Node.js / Python (FastAPI)</li>
+            <li>Kotlin / Java / Spring Boot</li>
+            <li>WebSocket / WebRTC / SSE</li>
+            <li>RESTful API & OAS & DB Modeling</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-group-title">AI / Audio & Pipeline</h4>
+          <ul class="skill-list">
+            <li>TTS & Speech-to-Text (STT)</li>
+            <li>LLM Agents & Voice Models</li>
+            <li>Neo4j GraphRAG & RRF Search</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-group-title">DevOps & Infra</h4>
+          <ul class="skill-list">
+            <li>AWS / GCP / Docker / Firebase</li>
+            <li>Sentry / Crashlytics / Monitoring</li>
+            <li>Redis & Message Queue / ArgoCD</li>
+          </ul>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Right Column: Content -->
+    <main class="resume-main">
+      
+      <!-- Summary -->
+      <section class="main-section">
+        <h2 class="section-title">Summary</h2>
+        <p class="summary-lead">
+          <span class="txt-ko">AI 기술과 엔터테인먼트의 접점에서, 모바일 앱 배포부터 실시간 음성/영상 스트리밍 및 백엔드까지 E2E로 구축하는 Full-Stack Engineer입니다.</span>
+          <span class="txt-en" style="display: none;">Full-Stack Engineer building E2E solutions from mobile app store deployments to real-time AI voice/video streaming and backend pipelines.</span>
+        </p>
+        <p class="summary-text">
+          <span class="txt-ko">크로스플랫폼 모바일 앱(Flutter/Dart & React Native)의 설계부터 iOS App Store 상용 배포 및 운용, 고성능 Python/Node.js 백엔드, 실시간 AI 생성 음성 합성(TTS)·음성 인식(STT) 및 스트리밍 연동까지 전 과정을 커버하는 5년차 풀스택 엔지니어입니다. 1일 1,000,000건 이상의 분산 트랜잭션 수집·처리 아키텍처에서 99.9% 시스템 안정성을 달성하고, SSE 스트리밍 기반 실시간 단절 세션 복구 및 동시성 제어를 성공적으로 구현했습니다. 다국어 글로벌 서비스 출시 및 E2E 제품 개발 경험을 바탕으로, 엔터테인먼트 IP와 최신 AI 기술이 융합된 차세대 글로벌 팬 경험을 창의적이고 안정적으로 구현합니다.</span>
+          <span class="txt-en" style="display: none;">A 5-year full-stack engineer covering cross-platform mobile apps (Flutter/Dart & React Native) from architecture to App Store publishing, high-performance Python/Node.js backends, and real-time AI TTS/STT streaming integrations. Built 99.9% reliable distributed pipelines handling 1M+ daily transactions, and SSE streaming session recovery mechanisms. With proven E2E product delivery and global multilingual service experience, I build next-generation fan experiences combining entertainment IP and AI technology.</span>
+        </p>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="main-section">
+        <h2 class="section-title">Experience</h2>
+        
+        <!-- Acrofuture -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-company">
+                <span class="txt-ko">(주)아크로퓨처</span>
+                <span class="txt-en" style="display: none;">Acrofuture Co., Ltd.</span>
+              </h3>
+              <p class="exp-role">AI Product Engineer & Full-Stack Developer (Python / Node.js / Kotlin)</p>
+            </div>
+            <span class="exp-duration">
+              <span class="txt-ko">2025.06 — 재직 중 (1년 2개월)</span>
+              <span class="txt-en" style="display: none;">Jun 2025 — Present (1y 2m)</span>
+            </span>
+          </div>
+
+          <!-- Section 1: Core Systems & Real-time Communication -->
+          <div class="exp-subsection">
+            <span class="exp-subsection-title">
+              <span class="txt-ko">실시간 대화형 서비스 & 시스템 아키텍처 설계</span>
+              <span class="txt-en" style="display: none;">Real-Time Interactive Services & System Architecture</span>
+            </span>
+            <ul class="exp-details">
+              <li>
+                <strong>
+                  <span class="txt-ko">실시간 스트리밍 & 동시성 제어 서비스 구축 (SSE & WebSocket)</span>
+                  <span class="txt-en" style="display: none;">Real-Time Streaming & Concurrency Control (SSE & WebSocket)</span>
+                </strong>
+                <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">동시다발적 테스트 신호 및 실시간 데이터 스트리밍 인입 환경에서 동시성 제어를 구현하여 데이터 처리 사이클 타임을 50% 단축.</span>
+                  <span class="txt-en" style="display: none;">Implemented concurrency control for classifying real-time test streams, cutting data processing cycle time by 50%.</span>
+                </p>
+                <p style="margin: 2px 0 8px 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">실시간 커넥션 리소스 최적화를 위해 SSE 단방향 채널 및 Reconnection ID 기반 자동 세션 복구 메커니즘을 도입하여 네트워크 단절 시에도 데이터 유실률 0% 달성.</span>
+                  <span class="txt-en" style="display: none;">Introduced SSE single-directional streaming and Reconnection ID-based automatic session recovery to guarantee zero data loss during network connection drops.</span>
+                </p>
+              </li>
+              <li>
+                <strong>
+                  <span class="txt-ko">대외 API 샌드박스 & 고성능 게이트웨이 보안 설계 (Node.js/Python & OAS)</span>
+                  <span class="txt-en" style="display: none;">External API Sandbox & High-Performance Security Gateway (Node.js/Python & OAS)</span>
+                </strong>
+                <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">외부 연동 파트너가 웹 인터페이스에서 API 호출 규격을 실시간 테스트할 수 있는 인터랙티브 샌드박스 어플리케이션 구축.</span>
+                  <span class="txt-en" style="display: none;">Engineered interactive API sandbox applications allowing external partner developers to test REST APIs dynamically.</span>
+                </p>
+                <p style="margin: 2px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">OpenAPI Specification (OAS) 규격 표준화로 문서-코드 불일치를 해소하고, API Key 암호화 발급, OAuth2/JWT 기반 인증/인가 및 유량 제어(Rate Limiting) 아키텍처를 설계하여 대규모 API 트래픽 제어 인프라 확립.</span>
+                  <span class="txt-en" style="display: none;">Standardized APIs with OAS, establishing API Key encryption, OAuth2/JWT authentication, and Rate Limiting architecture for large-scale, high-concurrency API traffic control.</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Section 2: AI Integration & Mobile Workflow -->
+          <div class="exp-subsection">
+            <span class="exp-subsection-title">
+              <span class="txt-ko">AI 모델 연동 & E2E 추론 파이프라인 자동화</span>
+              <span class="txt-en" style="display: none;">AI Model Integration & E2E Inference Pipeline Automation</span>
+            </span>
+            <ul class="exp-details">
+              <li>
+                <strong>
+                  <span class="txt-ko">LLM 및 음성/데이터 모델 기반 커스텀 AI 에이전트 스킬 구축</span>
+                  <span class="txt-en" style="display: none;">Custom AI Agent Skills & Voice/Data Inference Pipelines</span>
+                </strong>
+                <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">복잡한 데이터 분석 및 추론 워크플로우를 자동화하는 AI 에이전트 커스텀 스킬 파이프라인 구축. 모호성이 높은 AI 연동 구간에 AskUser(Human-in-the-Loop) 승인 게이트를 결합하여 비결정적 오판 위험을 차단하고 99.9% 안전성 확보.</span>
+                  <span class="txt-en" style="display: none;">Architected custom AI agent skill pipelines automating multi-step inference, with Human-in-the-Loop approval gates ensuring reliable execution.</span>
+                </p>
+              </li>
+              <li>
+                <strong>
+                  <span class="txt-ko">모바일/웹 E2E 풀스택 개발 및 TDD 품질 체계 구축</span>
+                  <span class="txt-en" style="display: none;">Mobile/Web E2E Full-Stack Development & TDD Guardrails</span>
+                </strong>
+                <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">SQLite 이력 관리와 LLM 요약 프롬프트, 임계값 기반 모니터링 훅(Threshold Hooks)을 도입해 모니터링 공수를 100% 자동화.</span>
+                  <span class="txt-en" style="display: none;">Automated daily monitoring tasks using SQLite state tracking and threshold hooks, reducing operational overhead to zero.</span>
+                </p>
+                <p style="margin: 2px 0 0 0; color: var(--text-tertiary);">
+                  <span class="txt-ko">Red/Green/Refactor TDD 사이클 및 Husky/Git Hooks 기반 자동 검증 가드레일을 결합하여 모바일 앱 및 백엔드 서비스 전 과정에서 100% 검증된 유효 코드만 배포되는 신뢰성 높은 딜리버리 환경 완성.</span>
+                  <span class="txt-en" style="display: none;">Modularized TDD workflows with Husky/Git Hooks guardrails, ensuring 100% test-verified code reaches production environments.</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Infotech Corporation -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-company">
+                <span class="txt-ko">인포텍코퍼레이션(주)</span>
+                <span class="txt-en" style="display: none;">Infotech Corporation Co., Ltd.</span>
+              </h3>
+              <p class="exp-role">Backend & Distributed Systems Developer (Java / Node.js)</p>
+            </div>
+            <span class="exp-duration">
+              <span class="txt-ko">2020.08 — 2023.05 (2년 10개월)</span>
+              <span class="txt-en" style="display: none;">Aug 2020 — May 2023 (2y 10m)</span>
+            </span>
+          </div>
+          <ul class="exp-details">
+            <li>
+              <strong>
+                <span class="txt-ko">1일 1,000,000건 대용량 데이터 처리 서버 아키텍처 및 DB 최적화</span>
+                <span class="txt-en" style="display: none;">High-Throughput Distributed Scraping & Processing Architecture (1M+ Daily)</span>
+              </strong>
+              <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                <span class="txt-ko">100~200여 개 대외 타겟 시스템으로부터 실시간/배치 정보를 대용량 수집·가공하는 분산 아키텍처 설계.</span>
+                <span class="txt-en" style="display: none;">Designed a distributed engine gathering data from 100+ external endpoints simultaneously.</span>
+              </p>
+              <p style="margin: 2px 0 8px 0; color: var(--text-tertiary);">
+                <span class="txt-ko">동시 쓰기 폭증 시 발생하는 DB Lock 경합 및 Connection Exhaustion 문제를 분석하여 HikariCP 풀 최적화, Bulk Insert/Batch Update 쿼리 전환 및 RDB 인덱싱 재설계로 99.9% 안정 수집 성공률 달성.</span>
+                <span class="txt-en" style="display: none;">Resolved DB lock contention and connection exhaustion by tuning HikariCP connection pools, implementing Bulk Inserts, and optimizing indexing for 99.9% uptime.</span>
+              </p>
+            </li>
+            <li>
+              <strong>
+                <span class="txt-ko">Redis Queue 기반 분산 태스크 제어 및 로드밸런서 구축</span>
+                <span class="txt-en" style="display: none;">Redis Queue Distributed Task Scheduler & Load Balancing</span>
+              </strong>
+              <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
+                <span class="txt-ko">10대 이상의 실시간 수집 노드 간 리소스 경합 및 순차 실행 제어를 위해 Redis Queue 기반 트래픽 분산 스케줄러 개발.</span>
+                <span class="txt-en" style="display: none;">Built a Redis Queue task distributor managing load balancing across 10+ scraping nodes.</span>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="main-section">
+        <h2 class="section-title">Projects</h2>
+        
+        <!-- Project: naruhodo -->
+        <div class="project-item">
+          <div class="proj-header">
+            <h3 class="proj-title">naruhodo (Interactive Japanese Learning Mobile App)</h3>
+            <span class="proj-duration">2024</span>
+          </div>
+          <p class="proj-desc">
+            <span class="txt-ko">TTS 음성 합성 재생 및 Speech-to-Text 음성 인식 기능을 탑재하고 iOS App Store에 상용 배포된 인터랙티브 모바일 어플리케이션입니다.</span>
+            <span class="txt-en" style="display: none;">Interactive mobile app with TTS audio playback & speech-to-text recognition published on the iOS App Store.</span>
+          </p>
+          <ul class="proj-details">
+            <li>
+              <span class="txt-ko">Flutter & Dart 기반 크로스플랫폼 모바일 클라이언트 설계 및 iOS App Store 상용 출시/운영.</span>
+              <span class="txt-en" style="display: none;">Architected Flutter & Dart cross-platform mobile app and published on the iOS App Store.</span>
+            </li>
+            <li>
+              <span class="txt-ko">TTS(Text-to-Speech) 음성 생성 오디오 및 `speech_to_text` 실시간 음성 인식 API 파이프라인 연동.</span>
+              <span class="txt-en" style="display: none;">Integrated TTS audio synthesis and `speech_to_text` real-time voice recognition pipelines.</span>
+            </li>
+            <li>
+              <span class="txt-ko">Firebase 백엔드 연동, Provider 상태 관리 및 `intl` 패키지를 통한 글로벌 다국어(한국어/영어) 및 반응형 다크/라이트 테마 지원.</span>
+              <span class="txt-en" style="display: none;">Integrated Firebase, Provider state management, and `intl` package for multilingual (KO/EN) responsive UI.</span>
+            </li>
+          </ul>
+          <div class="proj-links">
+            <a href="https://apps.apple.com/us/app/naruhodo/id6502181176" class="proj-link" target="_blank" rel="noopener noreferrer">
+              <span>App Store ↗</span>
+            </a>
+            <a href="https://github.com/kanziman/naruhodo" class="proj-link" target="_blank" rel="noopener noreferrer" style="margin-left: 12px;">
+              <span>GitHub ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project: channel-voc-demo -->
+        <div class="project-item">
+          <div class="proj-header">
+            <h3 class="proj-title">channel-voc-demo</h3>
+            <span class="proj-duration">2026</span>
+          </div>
+          <p class="proj-desc">
+            <span class="txt-ko">대화 데이터를 Neo4j 지식그래프로 연동하여 이슈 및 루트원인을 자동 탐지하고, LangGraph 승인 게이트를 거쳐 이슈/티켓을 자동 발행하는 실시간 Agentic AI 시스템입니다.</span>
+            <span class="txt-en" style="display: none;">An Agentic AI system that ingests support conversations into a Neo4j Knowledge Graph to detect root causes & auto-trigger GitHub/Jira issues via LangGraph approval gates.</span>
+          </p>
+          <ul class="proj-details">
+            <li>
+              <span class="txt-ko">FastAPI(Python) + Neo4j GraphRAG (BGE-Small Dense + Lucene Sparse + 1-hop Graph 3중 하이브리드 RRF 엔진) 설계.</span>
+              <span class="txt-en" style="display: none;">Architected Python (FastAPI) + Neo4j 3-way hybrid GraphRAG engine using RRF search algorithm.</span>
+            </li>
+            <li>
+              <span class="txt-ko">TypeScript / React 기반 6단계 실시간 인터랙티브 라이브 대시보드 및 StateGraph interrupt() 승인 흐름 구현.</span>
+              <span class="txt-en" style="display: none;">Engineered TS/React interactive live dashboard with LangGraph StateGraph approval flows.</span>
+            </li>
+          </ul>
+          <div class="proj-links">
+            <a href="https://github.com/kanziman/channel-voc-demo" class="proj-link" target="_blank" rel="noopener noreferrer">
+              <span>GitHub ↗</span>
+            </a>
+            <a href="https://channel-voc-demo.vercel.app/" class="proj-link" target="_blank" rel="noopener noreferrer" style="margin-left: 12px;">
+              <span class="txt-ko">라이브 데모 ↗</span>
+              <span class="txt-en" style="display: none;">Live Demo ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project: nsq -->
+        <div class="project-item">
+          <div class="proj-header">
+            <h3 class="proj-title">nsq (Multilingual Shadowing & Voice Interaction App)</h3>
+            <span class="proj-duration">2026</span>
+          </div>
+          <p class="proj-desc">
+            <span class="txt-ko">AI 기반 음성/영상 콘텐츠와 사용자가 실시간으로 대화하고 발음을 교정하는 다국어 인터랙티브 쉐도잉 서비스입니다.</span>
+            <span class="txt-en" style="display: none;">Interactive multilingual shadowing service offering real-time AI voice streaming and audio pitch feedback.</span>
+          </p>
+          <ul class="proj-details">
+            <li>
+              <span class="txt-ko">TTS / STT AI 모델 파이프라인 연동 및 프론트엔드 실시간 오디오 플레이백·음성 스트리밍 구현.</span>
+              <span class="txt-en" style="display: none;">Integrated TTS/STT AI pipelines and implemented real-time audio playback & streaming on front-end.</span>
+            </li>
+            <li>
+              <span class="txt-ko">전체 코드베이스의 50%를 커버하는 TDD 워크플로우 적용으로 오디오 인터랙션 결함 방지.</span>
+              <span class="txt-en" style="display: none;">Achieved 50% test coverage through TDD workflow for flawless audio streaming interactions.</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Project: skillx-map -->
+        <div class="project-item">
+          <div class="proj-header">
+            <h3 class="proj-title">skillx-map</h3>
+            <span class="proj-duration">2026</span>
+          </div>
+          <p class="proj-desc">
+            <span class="txt-ko">AI 에이전트 및 서비스 모듈 간 스킬 충돌을 모니터링하고 가드레일을 제어하는 CLI 및 시스템 유틸리티입니다.</span>
+            <span class="txt-en" style="display: none;">CLI tool monitoring and maintaining clean execution spaces for AI agent skills and module collisions.</span>
+          </p>
+          <ul class="proj-details">
+            <li>
+              <span class="txt-ko">TypeScript Zero-dependency CLI 구조 설계 및 npm 패키지 배포.</span>
+              <span class="txt-en" style="display: none;">Architected zero-dependency TypeScript CLI distributed via npm.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Project: zettlink -->
+        <div class="project-item">
+          <div class="proj-header">
+            <h3 class="proj-title">zettlink</h3>
+            <span class="proj-duration">2026</span>
+          </div>
+          <p class="proj-desc">
+            <span class="txt-ko">텔레그램 봇 API 기반 실시간 메시지 수신 및 LLM 파이프라인 연동 개인 지식 아카이빙 웹 앱입니다.</span>
+            <span class="txt-en" style="display: none;">Automated pipeline system fetching Telegram Bot API payloads for LLM processing and Next.js SSG publishing.</span>
+          </p>
+          <ul class="proj-details">
+            <li>
+              <span class="txt-ko">Node.js/TypeScript 비동기 대기 큐 백엔드 및 Next.js 정적 아카이브 자동 파이프라인.</span>
+              <span class="txt-en" style="display: none;">Node.js/TypeScript async queue backend connected with Next.js automated static publishing.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section class="main-section cert-section">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-item">
+          <div class="cert-header">
+            <h3 class="cert-title">AWS Certified Solutions Architect – Associate (SAA)</h3>
+            <span class="cert-issuer">Amazon Web Services</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    function setTheme(theme) {
+      const isDark = theme === 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+
+      const lightBtns = document.querySelectorAll('#btn-theme-light');
+      const darkBtns = document.querySelectorAll('#btn-theme-dark');
+
+      lightBtns.forEach(btn => {
+        btn.classList.toggle('active', !isDark);
+        btn.setAttribute('aria-checked', (!isDark).toString());
+      });
+
+      darkBtns.forEach(btn => {
+        btn.classList.toggle('active', isDark);
+        btn.setAttribute('aria-checked', isDark.toString());
+      });
+    }
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        setTheme(savedTheme);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(prefersDark ? 'dark' : 'light');
+      }
+    }
+
+    function setLanguage(lang) {
+      const isKo = lang === 'ko';
+      
+      // Update toggle buttons active state
+      document.getElementById('btn-lang-ko').classList.toggle('active', isKo);
+      document.getElementById('btn-lang-en').classList.toggle('active', !isKo);
+      document.getElementById('btn-lang-ko').setAttribute('aria-checked', isKo);
+      document.getElementById('btn-lang-en').setAttribute('aria-checked', !isKo);
+
+      // Toggle text elements
+      document.querySelectorAll('.txt-ko').forEach(el => el.style.display = isKo ? '' : 'none');
+      document.querySelectorAll('.txt-en').forEach(el => el.style.display = isKo ? 'none' : '');
+    }
+
+    document.addEventListener('DOMContentLoaded', initTheme);
+  </script>
+</body>
+</html>
