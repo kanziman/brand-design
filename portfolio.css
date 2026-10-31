@@ -192,6 +192,36 @@ a:hover {
   letter-spacing: -0.01em;
 }
 
+/* Project Meta Bar (Minimal summary line) */
+.project-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 10px 0 14px 0;
+  padding: 6px 12px;
+  background-color: var(--bg-surface);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.project-meta-tag {
+  font-weight: 600;
+  color: var(--text-accent);
+}
+
+.project-meta-divider {
+  color: var(--border-default);
+  font-weight: 300;
+}
+
+.project-meta-tech {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
 .project-description {
   font-size: 14px;
   color: var(--text-secondary);

@@ -427,13 +427,13 @@ a:hover {
   padding-bottom: 0;
 }
 
-/* Certifications Section Styling (Compact spacing) */
+/* Certifications Section Styling */
 .cert-section {
-  margin-bottom: 24px !important;
+  /* Inherit main-section rhythm */
 }
 
 .cert-section .section-title {
-  margin-bottom: 10px !important;
+  margin-bottom: 10px;
 }
 
 .cert-item {
@@ -506,6 +506,35 @@ a:hover {
   margin: 0;
 }
 
+.proj-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin: 4px 0 8px 0;
+  padding: 5px 10px;
+  background-color: var(--bg-surface);
+  border-left: 2.5px solid var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.proj-meta-tag {
+  font-weight: 600;
+  color: var(--text-accent);
+}
+
+.proj-meta-divider {
+  color: var(--border-default);
+  font-weight: 300;
+}
+
+.proj-meta-tech {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
 .exp-details,
 .proj-details {
   list-style: none;
@@ -527,7 +556,7 @@ a:hover {
 
 .exp-details li::before,
 .proj-details li::before {
-  content: "—";
+  content: "-";
   position: absolute;
   left: 0;
   color: var(--text-tertiary);
@@ -535,6 +564,36 @@ a:hover {
 
 .exp-details strong,
 .proj-details strong {
+  color: var(--text-primary);
+}
+
+.exp-sub-details {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exp-sub-details li {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  position: relative;
+  padding-left: 12px;
+  line-height: 1.55;
+}
+
+.exp-sub-details li::before {
+  content: "•";
+  position: absolute;
+  left: 1px;
+  color: var(--text-tertiary);
+  font-size: 11px;
+}
+
+.hl {
+  font-weight: 600;
   color: var(--text-primary);
 }
 

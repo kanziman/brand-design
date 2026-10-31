@@ -249,8 +249,8 @@
           <div class="exp-header">
             <div>
               <h3 class="exp-company">
-                <span class="txt-ko">인포텍코퍼레이션(주)</span>
-                <span class="txt-en" style="display: none;">Infotech Corporation Co., Ltd.</span>
+                <span class="txt-ko">인포텍코퍼레이션(주) <span style="font-weight:400;">· 스크래핑 전문회사</span></span>
+                <span class="txt-en" style="display: none;">Infotech Corporation Co., Ltd. <span style="font-weight:400;">· Data Scraping Specialist</span></span>
               </h3>
               <p class="exp-role">Backend & Distributed Systems Developer (Java / Node.js)</p>
             </div>
@@ -262,26 +262,26 @@
           <ul class="exp-details">
             <li>
               <strong>
-                <span class="txt-ko">1일 1,000,000건 대용량 데이터 처리 서버 아키텍처 및 DB 최적화</span>
-                <span class="txt-en" style="display: none;">High-Throughput Distributed Scraping & Processing Architecture (1M+ Daily)</span>
+                <span class="txt-ko">금융 수집 데이터 1일 100만 건 수집 서버 및 인프라 최적화</span>
+                <span class="txt-en" style="display: none;">High-Throughput Scraping Server Infrastructure for 1M+ Daily Financial Data</span>
               </strong>
               <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
-                <span class="txt-ko">100~200여 개 대외 타겟 시스템으로부터 실시간/배치 정보를 대용량 수집·가공하는 분산 아키텍처 설계.</span>
-                <span class="txt-en" style="display: none;">Designed a distributed engine gathering data from 100+ external endpoints simultaneously.</span>
+                <span class="txt-ko">자사 스크래핑 솔루션을 활용하여 1일 100~200개 금융사/기업 대상 분산 수집 아키텍처 설계.</span>
+                <span class="txt-en" style="display: none;">Designed a distributed scraping architecture using proprietary solutions to fetch high-volume financial data from 100-200 institutions daily.</span>
               </p>
               <p style="margin: 2px 0 8px 0; color: var(--text-tertiary);">
-                <span class="txt-ko">동시 쓰기 폭증 시 발생하는 DB Lock 경합 및 Connection Exhaustion 문제를 분석하여 HikariCP 풀 최적화, Bulk Insert/Batch Update 쿼리 전환 및 RDB 인덱싱 재설계로 99.9% 안정 수집 성공률 달성.</span>
-                <span class="txt-en" style="display: none;">Resolved DB lock contention and connection exhaustion by tuning HikariCP connection pools, implementing Bulk Inserts, and optimizing indexing for 99.9% uptime.</span>
+                <span class="txt-ko">동시에 인입되는 쓰기(Write) 트랜잭션 폭증 원인을 분석(RCA)하여 Connection Exhaustion과 DB Lock 경합 규명, HikariCP 풀 최적화, RDB 인덱스 재설계 및 배치 쿼리 전환으로 쿼리 지연시간 개선 및 수집 성공률 99.9% 달성.</span>
+                <span class="txt-en" style="display: none;">Resolved write transaction spikes via RCA, identifying Connection Exhaustion and DB Lock contention; tuned HikariCP pools, redesigned RDB indexes, and transitioned to batch queries to improve latency and achieve 99.9% success rate.</span>
               </p>
             </li>
             <li>
               <strong>
-                <span class="txt-ko">Redis Queue 기반 분산 태스크 제어 및 로드밸런서 구축</span>
-                <span class="txt-en" style="display: none;">Redis Queue Distributed Task Scheduler & Load Balancing</span>
+                <span class="txt-ko">분산 수집 노드 스케줄러 개발</span>
+                <span class="txt-en" style="display: none;">Distributed Scraping Node Scheduler Development</span>
               </strong>
               <p style="margin: 4px 0 0 0; color: var(--text-tertiary);">
-                <span class="txt-ko">10대 이상의 실시간 수집 노드 간 리소스 경합 및 순차 실행 제어를 위해 Redis Queue 기반 트래픽 분산 스케줄러 개발.</span>
-                <span class="txt-en" style="display: none;">Built a Redis Queue task distributor managing load balancing across 10+ scraping nodes.</span>
+                <span class="txt-ko">10대 이상의 분산 노드 간 작업 순서 및 리소스 경합을 제어하기 위해 Redis Queue 기반 분산 스케줄러 설계 및 균등 로드밸런싱 구현.</span>
+                <span class="txt-en" style="display: none;">Designed a Redis Queue-based distributed scheduler and balanced load balancing across 10+ distributed nodes to prevent resource contention.</span>
               </p>
             </li>
           </ul>
@@ -397,23 +397,6 @@
           </ul>
         </div>
 
-        <!-- Project: zettlink -->
-        <div class="project-item">
-          <div class="proj-header">
-            <h3 class="proj-title">zettlink</h3>
-            <span class="proj-duration">2026</span>
-          </div>
-          <p class="proj-desc">
-            <span class="txt-ko">텔레그램 봇 API 기반 실시간 메시지 수신 및 LLM 파이프라인 연동 개인 지식 아카이빙 웹 앱입니다.</span>
-            <span class="txt-en" style="display: none;">Automated pipeline system fetching Telegram Bot API payloads for LLM processing and Next.js SSG publishing.</span>
-          </p>
-          <ul class="proj-details">
-            <li>
-              <span class="txt-ko">Node.js/TypeScript 비동기 대기 큐 백엔드 및 Next.js 정적 아카이브 자동 파이프라인.</span>
-              <span class="txt-en" style="display: none;">Node.js/TypeScript async queue backend connected with Next.js automated static publishing.</span>
-            </li>
-          </ul>
-        </div>
       </section>
 
       <!-- Certifications -->

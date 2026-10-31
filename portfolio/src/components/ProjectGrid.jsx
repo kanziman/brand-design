@@ -2,11 +2,95 @@ import React, { useState } from 'react'
 
 const projects = [
   {
+    id: 'nexuswiki',
+    tag: 'AI Knowledge Platform',
+    date: '2026.08 - 진행 중',
+    title: 'NexusWiki',
+    highlights: {
+      service: '팀원 간 지식 위키 공유 (사내 플랫폼 도입 AI 위키)',
+      tech: '4채널(위키/원문 벡터·어휘) 하이브리드 검색 · OpenSpec (SDD)'
+    },
+    description: '팀원 간 지식 공유를 위해 개인 제안으로 시작하여 <strong>회사 내부 플랫폼에 정식 도입·운영 중인 AI 위키 서비스</strong>입니다. LLM이 원문을 상호 연결된 위키로 정제하고, <strong>4채널(위키 벡터, 원문 벡터, 위키 어휘, 원문 어휘) 하이브리드 검색</strong>으로 원문과 위키 양쪽 출처를 정밀하게 인용하며, <strong>OpenSpec 기반 명세 주도 개발(SDD)</strong>을 적용했습니다.',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/kanziman/NexusWiki' },
+      { label: '서비스', url: 'https://www.nexuswiki.net/' }
+    ],
+    spec: {
+      palette: [
+        { hex: '#2563EB', name: 'Royal Blue' },
+        { hex: '#10B981', name: 'Emerald' },
+        { hex: '#0F172A', name: 'Slate Dark' },
+        { hex: '#F8FAFC', name: 'Slate Light' }
+      ],
+      pattern: 'OpenSpec 기반 SDD 워크플로우, FastAPI + Railway Worker + Next.js 15 Monorepo',
+      style: '모던 엔터프라이즈 SaaS 스타일, 고대비 정보 밀도 최적화 대시보드',
+      typo: 'Inter (UI) + JetBrains Mono (Code & Citations)'
+    }
+  },
+
+  {
+    id: 'flight-deals',
+    tag: 'Verified Deals Feed',
+    date: '2026.08 - 진행 중',
+    title: '입틀막 (항공 특가 검증 피드)',
+    highlights: {
+      service: '가짜 할인을 거르는 항공권 특가 검증 피드',
+      tech: '노선 중앙값 및 인접일 대조 이상치 필터링 알고리즘 · AI 작성 및 인간 검수 권한 분리'
+    },
+    description: '항공권 가격을 수집해 노선별 평소 가격과 인접 날짜 가격을 대조하고, <strong>실제로 저렴한 특가만 게시하는 검증 피드</strong>입니다. 콘텐츠는 AI 에이전트가 작성하고 사람이 검수하여 배포합니다.',
+    links: [
+      { label: '서비스', url: 'https://deals.nexuswiki.net/deals' }
+    ],
+    spec: {
+      palette: [
+        { hex: '#0284C7', name: 'Sky Blue' },
+        { hex: '#F59E0B', name: 'Amber Alert' },
+        { hex: '#1E293B', name: 'Navy Dark' },
+        { hex: '#F1F5F9', name: 'Cloud Light' }
+      ],
+      pattern: 'Flight Deal Scraper + Median Cross-validation Rule Engine + Supabase',
+      style: '데이터 피드 스타일, 통계적 신뢰도 강조 카드',
+      typo: 'Outfit (UI) + Pretendard'
+    }
+  },
+
+  {
+    id: 'channel-voc-demo',
+    tag: 'Agentic GraphRAG System',
+    date: '2026',
+    title: 'channel-voc-demo',
+    highlights: {
+      service: '고객 상담(VOC) 분석 및 루트원인 자동 탐지',
+      tech: '3중 하이브리드 GraphRAG (Neo4j + BGE + Lucene) · LangGraph 사람 승인 게이트'
+    },
+    description: '고객 상담(VOC) 대화에서 반복되는 문제의 루트원인과 예상 매출 손실액을 찾아, <strong>사람이 승인하면 GitHub 이슈와 Jira 티켓으로 연결</strong>하는 에이전트입니다. 해커톤 제출작에서 <strong>GraphRAG 엔진, 운영자 코파일럿까지 3단계로 발전</strong>시켰습니다. (공개 Bitext CS 데이터셋 1,200건 기반)',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/kanziman/channel-voc-demo' },
+      { label: 'Live Demo', url: 'https://channel-voc-demo.vercel.app/' }
+    ],
+    spec: {
+      palette: [
+        { hex: '#008CC1', name: 'Neo4j Blue' },
+        { hex: '#FF6B6B', name: 'Accent Red' },
+        { hex: '#3776AB', name: 'Python Blue' },
+        { hex: '#1C1917', name: 'Ink Dark' }
+      ],
+      pattern: 'LangGraph StateGraph, Neo4j GraphRAG (3중 하이브리드)',
+      style: '6단계 인터랙티브 대시보드 (6-Step Stepper & Live Search)',
+      typo: 'Inter (UI) + JetBrains Mono (Code)'
+    }
+  },
+
+  {
     id: 'skillx-map',
     tag: 'System Utility',
     date: '2026',
     title: 'skillx-map',
-    description: '프로젝트 디렉토리마다 무분별하게 쌓이는 AI 스킬들의 오작동과 충돌을 제어하기 위해 만들었습니다. 로컬 파일 시스템을 검사하여 자산 충돌을 막고 깔끔한 AI 협업 환경을 유지해 줍니다.',
+    highlights: {
+      service: 'AI 에이전트 스킬 충돌 방지 및 자산 제어 CLI',
+      tech: 'Zero-dependency 코어/어댑터 구조 · 안전 복구 설계 · npm 출시 후 500+ 다운로드'
+    },
+    description: 'Claude Code, Codex, Gemini에 쌓이는 AI 스킬과 플러그인을 한곳에서 스캔·점검·정리하는 CLI와 로컬 웹 UI입니다. <strong>제로 의존성 코어와 플랫폼별 어댑터 구조</strong>로 설계되었으며, <strong>.skillx/trash를 통한 바이트 단위 안전 복구</strong>를 보장합니다. npm 출시 후 <strong>누적 500+ 다운로드</strong>를 기록했습니다.',
     links: [
       { label: 'GitHub', url: 'https://github.com/kanziman/skillx-map' },
       { label: 'npm', url: 'https://www.npmjs.com/package/skillx-map' }
@@ -18,39 +102,22 @@ const projects = [
         { hex: '#1E1E20', name: 'Dark Ink' },
         { hex: '#F9F9FB', name: 'Light Gray' }
       ],
-      pattern: 'Zero-dependency CLI, Grouped Tree UI',
+      pattern: 'Zero-dependency Core + Adapters, Grouped Tree UI',
       style: '테크니컬 유틸리티 스타일, 라이트/다크 통합 테마',
       typo: 'Outfit (UI) + System Monospace'
     }
   },
-  {
-    id: 'zettlink',
-    tag: 'Full-Stack System',
-    date: '2026',
-    title: 'zettlink',
-    description: '일상 속에서 텔레그램으로 URL만 전송하면 작동하는 가장 쉬운 아카이빙 설계입니다. 자동 추출 및 LLM 가공을 거쳐, TIL이나 심층 분석 등 목적에 맞게 정적 페이지로 즉시 발행합니다.',
-    links: [
-      { label: 'GitHub', url: 'https://github.com/kanziman/zettlink' },
-      { label: 'Live Site', url: 'https://zettlink-site.vercel.app/' }
-    ],
-    spec: {
-      palette: [
-        { hex: '#0EA5E9', name: 'Sky Blue' },
-        { hex: '#EA580C', name: 'Orange' },
-        { hex: '#F8FAFC', name: 'Slate Bg' },
-        { hex: '#0F172A', name: 'Ink Blue' }
-      ],
-      pattern: 'Telegram Bot Queue, Supabase Admin dashboard, Next.js SSG',
-      style: '시맨틱 토큰 기반 정보 대시보드, sky + orange 팔레트',
-      typo: 'Pretendard (Body) + sans-serif'
-    }
-  },
+
   {
     id: 'nsq',
     tag: 'Web Application',
     date: '2026',
     title: 'NSQ (No Stupid Questions)',
-    description: '팟캐스트 기반 고품질 영어, 일본어 쉐도잉 서비스입니다. 2만 라인 중 1만 라인을 테스트 코드로 구축한 TDD 워크플로우를 통해 프로덕트의 실행적 안정성과 완성도를 확보했습니다.',
+    highlights: {
+      service: '팟캐스트 음성-자막 정합 쉐도잉 웹앱',
+      tech: 'AI 에이전트 TDD 루프(테스트 11,800줄) · Cloudflare R2 오디오 파이프라인'
+    },
+    description: 'Freakonomics 팟캐스트 공식 대본과 유튜브 자막의 시간축을 맞춰 화자가 분리된 영어·일본어 쉐도잉 학습을 제공하는 웹 앱입니다. <strong>소스(약 6,900줄)보다 많은 테스트 코드(약 11,800줄)</strong> 기반의 <strong>AI 에이전트 TDD 루프</strong>를 운영하며, <strong>Cloudflare R2 오디오 파이프라인</strong>으로 egress 비용 부담 없이 오디오를 안정적으로 서빙합니다.',
     links: [
       { label: 'GitHub', url: 'https://github.com/kanziman/nsq' },
       { label: 'Live Web', url: 'https://nsq-teal.vercel.app/' }
@@ -65,29 +132,6 @@ const projects = [
       pattern: 'A-B Repeat Waveform UI, Interactive Chat, Seamless Component Nesting',
       style: '지면 인쇄물 감성의 매거진 스타일, 보더 위주의 플랫 카드',
       typo: 'Serif (Outfit / Serif Family) + Pretendard'
-    }
-  },
-  {
-    id: 'brand-design',
-    tag: 'Design System',
-    date: '2026',
-    title: 'Momento Brand Identity',
-    description: '디자인 병목을 직접 해결하기 위해 브랜드의 통일된 토큰 시스템을 정립했습니다. 가이드라인부터 프로덕트 UI, 랜딩, 피칭덱까지 모든 시각적 에셋의 CSS 변수를 하나의 구조적인 토큰 시스템으로 바인딩했습니다.',
-    links: [
-      { label: 'GitHub', url: 'https://github.com/kanziman/brand-design' },
-      { label: 'Live App', url: 'https://brand-design-one.vercel.app/momento/' },
-      { label: 'Landing', url: 'https://brand-design-one.vercel.app/' }
-    ],
-    spec: {
-      palette: [
-        { hex: '#FFFFFF', name: 'White Bg' },
-        { hex: '#F4F0EA', name: 'Cream' },
-        { hex: '#C8794B', name: 'Terracotta' },
-        { hex: '#1A1A1A', name: 'Ink Black' }
-      ],
-      pattern: 'CSS Custom Properties design source, WCAG AA Accessibility Contrast',
-      style: '그라데이션 없는 플랫 솔리드, 그림자 없는 플랫 보더 카드',
-      typo: 'Outfit (Wordmark) + Pretendard (Body text)'
     }
   }
 ];
@@ -133,6 +177,17 @@ export default function ProjectGrid() {
               <h3 className="text-[18px] font-bold m-0 mb-2 text-text-primary leading-[1.4] tracking-[-0.01em]">
                 {project.title}
               </h3>
+              {project.highlights && (
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 bg-bg-surface border-l-[3px] border-l-accent rounded-[6px] px-3 py-1.5 my-3 text-[13px] leading-[1.5]">
+                  <span className="font-semibold text-text-accent">
+                    {project.highlights.service}
+                  </span>
+                  <span className="text-border-default font-light">·</span>
+                  <span className="text-text-primary font-medium">
+                    {project.highlights.tech}
+                  </span>
+                </div>
+              )}
               <p className="text-[14px] text-text-secondary m-0 mb-6 text-pretty leading-[1.6]">
                 {project.description.split('<strong>').map((part, i) => {
                   if (part.includes('</strong>')) {
