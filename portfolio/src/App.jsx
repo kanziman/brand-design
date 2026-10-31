@@ -36,6 +36,26 @@ export default function App() {
               </a>
             </div>
           </div>
+
+          {/* Metrics Strip */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-7 p-3.5 bg-bg-surface-raised border border-border-subtle rounded-md text-center">
+            <div className="flex flex-col items-center border-r border-border-subtle">
+              <span className="font-wordmark text-[16px] font-bold text-text-primary leading-tight">5개</span>
+              <span className="text-[11px] text-text-tertiary mt-1 font-medium">글로벌 리전</span>
+            </div>
+            <div className="flex flex-col items-center sm:border-r border-border-subtle">
+              <span className="font-wordmark text-[16px] font-bold text-text-primary leading-tight">1일 100만 건</span>
+              <span className="text-[11px] text-text-tertiary mt-1 font-medium">데이터 수집</span>
+            </div>
+            <div className="flex flex-col items-center border-r border-border-subtle">
+              <span className="font-wordmark text-[16px] font-bold text-text-primary leading-tight">2~3시간 → 30분</span>
+              <span className="text-[11px] text-text-tertiary mt-1 font-medium">월 검증 단축</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="font-wordmark text-[16px] font-bold text-text-accent leading-tight">500+</span>
+              <span className="text-[11px] text-text-tertiary mt-1 font-medium">npm 다운로드</span>
+            </div>
+          </div>
         </header>
 
         <ProjectGrid />
