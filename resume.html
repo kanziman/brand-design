@@ -168,16 +168,16 @@
         </p>
         <div class="summary-text">
           <p style="margin: 0 0 10px 0;">
-            <span class="txt-ko">사내에서는 사양서 기반 챗봇 개발 경험을 바탕으로 위키 검색 시스템을 제안해 사내 플랫폼에 도입했습니다. 업무 밖에서는 개인 프로젝트 <b class="hl">NexusWiki</b>를 통해 제품의 설계부터 구현·배포까지 경험을 넓히며, 두 가지 통제에 집중하고 있습니다.</span>
-            <span class="txt-en" style="display: none;">Building on my experience developing a specification-based chatbot, I proposed a wiki search system and introduced it into our internal platform. Outside work, my personal project <b class="hl">NexusWiki</b> expands my experience from product design through implementation and deployment, with two areas of focus.</span>
+            <span class="txt-ko">사내에서는 사양서 기반 챗봇 개발 경험을 바탕으로 위키 검색 시스템을 제안해 사내 플랫폼에 도입했습니다. 업무 밖에서는 개인 프로젝트 <b class="hl">NexusWiki</b>를 통해 제품의 설계부터 구현·배포까지 경험을 넓히고 있습니다. 그 과정에서 <b class="hl">제품 속 AI를 통제하는 방법과 AI 에이전트와 효과적으로 협업하는 방식</b>에 관심을 두고 직접 적용하고 있습니다.</span>
+            <span class="txt-en" style="display: none;">Building on my experience developing a specification-based chatbot, I proposed a wiki search system and introduced it into our internal platform. Outside work, my personal project <b class="hl">NexusWiki</b> expands my experience from product design through implementation and deployment. I explore and apply <b class="hl">ways to control AI within products and collaborate effectively with AI agents</b>.</span>
           </p>
           <p style="margin: 0 0 10px 0;">
-            <span class="txt-ko"><b class="hl">제품의 AI 통제:</b> 흐름·비용·품질·위험의 네 측면에서 AI를 통제합니다. NexusWiki에 요청 추적과 Langfuse 관측, 토큰·비용 제한, 답변 검증·수리, 중요 문서 변경 승인 절차를 구현했습니다.</span>
-            <span class="txt-en" style="display: none;"><b class="hl">AI controls in the product:</b> Controls span flow, cost, quality, and risk. In NexusWiki, I implemented request tracing and Langfuse observability, token and cost limits, answer validation and repair, and approval for changes to important documents.</span>
+            <span class="txt-ko"><b class="hl">제품의 AI 통제:</b> NexusWiki에서 흐름·비용·품질·위험의 네 측면으로 AI를 통제했습니다. 요청 추적과 Langfuse 관측으로 처리 과정을 확인하고, 토큰 예산과 비용 예약·정산으로 사용량을 관리했습니다. 답변은 검증 후 필요하면 수리하고, <b class="hl">중요 문서 변경은 사람의 승인을 거치도록</b> 구현했습니다.</span>
+            <span class="txt-en" style="display: none;"><b class="hl">AI controls in the product:</b> In NexusWiki, I implemented controls for flow, cost, quality, and risk. Request tracing and Langfuse provide visibility into processing; token budgets and cost reservation and settlement manage usage. Answers are validated and repaired when needed, and <b class="hl">changes to important documents require human approval</b>.</span>
           </p>
           <p style="margin: 0;">
-            <span class="txt-ko"><b class="hl">AI 에이전트 협업 체계:</b> 구현 전에 요구사항과 설계를 명세로 합의하고, 독립적으로 검증할 수 있는 기능 단위로 작업을 나눕니다. 구현 후에는 명세 일치 여부와 <b class="hl">권한·데이터 접근 검증</b>을 거쳐 병합하도록 개발 흐름을 구성했습니다. 이 과정에서 인증 없이 다른 워크스페이스에 비용을 기록할 수 있던 결함을 발견하고 수정했습니다.</span>
-            <span class="txt-en" style="display: none;"><b class="hl">AI agent collaboration:</b> Agree on requirements and design through specifications before implementation, then split work into independently verifiable features. Before merging, check specification conformance and <b class="hl">authorization and data access</b>. This process caught and resolved a flaw that allowed unauthenticated cost records in another workspace.</span>
+            <span class="txt-ko"><b class="hl">AI 에이전트 협업 체계:</b> 개발 과정에서는 요구사항과 설계를 명세로 정하고, <b class="hl">독립적으로 검증 가능한 기능 단위</b>로 작업을 나눴습니다. 병합 전에는 명세 일치 여부와 권한·데이터 접근을 검증하도록 구성했습니다. 이 과정에서 <b class="hl">인증 없이 다른 워크스페이스에 비용을 기록할 수 있던 권한 결함을 발견하고 수정</b>했습니다.</span>
+            <span class="txt-en" style="display: none;"><b class="hl">AI agent collaboration:</b> Defined requirements and design in specifications and split work into <b class="hl">independently verifiable features</b>. Before merging, the workflow checks specification conformance, authorization, and data access. This process <b class="hl">caught and resolved an authorization flaw allowing unauthenticated cost records in another workspace</b>.</span>
           </p>
         </div>
 
@@ -289,37 +289,19 @@
                   </li>
                 </ul>
               </li>
-            </ul>
-          </div>
-
-          <!-- Section 2: AI & Automation -->
-          <div class="exp-subsection">
-            <span class="exp-subsection-title">
-              <span class="txt-ko">AI 활용 (운영 자동화·개발 프로세스)</span>
-              <span class="txt-en" style="display: none;">AI Utilization (Ops Automation · Dev Process)</span>
-            </span>
-            <ul class="exp-details">
               <li>
                 <strong>
-                  <span class="txt-ko">EV 충전 데이터 차분(Diff) 검증 파이프라인의 AI 에이전트 스킬화</span>
-                  <span class="txt-en" style="display: none;">AI Agent Skill Pipeline for EV Charging Diff Data Validation</span>
+                  <span class="txt-ko">운영 점검·검증 자동화</span>
+                  <span class="txt-en" style="display: none;">Operational Inspection & Validation Automation</span>
                 </strong>
                 <ul class="exp-sub-details">
                   <li>
-                    <span class="txt-ko">월 반복 EV 충전소/충전기 데이터 차분 검증을 AI 에이전트 스킬 파이프라인으로 전환하여 <b class="hl">소요 시간 2~3시간 → 30분 단축</b>, 중요 판단 단계에 사람 승인(Human-in-the-Loop) 게이트 결합.</span>
-                    <span class="txt-en" style="display: none;">Automated recurring monthly EV data diff validation into an AI Agent skill pipeline, <b class="hl">reducing verification time from 2-3 hours to 30 minutes</b> with human-in-the-loop approval gates.</span>
+                    <span class="txt-ko">EV 충전소·충전기 데이터의 월별 변경 검증을 AI 에이전트로 자동화하여 <b class="hl">2~3시간 → 30분으로 단축</b>. 중요 판단은 사람이 승인하도록 구성.</span>
+                    <span class="txt-en" style="display: none;">Automated monthly EV charging data change validation with an AI agent, <b class="hl">reducing verification time from 2-3 hours to 30 minutes</b>, with human approval for key decisions.</span>
                   </li>
-                </ul>
-              </li>
-              <li>
-                <strong>
-                  <span class="txt-ko">팀 일일 점검 업무 자동화 및 워크플로우/코드 품질 체계 구축</span>
-                  <span class="txt-en" style="display: none;">Daily Inspection Automation & Workflow Code Quality Infrastructure</span>
-                </strong>
-                <ul class="exp-sub-details">
                   <li>
-                    <span class="txt-ko">일일 30분 수동 점검을 자동화 파이프라인으로 전환하고, PRD 이슈 분해부터 TDD 가드레일까지 연계하여 <b class="hl">테스트를 통과한 코드만 배포되는 신뢰성 높은 딜리버리 체계 완성</b>.</span>
-                    <span class="txt-en" style="display: none;">Automated daily 30-min manual checks into an automated pipeline, linking PRD decomposition with TDD guardrails so <b class="hl">only test-verified code reaches production</b>.</span>
+                    <span class="txt-ko"><b class="hl">매일 30분 소요되던 수동 점검을 자동화</b>하고, 요구사항의 이슈 분해와 테스트 검증을 개발·배포 과정에 연결.</span>
+                    <span class="txt-en" style="display: none;"><b class="hl">Automated daily manual checks that took 30 minutes</b> and connected requirements breakdown and test validation to development and deployment.</span>
                   </li>
                 </ul>
               </li>
@@ -346,29 +328,21 @@
           <ul class="exp-details">
             <li>
               <strong>
-                <span class="txt-ko">금융 수집 데이터 1일 100만 건 수집 서버 및 인프라 최적화</span>
-                <span class="txt-en" style="display: none;">High-Throughput Scraping Server Infrastructure for 1M+ Daily Financial Data</span>
+                <span class="txt-ko">일 100만 건 금융 데이터 분산 수집 인프라 개발·최적화</span>
+                <span class="txt-en" style="display: none;">Distributed Financial Data Ingestion Infrastructure for 1M+ Daily Records</span>
               </strong>
               <ul class="exp-sub-details">
                 <li>
-                  <span class="txt-ko">자사 스크래핑 솔루션을 활용하여 <b class="hl">1일 100~200개 금융사/기업 대상 분산 수집 아키텍처 설계</b>.</span>
-                  <span class="txt-en" style="display: none;">Designed a distributed scraping architecture using proprietary solutions to fetch high-volume financial data from <b class="hl">100-200 institutions daily</b>.</span>
+                    <span class="txt-ko">자사 스크래핑 솔루션을 활용해 <b class="hl">일 100~200개 금융사·기업 대상 분산 수집 아키텍처 설계</b>.</span>
+                    <span class="txt-en" style="display: none;">Designed a distributed scraping architecture using proprietary solutions to collect data from <b class="hl">100-200 institutions daily</b>.</span>
                 </li>
                 <li>
-                  <span class="txt-ko">동시에 인입되는 쓰기(Write) 트랜잭션 폭증 원인을 분석(RCA)하여 <b class="hl">Connection Exhaustion과 DB Lock 경합 규명</b>, HikariCP 풀 최적화, RDB 인덱스 재설계 및 배치 쿼리(Bulk Insert/Batch Update) 전환으로 쿼리 지연시간 개선 및 <b class="hl">수집 성공률 99.9% 달성</b>.</span>
-                  <span class="txt-en" style="display: none;">Conducted root cause analysis (RCA) on write transaction spikes to identify <b class="hl">Connection Exhaustion and DB Lock contention</b>; optimized HikariCP pools, redesigned RDB indexes, and transitioned to batch queries to improve query latency and achieve a <b class="hl">99.9% scraping success rate</b>.</span>
+                    <span class="txt-ko">쓰기 부하 집중으로 인한 <b class="hl">DB 커넥션 고갈·잠금 경합을 규명</b>하고, HikariCP 풀·인덱스 최적화와 배치 쓰기로 쿼리 지연 개선 및 <b class="hl">수집 성공률 99.9% 달성</b>.</span>
+                    <span class="txt-en" style="display: none;">Identified <b class="hl">connection exhaustion and DB lock contention</b> under write spikes; optimized HikariCP pools and indexes and introduced batch writes to reduce query latency and achieve a <b class="hl">99.9% collection success rate</b>.</span>
                 </li>
-              </ul>
-            </li>
-            <li>
-              <strong>
-                <span class="txt-ko">분산 수집 노드 스케줄러 개발</span>
-                <span class="txt-en" style="display: none;">Distributed Scraping Node Scheduler Development</span>
-              </strong>
-              <ul class="exp-sub-details">
                 <li>
-                  <span class="txt-ko">10대 이상의 분산 노드 간 작업 순서 및 리소스 경합을 제어하기 위해 <b class="hl">Redis Queue 기반 분산 스케줄러 설계 및 균등 로드밸런싱 구현</b>.</span>
-                  <span class="txt-en" style="display: none;">Designed a <b class="hl">Redis Queue-based distributed scheduler and balanced load balancing</b> across 10+ distributed nodes to prevent resource contention.</span>
+                  <span class="txt-ko"><b class="hl">Redis Queue 기반 분산 스케줄러</b>로 10대 이상 노드의 작업 순서·리소스 경합을 제어하고 수집 작업을 균등 분배.</span>
+                  <span class="txt-en" style="display: none;">Built a <b class="hl">Redis Queue-based distributed scheduler</b> to control execution order and resource contention and distribute collection tasks evenly across 10+ nodes.</span>
                 </li>
               </ul>
             </li>
@@ -397,30 +371,18 @@
           </p>
           <ul class="proj-details">
             <li>
-              <span class="txt-ko"><b class="hl">4채널 하이브리드 검색</b>: 위키·원문의 벡터·어휘 검색으로 양쪽 출처를 함께 인용하고, 디버그 뷰어로 검색 순위와 RRF 기여도를 진단. OpenSpec 기반 명세 주도 개발(SDD) 적용.</span>
-              <span class="txt-en" style="display: none;"><b class="hl">4-Channel Hybrid Search</b>: Combines vector and lexical search across wiki pages and raw sources for dual citations; diagnoses rankings and RRF contributions through a debug viewer. Developed with OpenSpec (SDD).</span>
+              <span class="txt-ko"><b class="hl">원문·위키 이중 인용 검색 구현</b>: 벡터·어휘 검색을 결합한 4채널 하이브리드 검색과 RRF로 원문·위키를 함께 검색하고, 채널별 순위와 기여도를 확인하는 디버그 뷰어 구축.</span>
+              <span class="txt-en" style="display: none;"><b class="hl">Dual-Source Retrieval</b>: Combined vector and lexical search across raw sources and wiki pages using four-channel retrieval and RRF; built a debug viewer for channel rankings and contributions.</span>
             </li>
             <li>
-              <span class="txt-ko"><b class="hl">Flow · 요청 추적</b>: API부터 워커까지 같은 추적 ID로 AI 처리 과정을 연결하고, Langfuse로 호출 시간·토큰·비용을 관측. 고객의 질문·답변 원문은 Langfuse 전송 대상에서 제외.</span>
-              <span class="txt-en" style="display: none;"><b class="hl">Flow · Request Tracing</b>: Links AI processing from API to worker with a shared trace ID and observes latency, tokens, and cost in Langfuse, excluding customer questions and answer content.</span>
+              <span class="txt-ko"><b class="hl">AI 응답·비용·변경 통제 구현</b>: 인용 검증 후 수리 1회·근거 목록 대체, 응답 중단 시 비용 예약 유지·후속 정산, 검증·공개 페이지 변경 승인 절차 구현. Langfuse에는 호출 메타데이터만 전송.</span>
+              <span class="txt-en" style="display: none;"><b class="hl">AI Output, Cost & Change Controls</b>: Validates citations with one repair attempt and evidence fallback, retains cost reservations for interrupted calls pending settlement, and requires approval for changes to verified or published pages. Sends only call metadata to Langfuse.</span>
             </li>
             <li>
-              <span class="txt-ko"><b class="hl">Cost · 비용 통제</b>: AI 호출 비용을 공통 경로에서 기록하고, 답변에 전달하는 검색 자료를 19.8K → 6K 토큰으로 제한하면서 원문·위키 근거를 함께 유지.</span>
-              <span class="txt-en" style="display: none;"><b class="hl">Cost · Cost Control</b>: Records AI call costs through a shared path and limits retrieved context from 19.8K to 6K tokens while retaining both raw-source and wiki evidence.</span>
-            </li>
-            <li>
-              <span class="txt-ko"><b class="hl">Quality · 답변 검증</b>: 출력 형식 오류·미완성 문구·존재하지 않는 인용을 검사하고, 한 번 수정해도 문제가 남으면 검색된 근거 목록으로 답변을 대체.</span>
-              <span class="txt-en" style="display: none;"><b class="hl">Quality · Output Validation</b>: Checks output format, placeholders, and fabricated citations; attempts one repair, then falls back to a list of retrieved evidence if violations remain.</span>
-            </li>
-            <li>
-              <span class="txt-ko"><b class="hl">Risk · 변경 승인</b>: AI 채팅 호출에 공통 안전 정책을 적용하고, 검증 완료·공개 페이지의 AI 변경은 편집 권한자가 변경 내용을 확인하고 승인한 뒤 반영.</span>
-              <span class="txt-en" style="display: none;"><b class="hl">Risk · Change Approval</b>: Applies a shared safety policy to AI chat calls and holds AI changes to verified or published pages for review and approval by an editor.</span>
+              <span class="txt-ko"><b class="hl">명세 기반 AI 개발 프로세스 구성</b>: 기능별 인수 조건과 병합 전 명세·권한 검증을 적용해, 인증 없이 다른 워크스페이스에 비용을 기록할 수 있던 결함 발견·수정.</span>
+              <span class="txt-en" style="display: none;"><b class="hl">Specification-Based AI Development</b>: Applied feature acceptance criteria and pre-merge specification and authorization checks; caught and fixed a flaw allowing unauthenticated cost records in another workspace.</span>
             </li>
           </ul>
-          <p class="proj-desc">
-            <span class="txt-ko">※ 토큰 수치는 합성 입력·모의 공급자를 사용한 자동화 테스트 기준.</span>
-            <span class="txt-en" style="display: none;">Token figures are from automated tests using synthetic inputs and a mock provider.</span>
-          </p>
           <div class="proj-links">
             <a href="https://github.com/kanziman/NexusWiki" class="proj-link" target="_blank" rel="noopener noreferrer">
               <span>GitHub ↗</span>
