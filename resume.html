@@ -16,17 +16,14 @@
       }
     })();
   </script>
+  <link rel="stylesheet" href="application-docs.css">
 </head>
 <body>
 
   <!-- Floating Nav Bar for Interactive Web Experience (Hidden in Print) -->
   <nav class="resume-nav">
     <div class="nav-container">
-      <a href="portfolio.html" class="nav-back-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        <span class="txt-ko">← 포트폴리오 아카이브 보기</span>
-        <span class="txt-en" style="display: none;">← Back to Portfolio</span>
-      </a>
+      <span class="resume-nav-label"><span class="txt-ko">황경태 · 이력서</span><span class="txt-en" style="display:none">Kyungtae Hwang · Resume</span></span>
 
       <div class="nav-right-actions">
         <button onclick="window.print()" class="nav-print-btn">
@@ -71,6 +68,13 @@
           <span class="txt-en" style="display: none;">Backend Engineer (5 YOE)</span>
         </p>
       </div>
+
+      <nav class="sidebar-section application-documents" aria-label="지원 문서">
+        <h3 class="sidebar-title"><span class="txt-ko">지원 문서</span><span class="txt-en" style="display:none">Documents</span></h3>
+        <a href="portfolio.html"><span class="txt-ko">포트폴리오 ↗</span><span class="txt-en" style="display:none">Portfolio ↗</span></a>
+        <a href="career.html"><span class="txt-ko">경력기술서 ↗</span><span class="txt-en" style="display:none">Career Details (KO) ↗</span></a>
+        <a href="cover-letter.html"><span class="txt-ko">자기소개서 ↗</span><span class="txt-en" style="display:none">Cover Letter (KO) ↗</span></a>
+      </nav>
 
       <section class="sidebar-section">
         <h3 class="sidebar-title">Contact</h3>
@@ -125,7 +129,7 @@
           <h4 class="skill-group-title">DevOps & Infra</h4>
           <ul class="skill-list">
             <li>Docker & Kubernetes</li>
-            <li>Helm (ConfigMap 설정 반영)</li>
+            <li>Helm</li>
             <li>ArgoCD (GitOps)</li>
             <li>Observability (OpenTelemetry, LGTM)</li>
           </ul>
@@ -166,20 +170,12 @@
           <span class="txt-ko">글로벌 5개 리전 콘텐츠 플랫폼과 1일 100만 건 금융 데이터 인프라를 개발·운영해 온 백엔드 엔지니어입니다.</span>
           <span class="txt-en" style="display: none;">Backend engineer with experience developing and operating a 5-region global content platform and infrastructure handling 1M+ daily financial data.</span>
         </p>
-        <div class="summary-text">
-          <p style="margin: 0 0 10px 0;">
-            <span class="txt-ko">사내에서는 사양서 기반 챗봇 개발 경험을 바탕으로 위키 검색 시스템을 제안해 사내 플랫폼에 도입했습니다. 업무 밖에서는 개인 프로젝트 <b class="hl">NexusWiki</b>를 통해 제품의 설계부터 구현·배포까지 경험을 넓히고 있습니다. 그 과정에서 <b class="hl">제품 속 AI를 통제하는 방법과 AI 에이전트와 효과적으로 협업하는 방식</b>에 관심을 두고 직접 적용하고 있습니다.</span>
-            <span class="txt-en" style="display: none;">Building on my experience developing a specification-based chatbot, I proposed a wiki search system and introduced it into our internal platform. Outside work, my personal project <b class="hl">NexusWiki</b> expands my experience from product design through implementation and deployment. I explore and apply <b class="hl">ways to control AI within products and collaborate effectively with AI agents</b>.</span>
-          </p>
-          <p style="margin: 0 0 10px 0;">
-            <span class="txt-ko"><b class="hl">제품의 AI 통제:</b> NexusWiki에서 흐름·비용·품질·위험의 네 측면으로 AI를 통제했습니다. 요청 추적과 Langfuse 관측으로 처리 과정을 확인하고, 토큰 예산과 비용 예약·정산으로 사용량을 관리했습니다. 답변은 검증 후 필요하면 수리하고, <b class="hl">중요 문서 변경은 사람의 승인을 거치도록</b> 구현했습니다.</span>
-            <span class="txt-en" style="display: none;"><b class="hl">AI controls in the product:</b> In NexusWiki, I implemented controls for flow, cost, quality, and risk. Request tracing and Langfuse provide visibility into processing; token budgets and cost reservation and settlement manage usage. Answers are validated and repaired when needed, and <b class="hl">changes to important documents require human approval</b>.</span>
-          </p>
-          <p style="margin: 0;">
-            <span class="txt-ko"><b class="hl">AI 에이전트 협업 체계:</b> 개발 과정에서는 요구사항과 설계를 명세로 정하고, <b class="hl">독립적으로 검증 가능한 기능 단위</b>로 작업을 나눴습니다. 병합 전에는 명세 일치 여부와 권한·데이터 접근을 검증하도록 구성했습니다. 이 과정에서 <b class="hl">인증 없이 다른 워크스페이스에 비용을 기록할 수 있던 권한 결함을 발견하고 수정</b>했습니다.</span>
-            <span class="txt-en" style="display: none;"><b class="hl">AI agent collaboration:</b> Defined requirements and design in specifications and split work into <b class="hl">independently verifiable features</b>. Before merging, the workflow checks specification conformance, authorization, and data access. This process <b class="hl">caught and resolved an authorization flaw allowing unauthenticated cost records in another workspace</b>.</span>
-          </p>
-        </div>
+        <ul class="summary-text summary-highlights">
+          <li><span class="txt-ko">일 100만 건 규모의 금융 데이터 수집 시스템에서 DB 커넥션 고갈·잠금 경합을 규명하고, 풀·인덱스 최적화와 배치 쓰기로 <b class="hl">수집 성공률 99.9%를 달성</b>했습니다.</span><span class="txt-en" style="display:none">Diagnosed DB connection exhaustion and lock contention in a system ingesting 1M records daily; optimized connection pools, indexes, and batch writes to achieve a <b class="hl">99.9% collection success rate</b>.</span></li>
+          <li><span class="txt-ko">글로벌 5개 리전의 로그·지표·Pod 현황을 통합 조회하는 <b class="hl">경량 모니터링 도구를 자체 개발</b>하고 장애 대응 절차를 플레이북으로 문서화했습니다.</span><span class="txt-en" style="display:none">Built a <b class="hl">lightweight monitoring tool across five global regions</b> for logs, metrics, and Pod status, and documented incident response procedures in playbooks.</span></li>
+          <li><span class="txt-ko"><b class="hl">사내 위키 검색 시스템을 제안·도입</b>했으며, 개인 프로젝트 NexusWiki에서는 원문·위키를 함께 검색하는 RAG와 검색 근거 추적 기능을 구현했습니다.</span><span class="txt-en" style="display:none"><b class="hl">Proposed and delivered an internal wiki search system</b>; implemented RAG across raw sources and wiki pages with retrieval traceability in my personal project NexusWiki.</span></li>
+          <li><span class="txt-ko">NexusWiki에서 <b class="hl">응답 검증·비용 관리·중요 문서 변경 승인</b>을 구현하고, OpenSpec 기반 명세와 리뷰어 에이전트로 AI 에이전트 팀의 작업을 조율했습니다.</span><span class="txt-en" style="display:none">Implemented <b class="hl">response validation, cost controls, and approval for important document changes</b> in NexusWiki; coordinated an AI agent team using OpenSpec specifications and reviewer agents.</span></li>
+        </ul>
 
         <!-- Metrics Strip (Flat 4-column key highlights) -->
         <div class="metrics-strip">
@@ -199,9 +195,9 @@
             <span class="metric-lbl txt-en" style="display: none;">Monthly Verification</span>
           </div>
           <div class="metric-item">
-            <span class="metric-val"><b style="color: var(--text-accent);">500+</b></span>
-            <span class="metric-lbl txt-ko">npm 다운로드</span>
-            <span class="metric-lbl txt-en" style="display: none;">npm Downloads</span>
+            <span class="metric-val"><b style="color: var(--text-accent);">50%</b></span>
+            <span class="metric-lbl txt-ko">매핑 사이클 단축</span>
+            <span class="metric-lbl txt-en" style="display: none;">Mapping Cycle Reduction</span>
           </div>
         </div>
       </section>
@@ -244,8 +240,8 @@
                     <span class="txt-en" style="display: none;"><b class="hl">Expanded pipelines for LATAM & Japan and introduced SA Collector</b>: Segregated static, dynamic, and push ingestion channels to ensure regional scalability and reliability.</span>
                   </li>
                   <li>
-                    <span class="txt-ko">북미·유럽·아태·일본·남미 5개 글로벌 리전 클러스터를 관제하기 위해 로컬 kubectl/AWS 자격증명으로 로그·지표·Pod 현황을 조회하는 <b class="hl">경량 통합 모니터링 도구 자체 개발</b> (장애 감지 및 점검 리드타임 단축).</span>
-                    <span class="txt-en" style="display: none;">Engineered a <b class="hl">lightweight integrated monitoring tool</b> bridging local kubectl and AWS IAM credentials to trace logs, metrics, and Pods across 5 global regions without agents.</span>
+                    <span class="txt-ko">로컬 kubectl/AWS 자격증명으로 5개 글로벌 리전의 로그·지표·Pod 현황을 통합 조회하는 <b class="hl">경량 모니터링 도구 자체 개발</b>. 장애 유형별 확인 항목과 대응 절차를 플레이북으로 문서화.</span>
+                    <span class="txt-en" style="display: none;">Built a <b class="hl">lightweight monitoring tool</b> using local kubectl and AWS credentials to inspect logs, metrics, and Pods across five global regions; documented incident checks and response procedures in playbooks.</span>
                   </li>
                   <li>
                     <span class="txt-ko"><b class="hl">분산 락(ShedLock)으로 수집기 중복 실행 방지</b> 및 다중 인스턴스 스케줄링 정합성 확보.</span>
@@ -288,6 +284,10 @@
                     <span class="txt-en" style="display: none;">Spearheaded an <b class="hl">interactive API sandbox application</b> allowing external partners to test REST APIs in real time, standardizing OAS specs and Rate Limiting.</span>
                   </li>
                 </ul>
+              </li>
+              <li>
+                <strong><span class="txt-ko">사내 위키 검색 시스템 제안·도입 (전담)</span><span class="txt-en" style="display:none">Internal Wiki Search — End-to-End Ownership</span></strong>
+                <ul class="exp-sub-details"><li><span class="txt-ko">프로젝트 간 교차 투입에 따른 사양서 갱신·업무 맥락 공유 문제를 해결하기 위해, <b class="hl">사양서 기반 RAG에 위키를 결합한 검색 시스템을 제안</b>하고 설계·구현·사내 도입까지 전담.</span><span class="txt-en" style="display:none">Addressed specification updates and knowledge sharing across rotating project teams; <b class="hl">proposed a wiki-integrated specification RAG system</b> and owned its design, implementation, and internal rollout.</span></li></ul>
               </li>
               <li>
                 <strong>
@@ -371,16 +371,16 @@
           </p>
           <ul class="proj-details">
             <li>
-              <span class="txt-ko"><b class="hl">원문·위키 이중 인용 검색 구현</b>: 벡터·어휘 검색을 결합한 4채널 하이브리드 검색과 RRF로 원문·위키를 함께 검색하고, 채널별 순위와 기여도를 확인하는 디버그 뷰어 구축.</span>
-              <span class="txt-en" style="display: none;"><b class="hl">Dual-Source Retrieval</b>: Combined vector and lexical search across raw sources and wiki pages using four-channel retrieval and RRF; built a debug viewer for channel rankings and contributions.</span>
+              <span class="txt-ko"><b class="hl">원문·위키 이중 인용 검색 구현</b>: 원문·위키의 벡터·어휘 검색을 RRF로 통합하고, 채널별 순위·기여도 디버그 뷰어 구축.</span>
+              <span class="txt-en" style="display: none;"><b class="hl">Dual-Source Retrieval</b>: Combined raw-source and wiki vector/lexical search with RRF; built a channel ranking and contribution viewer.</span>
             </li>
             <li>
-              <span class="txt-ko"><b class="hl">AI 응답·비용·변경 통제 구현</b>: 인용 검증 후 수리 1회·근거 목록 대체, 응답 중단 시 비용 예약 유지·후속 정산, 검증·공개 페이지 변경 승인 절차 구현. Langfuse에는 호출 메타데이터만 전송.</span>
-              <span class="txt-en" style="display: none;"><b class="hl">AI Output, Cost & Change Controls</b>: Validates citations with one repair attempt and evidence fallback, retains cost reservations for interrupted calls pending settlement, and requires approval for changes to verified or published pages. Sends only call metadata to Langfuse.</span>
+              <span class="txt-ko"><b class="hl">AI 응답·비용·변경 통제 구현</b>: 인용 검증·보정, 비용 예약·정산, 중요 문서 변경 승인 구현. Langfuse로 호출 메타데이터 관측.</span>
+              <span class="txt-en" style="display: none;"><b class="hl">AI Output, Cost & Change Controls</b>: Implemented citation validation and repair, cost reservation and settlement, document change approvals, and call metadata observation with Langfuse.</span>
             </li>
             <li>
-              <span class="txt-ko"><b class="hl">명세 기반 AI 개발 프로세스 구성</b>: 기능별 인수 조건과 병합 전 명세·권한 검증을 적용해, 인증 없이 다른 워크스페이스에 비용을 기록할 수 있던 결함 발견·수정.</span>
-              <span class="txt-en" style="display: none;"><b class="hl">Specification-Based AI Development</b>: Applied feature acceptance criteria and pre-merge specification and authorization checks; caught and fixed a flaw allowing unauthenticated cost records in another workspace.</span>
+              <span class="txt-ko"><b class="hl">명세 기반 AI 개발 프로세스 구성</b>: OpenSpec 기반 작업 분할·인수 조건 공유. 리뷰어 에이전트가 발견한 워크스페이스 간 비용 기록 권한 결함 수정·재검증.</span>
+              <span class="txt-en" style="display: none;"><b class="hl">Specification-Based AI Development</b>: Used OpenSpec for task decomposition and acceptance criteria; fixed and reverified a cross-workspace cost-record authorization flaw identified by a reviewer agent.</span>
             </li>
           </ul>
           <div class="proj-links">
