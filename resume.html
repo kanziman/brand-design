@@ -172,7 +172,7 @@
         </p>
         <ul class="summary-text summary-highlights">
           <li><span class="txt-ko">일 100만 건 규모의 금융 데이터 수집 시스템에서 DB 커넥션 고갈·잠금 경합을 규명하고, 풀·인덱스 최적화와 배치 쓰기로 <b class="hl">수집 성공률 99.9%를 달성</b>했습니다.</span><span class="txt-en" style="display:none">Diagnosed DB connection exhaustion and lock contention in a system ingesting 1M records daily; optimized connection pools, indexes, and batch writes to achieve a <b class="hl">99.9% collection success rate</b>.</span></li>
-          <li><span class="txt-ko">글로벌 5개 리전의 로그·지표·Pod 현황을 통합 조회하는 <b class="hl">경량 모니터링 도구를 자체 개발</b>하고 장애 대응 절차를 플레이북으로 문서화했습니다.</span><span class="txt-en" style="display:none">Built a <b class="hl">lightweight monitoring tool across five global regions</b> for logs, metrics, and Pod status, and documented incident response procedures in playbooks.</span></li>
+          <li><span class="txt-ko">글로벌 5개 리전의 로그·지표·Pod 현황을 통합 조회하는 <b class="hl">경량 모니터링 도구를 자체 개발</b>하고, 수집 재시도와 LLM 기반 장애 대응 추천 기능을 구현했습니다.</span><span class="txt-en" style="display:none">Built a <b class="hl">lightweight monitoring tool across five global regions</b> for logs, metrics, and Pod status, with collection retries and LLM-based incident response recommendations.</span></li>
           <li><span class="txt-ko"><b class="hl">사내 위키 검색 시스템을 제안·도입</b>했으며, 개인 프로젝트 NexusWiki에서는 원문·위키를 함께 검색하는 RAG와 검색 근거 추적 기능을 구현했습니다.</span><span class="txt-en" style="display:none"><b class="hl">Proposed and delivered an internal wiki search system</b>; implemented RAG across raw sources and wiki pages with retrieval traceability in my personal project NexusWiki.</span></li>
           <li><span class="txt-ko">NexusWiki에서 <b class="hl">응답 검증·비용 관리·중요 문서 변경 승인</b>을 구현하고, OpenSpec 기반 명세와 리뷰어 에이전트로 AI 에이전트 팀의 작업을 조율했습니다.</span><span class="txt-en" style="display:none">Implemented <b class="hl">response validation, cost controls, and approval for important document changes</b> in NexusWiki; coordinated an AI agent team using OpenSpec specifications and reviewer agents.</span></li>
         </ul>
@@ -242,6 +242,10 @@
                   <li>
                     <span class="txt-ko">로컬 kubectl/AWS 자격증명으로 5개 글로벌 리전의 로그·지표·Pod 현황을 통합 조회하는 <b class="hl">경량 모니터링 도구 자체 개발</b>. 장애 유형별 확인 항목과 대응 절차를 플레이북으로 문서화.</span>
                     <span class="txt-en" style="display: none;">Built a <b class="hl">lightweight monitoring tool</b> using local kubectl and AWS credentials to inspect logs, metrics, and Pods across five global regions; documented incident checks and response procedures in playbooks.</span>
+                  </li>
+                  <li>
+                    <span class="txt-ko"><b class="hl">웹 기반 수집 재시도 및 LLM 장애 대응 추천 구현</b>: 실패한 Lambda 수집 함수를 재실행해 콘텐츠 공급사(CP)의 상태를 확인하고, 기록한 오류 사례를 LLM에 질의해 대응 방안을 추천받도록 구성.</span>
+                    <span class="txt-en" style="display: none;"><b class="hl">Implemented web-based collection retries and LLM incident response recommendations</b>: Re-ran failed Lambda collection functions to check content provider status and queried an LLM with recorded error cases for response suggestions.</span>
                   </li>
                   <li>
                     <span class="txt-ko"><b class="hl">분산 락(ShedLock)으로 수집기 중복 실행 방지</b> 및 다중 인스턴스 스케줄링 정합성 확보.</span>
